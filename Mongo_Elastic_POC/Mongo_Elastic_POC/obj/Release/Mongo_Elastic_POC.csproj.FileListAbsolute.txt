@@ -1,0 +1,5 @@
+E:\SourceCode\Mongo_Elastic_POC\Mongo_Elastic_POC\obj\Release\Mongo_Elastic_POC.exe.config
+E:\SourceCode\Mongo_Elastic_POC\Mongo_Elastic_POC\obj\Release\MainWindow.g.cs
+E:\SourceCode\Mongo_Elastic_POC\Mongo_Elastic_POC\obj\Release\App.g.cs
+E:\SourceCode\Mongo_Elastic_POC\Mongo_Elastic_POC\obj\Release\Mongo_Elastic_POC_MarkupCompile.cache
+E:\SourceCode\Mongo_Elastic_POC\Mongo_Elastic_POC\obj\Release\Mongo_Elastic_POC_MarkupCompile.lref
