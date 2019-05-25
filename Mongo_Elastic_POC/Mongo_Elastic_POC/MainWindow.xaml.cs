@@ -33,6 +33,9 @@ namespace Mongo_Elastic_POC
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static Uri EsNode;
+        public static ConnectionSettings EsConfig;
+        public static ElasticClient EsClient;
         public MainWindow()
         {
             InitializeComponent();
@@ -40,7 +43,7 @@ namespace Mongo_Elastic_POC
             //var externalDataMongoToElasticTransfer = GetAllExternalDataFromMongo();
             //PostExternalDataToElastic(externalDataMongoToElasticTransfer);
 
-            //for exact match strings
+            //for exact match strings  ---MONGO DB
             Dictionary<string, string> searchStrings = new Dictionary<string, string>();
             searchStrings.Add("username", "bad99954");
             searchStrings.Add("selectedgroup", "D");
@@ -53,7 +56,9 @@ namespace Mongo_Elastic_POC
 
             //for tag strings
             Dictionary<string, string> tagStrings = new Dictionary<string, string>();
-            tagStrings.Add("tags.tag1099954", "SPUNGOB");
+            tagStrings.Add("tag1099954", "SPUNGOB");
+
+
 
 
             SearchData(searchStrings, likeStrings, tagStrings);
@@ -112,7 +117,7 @@ namespace Mongo_Elastic_POC
 
             foreach (var tgString in tagStrings)
             {
-                BsonElement bsonStr = new BsonElement(tgString.Key, new BsonRegularExpression(string.Format("^{0}", tgString.Value)));
+                BsonElement bsonStr = new BsonElement("tags." + tgString.Key, new BsonRegularExpression(string.Format("^{0}", tgString.Value)));
                 lstBsonCriteriaQuery.Add(bsonStr);
             }
 
@@ -134,16 +139,56 @@ namespace Mongo_Elastic_POC
 
             //TEST ELASTIC CLIENT
 
-
-
-            
-            
             var watch1 = System.Diagnostics.Stopwatch.StartNew();
-            
-
-            //TEST ELASTICSEARCH CLIENT SEARCH
-          
             var elasticClient = new ElasticClient();
+
+            //ADD FILTERS
+            List<QueryContainer> lstSearchFieldQuery = new List<QueryContainer>();
+            string fieldInitial = "Field";
+            int fieldCount = 1;
+            QueryContainer searchQueryBulder = null;
+
+            foreach (var srchStr in searchStrings)
+            {
+
+                searchQueryBulder &= new TermQuery()
+                {
+                    Field = srchStr.Key,
+                    Value = srchStr.Value
+                };
+
+            }
+
+            foreach (var srchStr in tagStrings)
+            {
+                var qb1 = new TermQuery
+                {
+                    Field = "userdefinedfields.name",
+                    Value = srchStr.Key
+                };
+
+                var qb2 = new TermQuery
+                {
+                    Field = "userdefinedfields.value",
+                    Value = srchStr.Value
+                };
+
+                searchQueryBulder &= (qb1 && qb2);
+
+            }
+
+            //using the object initializer syntax
+            var resultData = elasticClient.Search<dynamic>(new SearchRequest()
+            {
+                Query = searchQueryBulder
+            });
+
+
+
+
+
+
+
             var searchResponse = elasticClient.Search<SearchModel>(s => s
             .Index("searchdb")
             .Query(q => q
@@ -153,12 +198,15 @@ namespace Mongo_Elastic_POC
                 )
             )
         );
-            
+
+
+
+
             var elasticResult = searchResponse.Documents;
             watch1.Stop();
             var elapsedMs1 = watch1.ElapsedMilliseconds;
         }
-        
+
         public static string RandomString(int length)
         {
             //length = length < 0 ? length * -1 : length;
@@ -203,8 +251,8 @@ namespace Mongo_Elastic_POC
 
         public void PostExternalDataToElastic(List<dynamic> srcDta)
         {
-            var EsClient = new ElasticClient();
-            
+
+
             List<SearchModel> lstElstModel = new List<SearchModel>();
             //CREATE MODEL FOR ELASTIC DATA 
             foreach (var data in srcDta)
@@ -240,22 +288,19 @@ namespace Mongo_Elastic_POC
                     else if (propertyName.ToLower() == "tags")
                     {
                         dynamic nestedUsrFields = value;
-                        string proName = "Field";
-                        int propSerial = 1;
-                        Type type = typeof(SearchModel);
+                        List<UserDefinedField> lstusrdef = new List<UserDefinedField>();
+
                         try
                         {
                             foreach (KeyValuePair<string, object> nestedData in nestedUsrFields)
                             {
-                                string propName = proName + propSerial;
+
                                 string nestedPropertyName = nestedData.Key;
                                 string nestedValue = Convert.ToString(nestedData.Value);
                                 UserDefinedField usrFld = new UserDefinedField();
                                 usrFld.Name = nestedPropertyName;
                                 usrFld.Value = nestedValue;
-                                PropertyInfo piInstance = type.GetProperty(propName);
-                                piInstance.SetValue(srcModel, usrFld);
-                                propSerial++;
+                                lstusrdef.Add(usrFld);
                                 //dctUsrDefFields.Add(nestedPropertyName, Convert.ToString(nestedValue));
                             }
                         }
@@ -263,13 +308,27 @@ namespace Mongo_Elastic_POC
                         {
                             //to be logged
                         }
+                        srcModel.UserDefinedFields = lstusrdef;
                     }
                 }
 
                 lstElstModel.Add(srcModel);
             }
 
+            //elastic search connection
+            EsNode = new Uri("http://localhost:9200/");
+            EsConfig = new ConnectionSettings(EsNode);
+            EsClient = new ElasticClient(EsConfig);
+            var settings = new IndexSettings { NumberOfReplicas = 1, NumberOfShards = 2 };
 
+            var indexConfig = new IndexState
+            {
+                Settings = settings
+            };
+
+            EsClient.CreateIndex("searchdb", c => c
+         .InitializeUsing(indexConfig)
+         .Mappings(m => m.Map<SearchModel>(mp => mp.AutoMap())));
             //can cancel the operation by calling .Cancel() on this
             var cancellationTokenSource = new CancellationTokenSource();
 
