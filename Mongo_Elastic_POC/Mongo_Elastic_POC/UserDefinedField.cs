@@ -11,7 +11,7 @@ namespace Mongo_Elastic_POC
     [BsonIgnoreExtraElements]
     public class UserDefinedField
     {
-        
+   
         public string Name { get; set; }
     
         public string Value { get; set; }

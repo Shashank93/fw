@@ -125,8 +125,16 @@ namespace Mongo_Elastic_POC
 
             lstMongoBoxResults.ItemsSource = resultsMongo.ExperimentIds;
             lstElasticBoxResults.ItemsSource = resultsElastic.ExperimentIds;
-            lblElSrTime.Content = resultsElastic.TimeTaken;
-            lblMgSrTime.Content = resultsMongo.TimeTaken;
+            lblElSrTime.Content = resultsElastic.TimeTaken + " ms";
+            lblMgSrTime.Content = resultsMongo.TimeTaken + " ms";
+            lbrElRecCount.Content = resultsElastic.ExperimentIds.Count + " records";
+            lblMgRecCount.Content = resultsMongo.ExperimentIds.Count + " records";
+        }
+
+        private void BtnSearchAll_Click(object sender, RoutedEventArgs e)
+        {
+            var searchText = txtSearchAll.Text;
+            SearchDb.ElasticSearchAll(searchText);
         }
     }
 }

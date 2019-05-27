@@ -4,6 +4,7 @@ using MongoDB.Driver;
 using Nest;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace Mongo_Elastic_POC
 
         public static MongoClient MgClient;
         public static IMongoDatabase MgDb;
+        public static IMongoCollection<BsonDocument> mgCollection;
         const string connectionString = "mongodb://localhost:27017";
 
         public static void SetupElasticClient()
@@ -45,6 +47,7 @@ namespace Mongo_Elastic_POC
                     cm.AutoMap();
                     cm.SetIgnoreExtraElements(true);
                 });
+                mgCollection = MgDb.GetCollection<BsonDocument>("ExternalData");
             }
 
         }
@@ -59,19 +62,18 @@ namespace Mongo_Elastic_POC
         {
             //TEST ELASTIC CLIENT
             //ADD FILTERS
+
             List<QueryContainer> lstSearchFieldQuery = new List<QueryContainer>();
 
             QueryContainer searchQueryBulder = null;
             foreach (var srchStr in searchStrings)
             {
-                var qb1 = new TermQuery
+                searchQueryBulder &= new TermQuery
                 {
-                    Field = srchStr.Key.ToLower(),
-                    Value = srchStr.Value.ToLower()
+                    Field = srchStr.Key,
+                    Value = srchStr.Value
 
                 };
-
-                searchQueryBulder &= qb1;
 
             }
 
@@ -102,30 +104,48 @@ namespace Mongo_Elastic_POC
 
             foreach (var lkStr in likeStrings)
             {
-                searchQueryBulder &= new MatchQuery
+                if (lkStr.Key.Equals("expcreateddate"))
                 {
-                    Field = lkStr.Key.ToLower(),
-                    Query = lkStr.Value.ToLower()
-                };
+                    searchQueryBulder &= new DateRangeQuery
+                    {
+                        Field = lkStr.Key.ToLower(),
+                        GreaterThanOrEqualTo = lkStr.Value.ToLower(),
+                        LessThanOrEqualTo = lkStr.Value.ToLower(),
+                        Format = "yyyy-MM-dd"
+                    };
+                }
+                else
+                {
+                    searchQueryBulder &= new MatchQuery
+                    {
+                        Field = lkStr.Key.ToLower(),
+                        Query = lkStr.Value.ToLower()
+                    };
+                }
             }
 
 
             //check json request data
-            //var req = new SearchRequest<SearchModel>
-            //{
-            //    Query = searchQueryBulder
-            //};
+            var req = new SearchRequest<SearchModel>
+            {
+                From = 0,
+                Size = 200000,
+                Source = new SourceFilter
+                {
+                    Includes = "experimentid"
+                },
+                Query = searchQueryBulder
+            };
 
-            //using (var ms = new MemoryStream())
-            //{
-            //    elasticClient.SourceSerializer.Serialize(req, ms, Elasticsearch.Net.SerializationFormatting.Indented);
-            //    string jsonQuery = Encoding.UTF8.GetString(ms.ToArray());
-            //};
+            using (var ms = new MemoryStream())
+            {
+                EsClient.SourceSerializer.Serialize(req, ms, Elasticsearch.Net.SerializationFormatting.Indented);
+                string jsonQuery = Encoding.UTF8.GetString(ms.ToArray());
+            };
 
-            
-            var watch1 = System.Diagnostics.Stopwatch.StartNew();
             var searchResponse = EsClient.Search<SearchModel>(new SearchRequest<SearchModel>
             {
+                Size = 200000,
                 Source = new SourceFilter
                 {
                     Includes = "experimentid"
@@ -134,8 +154,6 @@ namespace Mongo_Elastic_POC
             });
             //using the object initializer syntax
 
-            watch1.Stop();
-            var elapsedMs1 = watch1.ElapsedMilliseconds;
             var rslt = new List<string>();
             foreach (var fieldValues in searchResponse.Documents)
             {
@@ -143,7 +161,7 @@ namespace Mongo_Elastic_POC
             }
 
             Result rst = new Result();
-            rst.TimeTaken = elapsedMs1;
+            rst.TimeTaken = searchResponse.Took;
             rst.ExperimentIds = rslt;
             return rst;
         }
@@ -171,12 +189,12 @@ namespace Mongo_Elastic_POC
 
             foreach (var tgString in tagStrings)
             {
-                BsonElement bsonStr = new BsonElement("tags." + tgString.Key, new BsonRegularExpression(string.Format("^{0}", tgString.Value)));
+                BsonElement bsonStr = new BsonElement("tags." + tgString.Key, new BsonRegularExpression(string.Format("/{0}/", tgString.Value)));
                 lstBsonCriteriaQuery.Add(bsonStr);
             }
 
             var watch = System.Diagnostics.Stopwatch.StartNew();
-            var collection = MgDb.GetCollection<BsonDocument>("ExternalData");
+
             //QUERY PREP WITH FILTERS
             BsonDocument findData = new BsonDocument(lstBsonCriteriaQuery);
 
@@ -184,7 +202,7 @@ namespace Mongo_Elastic_POC
             var fields = Builders<BsonDocument>.Projection.Include("expid");
 
             //RESULT
-            var resultDoc = collection.Find(findData).Project<BsonDocument>(fields).ToList();
+            var resultDoc = mgCollection.Find(findData).Project<BsonDocument>(fields).ToList();
 
             // the code that you want to measure comes here
             watch.Stop();
@@ -196,6 +214,36 @@ namespace Mongo_Elastic_POC
             }
             Result rst = new Result();
             rst.TimeTaken = elapsedMs;
+            rst.ExperimentIds = rslt;
+            return rst;
+        }
+
+        public static Result ElasticSearchAll(string searchPhrase)
+        {
+            //TEST ELASTIC CLIENT
+            //ADD FILTERS
+
+
+
+            var searchResponse = EsClient.Search<UserDefinedField>(sd => sd
+           .Index("tagpreferences")
+           .Size(2000000)
+           .Query(q => q
+               .Match(m => m.Field("value").Query(searchPhrase)
+               )));
+
+
+            //using the object initializer syntax
+
+            var rslt = new List<string>();
+            foreach (var fieldValues in searchResponse.Documents)
+            {
+                rslt.Add(fieldValues.Value);
+                //rslt.Add(fieldValues.Value);
+            }
+
+            Result rst = new Result();
+            rst.TimeTaken = searchResponse.Took;
             rst.ExperimentIds = rslt;
             return rst;
         }
