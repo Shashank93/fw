@@ -11,6 +11,7 @@ namespace Mongo_Elastic_POC
     [BsonIgnoreExtraElements]
     public class SearchModel
     {
+        
         [PropertyName("username")]
         public string UserName { get; set; }
         [PropertyName("selectedgroup")]

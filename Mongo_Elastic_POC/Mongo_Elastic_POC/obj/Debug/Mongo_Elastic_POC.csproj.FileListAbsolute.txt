@@ -251,7 +251,6 @@ C:\Users\shashank kushwaha\Documents\GitHub\fw\Mongo_Elastic_POC\Mongo_Elastic_P
 C:\Users\shashank kushwaha\Documents\GitHub\fw\Mongo_Elastic_POC\Mongo_Elastic_POC\bin\Debug\Newtonsoft.Json.xml
 C:\Users\shashank kushwaha\Documents\GitHub\fw\Mongo_Elastic_POC\Mongo_Elastic_POC\bin\Debug\System.Buffers.xml
 C:\Users\shashank kushwaha\Documents\GitHub\fw\Mongo_Elastic_POC\Mongo_Elastic_POC\bin\Debug\System.Threading.Tasks.Extensions.xml
-C:\Users\shashank kushwaha\Documents\GitHub\fw\Mongo_Elastic_POC\Mongo_Elastic_POC\obj\Debug\Mongo_Elastic_POC.csprojAssemblyReference.cache
 C:\Users\shashank kushwaha\Documents\GitHub\fw\Mongo_Elastic_POC\Mongo_Elastic_POC\obj\Debug\Mongo_Elastic_POC.exe.config
 C:\Users\shashank kushwaha\Documents\GitHub\fw\Mongo_Elastic_POC\Mongo_Elastic_POC\obj\Debug\MainWindow.g.cs
 C:\Users\shashank kushwaha\Documents\GitHub\fw\Mongo_Elastic_POC\Mongo_Elastic_POC\obj\Debug\App.g.cs
@@ -265,3 +264,6 @@ C:\Users\shashank kushwaha\Documents\GitHub\fw\Mongo_Elastic_POC\Mongo_Elastic_P
 C:\Users\shashank kushwaha\Documents\GitHub\fw\Mongo_Elastic_POC\Mongo_Elastic_POC\obj\Debug\Mongo_Elastic_POC.csproj.CopyComplete
 C:\Users\shashank kushwaha\Documents\GitHub\fw\Mongo_Elastic_POC\Mongo_Elastic_POC\obj\Debug\Mongo_Elastic_POC.exe
 C:\Users\shashank kushwaha\Documents\GitHub\fw\Mongo_Elastic_POC\Mongo_Elastic_POC\obj\Debug\Mongo_Elastic_POC.pdb
+C:\Users\shashank kushwaha\Documents\GitHub\fw\Mongo_Elastic_POC\Mongo_Elastic_POC\obj\Debug\Mongo_Elastic_POC.csprojAssemblyReference.cache
+C:\Users\shashank kushwaha\Documents\GitHub\fw\Mongo_Elastic_POC\Mongo_Elastic_POC\obj\Debug\Home.g.cs
+C:\Users\shashank kushwaha\Documents\GitHub\fw\Mongo_Elastic_POC\Mongo_Elastic_POC\obj\Debug\Home.baml

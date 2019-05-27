@@ -36,6 +36,7 @@ namespace Mongo_Elastic_POC
         public static Uri EsNode;
         public static ConnectionSettings EsConfig;
         public static ElasticClient EsClient;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -57,36 +58,111 @@ namespace Mongo_Elastic_POC
             //for tag strings
             Dictionary<string, string> tagStrings = new Dictionary<string, string>();
             tagStrings.Add("tag1099954", "SPUNGOB");
-
-
-
-
+            
             SearchData(searchStrings, likeStrings, tagStrings);
 
 
         }
-
-        public List<dynamic> GetAllExternalDataFromMongo()
-        {
-            const string connectionString = "mongodb://localhost:27017";
-
-            // Create a MongoClient object by using the connection string
-            var client = new MongoClient(connectionString);
-
-            //Use the MongoClient to access the server
-            var database = client.GetDatabase("LASXdb");
-
-            var fields = Builders<dynamic>.Projection.Exclude("_id");
-            //get mongodb collection
-            var collection = database.GetCollection<dynamic>("ExternalData");
-            var documents = collection.Find(_ => true).Project<dynamic>(fields).ToListAsync();
-            return documents.Result;
-        }
-
+        
         /// <summary>
         /// MAIN METHOD FOR EXPERIMENT
         /// </summary>
         public void SearchData(Dictionary<string, string> searchStrings, Dictionary<string, string> likeStrings, Dictionary<string, string> tagStrings)
+        {
+           var mgResult = MongoSearch(searchStrings, likeStrings, tagStrings);
+           var elResult = ElasticSearch(searchStrings, likeStrings, tagStrings);
+        }
+
+        public static Result ElasticSearch(Dictionary<string, string> searchStrings, Dictionary<string, string> likeStrings, Dictionary<string, string> tagStrings)
+        {
+            //TEST ELASTIC CLIENT
+
+            //ADD FILTERS
+            List<QueryContainer> lstSearchFieldQuery = new List<QueryContainer>();
+
+            QueryContainer searchQueryBulder = null;
+            foreach (var srchStr in searchStrings)
+            {
+                var qb1 = new TermQuery
+                {
+                    Field = srchStr.Key.ToLower(),
+                    Value = srchStr.Value.ToLower()
+
+                };
+
+                searchQueryBulder &= qb1;
+
+            }
+
+            foreach (var tgStr in tagStrings)
+            {
+                QueryContainer nestQuery = null;
+                nestQuery &= new TermQuery
+                {
+                    Field = "userdefinedfields.name",
+                    Value = tgStr.Key.ToLower()
+                };
+
+                nestQuery &= new TermQuery
+                {
+                    Field = "userdefinedfields.value",
+                    Value = tgStr.Value.ToLower()
+                };
+
+                searchQueryBulder &= new NestedQuery
+                {
+                    Path = "userdefinedfields",
+                    Query = nestQuery,
+                    IgnoreUnmapped = true
+                };
+
+            }
+
+            foreach (var lkStr in likeStrings)
+            {
+                searchQueryBulder &= new MatchQuery
+                {
+                    Field = lkStr.Key.ToLower(),
+                    Query = lkStr.Value.ToLower()
+                };
+            }
+
+            var settings = new ConnectionSettings()
+           .DefaultIndex("searchdb")
+           .DefaultMappingFor<SearchModel>(m => m
+               .IndexName("searchdb")
+           );
+            var elasticClient = new ElasticClient(settings);
+            //check json request data
+            var req = new SearchRequest<SearchModel>
+            {
+                Query = searchQueryBulder
+            };
+
+            using (var ms = new MemoryStream())
+            {
+                elasticClient.SourceSerializer.Serialize(req, ms, Elasticsearch.Net.SerializationFormatting.Indented);
+                string jsonQuery = Encoding.UTF8.GetString(ms.ToArray());
+            };
+
+            var watch1 = System.Diagnostics.Stopwatch.StartNew();
+
+            var searchResponse = elasticClient.Search<SearchModel>(new SearchRequest<SearchModel>
+            {
+                StoredFields = "experimentid",
+                Query = searchQueryBulder
+            });
+            //using the object initializer syntax
+
+            var elasticResult = searchResponse.Documents;
+            watch1.Stop();
+            var elapsedMs1 = watch1.ElapsedMilliseconds;
+            Result rst = new Result();
+            rst.TimeTaken = elapsedMs1;
+            return rst;
+        }
+
+        public Result MongoSearch(Dictionary<string, string> searchStrings, Dictionary<string, string> likeStrings, Dictionary<string, string> tagStrings)
         {
             //TEST MONGO CLIENT SEARCH
             const string connectionString = "mongodb://localhost:27017";
@@ -135,78 +211,12 @@ namespace Mongo_Elastic_POC
             // the code that you want to measure comes here
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
-
-
-            //TEST ELASTIC CLIENT
-
-            var watch1 = System.Diagnostics.Stopwatch.StartNew();
-            var elasticClient = new ElasticClient();
-
-            //ADD FILTERS
-            List<QueryContainer> lstSearchFieldQuery = new List<QueryContainer>();
-            string fieldInitial = "Field";
-            int fieldCount = 1;
-            QueryContainer searchQueryBulder = null;
-
-            foreach (var srchStr in searchStrings)
-            {
-
-                searchQueryBulder &= new TermQuery()
-                {
-                    Field = srchStr.Key,
-                    Value = srchStr.Value
-                };
-
-            }
-
-            foreach (var srchStr in tagStrings)
-            {
-                var qb1 = new TermQuery
-                {
-                    Field = "userdefinedfields.name",
-                    Value = srchStr.Key
-                };
-
-                var qb2 = new TermQuery
-                {
-                    Field = "userdefinedfields.value",
-                    Value = srchStr.Value
-                };
-
-                searchQueryBulder &= (qb1 && qb2);
-
-            }
-
-            //using the object initializer syntax
-            var resultData = elasticClient.Search<dynamic>(new SearchRequest()
-            {
-                Query = searchQueryBulder
-            });
-
-
-
-
-
-
-
-            var searchResponse = elasticClient.Search<SearchModel>(s => s
-            .Index("searchdb")
-            .Query(q => q
-                .Match(m => m
-                    .Field(f => f.UserName)
-                    .Query("bad99954")
-                )
-            )
-        );
-
-
-
-
-            var elasticResult = searchResponse.Documents;
-            watch1.Stop();
-            var elapsedMs1 = watch1.ElapsedMilliseconds;
+            Result rst = new Result();
+            rst.TimeTaken = elapsedMs;
+            return rst;
         }
 
+        #region USE THIS CODE FOR FEEDING DATA OR HELPER METHODS
         public static string RandomString(int length)
         {
             //length = length < 0 ? length * -1 : length;
@@ -247,8 +257,7 @@ namespace Mongo_Elastic_POC
         {
             return obj.GetType().GetProperties();
         }
-
-
+        
         public void PostExternalDataToElastic(List<dynamic> srcDta)
         {
 
@@ -326,8 +335,8 @@ namespace Mongo_Elastic_POC
                 Settings = settings
             };
 
+
             EsClient.CreateIndex("searchdb", c => c
-         .InitializeUsing(indexConfig)
          .Mappings(m => m.Map<SearchModel>(mp => mp.AutoMap())));
             //can cancel the operation by calling .Cancel() on this
             var cancellationTokenSource = new CancellationTokenSource();
@@ -382,24 +391,24 @@ namespace Mongo_Elastic_POC
 
         }
 
-        public void InsertElasticDataFromMongo(List<dynamic> srcDta)
+        public List<dynamic> GetAllExternalDataFromMongo()
         {
-            var node = new Uri("http://localhost:9200");
-            var config = new ConnectionConfiguration(node);
-            var client = new ElasticLowLevelClient(config);
+            const string connectionString = "mongodb://localhost:27017";
 
-            foreach (var data in srcDta)
-            {
-                /*var response = client.Index("ëxternaldata","experimentdata",);*/ //or specify index via settings.DefaultIndex("mytweetindex");
+            // Create a MongoClient object by using the connection string
+            var client = new MongoClient(connectionString);
 
-            }
+            //Use the MongoClient to access the server
+            var database = client.GetDatabase("LASXdb");
 
-
-
-
-
-
+            var fields = Builders<dynamic>.Projection.Exclude("_id");
+            //get mongodb collection
+            var collection = database.GetCollection<dynamic>("ExternalData");
+            var documents = collection.Find(_ => true).Project<dynamic>(fields).ToListAsync();
+            return documents.Result;
         }
+        #endregion
+
     }
 }
 

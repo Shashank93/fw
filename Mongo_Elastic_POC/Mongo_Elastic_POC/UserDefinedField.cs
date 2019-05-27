@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
+using Nest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,9 @@ namespace Mongo_Elastic_POC
     [BsonIgnoreExtraElements]
     public class UserDefinedField
     {
+        
         public string Name { get; set; }
+    
         public string Value { get; set; }
     }
 }
