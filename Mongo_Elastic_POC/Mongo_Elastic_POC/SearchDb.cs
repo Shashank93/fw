@@ -122,8 +122,8 @@ namespace Mongo_Elastic_POC
             //    string jsonQuery = Encoding.UTF8.GetString(ms.ToArray());
             //};
 
+            
             var watch1 = System.Diagnostics.Stopwatch.StartNew();
-
             var searchResponse = EsClient.Search<SearchModel>(new SearchRequest<SearchModel>
             {
                 Source = new SourceFilter
@@ -133,6 +133,7 @@ namespace Mongo_Elastic_POC
                 Query = searchQueryBulder
             });
             //using the object initializer syntax
+
             watch1.Stop();
             var elapsedMs1 = watch1.ElapsedMilliseconds;
             var rslt = new List<string>();

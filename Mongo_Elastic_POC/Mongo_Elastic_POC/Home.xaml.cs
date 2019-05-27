@@ -23,13 +23,13 @@ namespace Mongo_Elastic_POC
         public Home()
         {
             InitializeComponent();
-
+            SearchDb.SetupElasticClient();
+            SearchDb.SetupMongoClient();
         }
 
         private void BtnSearch_Click(object sender, RoutedEventArgs e)
         {
-            SearchDb.SetupElasticClient();
-            SearchDb.SetupMongoClient();
+            
 
             //for exact match strings  ---MONGO DB
             Dictionary<string, string> searchStrings = new Dictionary<string, string>();
