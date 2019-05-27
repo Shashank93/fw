@@ -22,24 +22,30 @@ namespace Mongo_Elastic_POC
 
         public static void SetupElasticClient()
         {
-            EsConfig = new ConnectionSettings()
-           .DefaultIndex("searchdb")
-           .DefaultMappingFor<SearchModel>(m => m
-               .IndexName("searchdb")
-           );
-            EsClient = new ElasticClient(EsConfig);
+            if (EsClient == null)
+            {
+                EsConfig = new ConnectionSettings()
+               .DefaultIndex("searchdb")
+               .DefaultMappingFor<SearchModel>(m => m
+                   .IndexName("searchdb")
+               );
+                EsClient = new ElasticClient(EsConfig);
+            }
         }
 
         public static void SetupMongoClient()
         {
-            // Create a MongoClient object by using the connection string
-            MgClient = new MongoClient(connectionString);
-            MgDb = MgClient.GetDatabase("LASXdb");
-            BsonClassMap.RegisterClassMap<dynamic>(cm =>
+            if (MgClient == null)
             {
-                cm.AutoMap();
-                cm.SetIgnoreExtraElements(true);
-            });
+                // Create a MongoClient object by using the connection string
+                MgClient = new MongoClient(connectionString);
+                MgDb = MgClient.GetDatabase("LASXdb");
+                BsonClassMap.RegisterClassMap<dynamic>(cm =>
+                {
+                    cm.AutoMap();
+                    cm.SetIgnoreExtraElements(true);
+                });
+            }
 
         }
 
@@ -72,16 +78,17 @@ namespace Mongo_Elastic_POC
             foreach (var tgStr in tagStrings)
             {
                 QueryContainer nestQuery = null;
-                nestQuery &= new TermQuery
+                nestQuery &= new WildcardQuery
                 {
                     Field = "userdefinedfields.name",
-                    Value = tgStr.Key.ToLower()
+                    Value = "*" + tgStr.Key.ToLower() + "*"
+
                 };
 
-                nestQuery &= new TermQuery
+                nestQuery &= new WildcardQuery
                 {
                     Field = "userdefinedfields.value",
-                    Value = tgStr.Value.ToLower()
+                    Value = "*" + tgStr.Value.ToLower() + "*"
                 };
 
                 searchQueryBulder &= new NestedQuery
@@ -144,7 +151,7 @@ namespace Mongo_Elastic_POC
         {
             //TEST MONGO CLIENT SEARCH
 
-            
+
 
             List<BsonElement> lstBsonCriteriaQuery = new List<BsonElement>();
 

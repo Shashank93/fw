@@ -5,10 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Mongo_Elastic_POC"
         mc:Ignorable="d"
-        Title="Home" Height="450" Width="800">
+        Title="Home" Height="600" Width="1200">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
                 <RowDefinition Height="40"></RowDefinition>
                 <RowDefinition Height="40"></RowDefinition>
                 <RowDefinition Height="40"></RowDefinition>
@@ -22,18 +28,60 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label FontWeight="Bold">Mandatory Fields</Label>
-            <Label Grid.Row="1">User Name</Label>
-            <Label Grid.Row="2">SelectedGroup</Label>
-            <Label Grid.Row="3">ExpCreatedDate</Label>
-            <Label Grid.Row="4">ExpCreatedTime</Label>
+            <Label FontWeight="Bold" Margin="6" Grid.ColumnSpan="2" HorizontalAlignment="Center">Mandatory Fields</Label>
+            <Label  Grid.Row="1" Margin="6" HorizontalAlignment="Center" FontWeight="Bold">Field</Label>
+            <Label Grid.Row="1" Margin="6" Grid.Column="1" HorizontalAlignment="Center" FontWeight="Bold">Value</Label>
+            <Label  Grid.Row="2" Margin="6">User Name</Label>
+            <Label Grid.Row="3" Margin="6">Selected Group</Label>
+            <Label Grid.Row="4" Margin="6">Exp Created Date</Label>
+            <Label Grid.Row="5" Margin="6">Exp Created Time</Label>
 
-            <TextBox Grid.Row="1" Grid.Column="1"></TextBox>
-            <TextBox Grid.Row="2" Grid.Column="1"></TextBox>
-            <DatePicker Grid.Row="3" Grid.Column="1"></DatePicker>
-            <DatePicker Grid.Row="4" Grid.Column="1"></DatePicker>
             
+            <TextBox x:Name="txtUserName" Grid.Row="2" Grid.Column="1" Margin="6"></TextBox>
+            <TextBox x:Name="txtGroup" Grid.Row="3" Grid.Column="1" Margin="6"></TextBox>
+            <DatePicker x:Name="dpCreatedDate" Grid.Row="4" Grid.Column="1" Margin="6"></DatePicker>
+            <TextBox x:Name="txtTime" Grid.Row="5" Grid.Column="1" Margin="6"></TextBox>
+            <Button x:Name="btnSearch" Grid.Row="6" Grid.Column="1"    Margin="6" Content="Search" Click="BtnSearch_Click"></Button>
+
+            <Label Grid.Row="7" Margin="6" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontWeight="Bold">Stats (in ms)</Label>
+            <Label Grid.Row="8" Margin="6">Elastic Search Time </Label>
+            <Label Grid.Row="9" Margin="6">Mongo Search Time </Label>
+            <Label x:Name="lblElSrTime"  Grid.Row="8" Grid.Column="1" Margin="6"></Label>
+            <Label x:Name="lblMgSrTime"  Grid.Row="9" Grid.Column="1" Margin="6"></Label>
+
+
+            <Label FontWeight="Bold" Margin="6" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center">User Defined Fields</Label>
+            <Label Grid.Row="1" FontWeight="Bold" Grid.Column="2" Margin="6" HorizontalAlignment="Center">Field Name</Label>
+            <Label  Grid.Row="1" FontWeight="Bold" Grid.Column="3" Margin="6" HorizontalAlignment="Center">Field Value</Label>
+            <TextBox x:Name="txtField1" Grid.Row="2" Grid.Column="2" Margin="6"></TextBox>
+            <TextBox x:Name="txtField2"  Grid.Row="3" Grid.Column="2" Margin="6"></TextBox>
+            <TextBox x:Name="txtField3"  Grid.Row="4" Grid.Column="2" Margin="6"></TextBox>
+            <TextBox x:Name="txtField4"  Grid.Row="5" Grid.Column="2" Margin="6"></TextBox>
+            <TextBox x:Name="txtField5"  Grid.Row="6" Grid.Column="2" Margin="6"></TextBox>
+            <TextBox x:Name="txtField6"  Grid.Row="7" Grid.Column="2" Margin="6"></TextBox>
+            <TextBox x:Name="txtField7"  Grid.Row="8" Grid.Column="2" Margin="6"></TextBox>
+            <TextBox x:Name="txtField8"  Grid.Row="9" Grid.Column="2" Margin="6"></TextBox>
+            <TextBox x:Name="txtField9"  Grid.Row="10" Grid.Column="2" Margin="6"></TextBox>
+            <TextBox x:Name="txtField10"  Grid.Row="11" Grid.Column="2" Margin="6"></TextBox>
+
+            <TextBox x:Name="txtField1Value"   Grid.Row="2" Grid.Column="3" Margin="6"></TextBox>
+            <TextBox x:Name="txtField2Value"   Grid.Row="3" Grid.Column="3" Margin="6"></TextBox>
+            <TextBox x:Name="txtField3Value"   Grid.Row="4" Grid.Column="3" Margin="6"></TextBox>
+            <TextBox x:Name="txtField4Value"   Grid.Row="5" Grid.Column="3" Margin="6"></TextBox>
+            <TextBox x:Name="txtField5Value"   Grid.Row="6" Grid.Column="3" Margin="6"></TextBox>
+            <TextBox x:Name="txtField6Value"   Grid.Row="7" Grid.Column="3" Margin="6"></TextBox>
+            <TextBox x:Name="txtField7Value"   Grid.Row="8" Grid.Column="3" Margin="6"></TextBox>
+            <TextBox x:Name="txtField8Value"   Grid.Row="9" Grid.Column="3" Margin="6"></TextBox>
+            <TextBox x:Name="txtField9Value"   Grid.Row="10" Grid.Column="3" Margin="6"></TextBox>
+            <TextBox x:Name="txtField10Value"  Grid.Row="11" Grid.Column="3" Margin="6"></TextBox>
+
+            <Label  Grid.Row="1" FontWeight="Bold" Grid.Column="4" Margin="6" HorizontalAlignment="Center">Mongo Result</Label>
+            <Label  Grid.Row="1" FontWeight="Bold" Grid.Column="5" Margin="6" HorizontalAlignment="Center">Elastic Result</Label>
+            <ListBox x:Name="lstMongoBoxResults" Grid.Column="4" Grid.Row="2" Grid.RowSpan="10" Margin="6"></ListBox>
+            <ListBox x:Name="lstElasticBoxResults" Grid.Column="5" Grid.Row="2" Grid.RowSpan="10" Margin="6"></ListBox>
+
         </Grid>
     </Grid>
 </Window>
