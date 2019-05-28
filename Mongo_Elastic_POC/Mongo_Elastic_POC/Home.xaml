@@ -31,7 +31,7 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                
             </Grid.ColumnDefinitions>
             <Label FontWeight="Bold" Margin="6" Grid.ColumnSpan="2" HorizontalAlignment="Center">Mandatory Fields</Label>
             <Label  Grid.Row="1" Margin="6" HorizontalAlignment="Center" FontWeight="Bold">Field</Label>
@@ -89,10 +89,10 @@
 
             <Label  Grid.Row="1" FontWeight="Bold" Grid.Column="4" Margin="6" HorizontalAlignment="Center">Mongo Result</Label>
             <Label  Grid.Row="1" FontWeight="Bold" Grid.Column="5" Margin="6" HorizontalAlignment="Center">Elastic Result</Label>
-            <Label  Grid.Row="1" FontWeight="Bold" Grid.Column="6" Margin="6" HorizontalAlignment="Center">Match All Result</Label>
+            <Label  Grid.Row="1" FontWeight="Bold"  Visibility="Collapsed" Grid.Column="6" Margin="6" HorizontalAlignment="Center">Match All Result</Label>
             <ListBox x:Name="lstMongoBoxResults" Grid.Column="4" Grid.Row="2" Grid.RowSpan="10" Margin="6"></ListBox>
             <ListBox x:Name="lstElasticBoxResults" Grid.Column="5" Grid.Row="2" Grid.RowSpan="10" Margin="6"></ListBox>
-            <ListBox x:Name="lstMatchAll" Grid.Column="7" Grid.Row="2" Grid.RowSpan="10" Margin="6"></ListBox>
+            <ListBox x:Name="lstMatchAll" Grid.Column="7" Grid.Row="2" Visibility="Collapsed" Grid.RowSpan="10" Margin="6"></ListBox>
 
             <TextBox x:Name="txtSearchAll" Visibility="Collapsed"  Grid.Row="14" Grid.Column="2" Grid.ColumnSpan="2" Margin="6"></TextBox>
             <Button x:Name="btnSearchAll" Visibility="Collapsed" Grid.Row="14" Grid.Column="4"    Margin="6" Content="Search" Click="BtnSearchAll_Click"></Button>

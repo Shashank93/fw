@@ -41,7 +41,7 @@ namespace Mongo_Elastic_POC
             {
                 // Create a MongoClient object by using the connection string
                 MgClient = new MongoClient(connectionString);
-                MgDb = MgClient.GetDatabase("LASXdb");
+                MgDb = MgClient.GetDatabase("Mongo_Elastic_POC");
                 BsonClassMap.RegisterClassMap<dynamic>(cm =>
                 {
                     cm.AutoMap();
@@ -62,20 +62,23 @@ namespace Mongo_Elastic_POC
         {
             //TEST ELASTIC CLIENT
             //ADD FILTERS
-
-            List<QueryContainer> lstSearchFieldQuery = new List<QueryContainer>();
-
             QueryContainer searchQueryBulder = null;
+            List<QueryContainer> lstSearchFieldQuery = new List<QueryContainer>();
+            List<QueryContainer> lstFilterQuery = new List<QueryContainer>();
+
             foreach (var srchStr in searchStrings)
             {
-                searchQueryBulder &= new TermQuery
+                QueryContainer filterQueryBulder = new TermQuery
                 {
                     Field = srchStr.Key,
                     Value = srchStr.Value
 
                 };
+                lstFilterQuery.Add(filterQueryBulder);
 
             }
+
+          
 
             foreach (var tgStr in tagStrings)
             {
@@ -93,26 +96,27 @@ namespace Mongo_Elastic_POC
                     Value = "*" + tgStr.Value.ToLower() + "*"
                 };
 
-                searchQueryBulder &= new NestedQuery
+                searchQueryBulder&= new NestedQuery
                 {
                     Path = "userdefinedfields",
                     Query = nestQuery,
                     IgnoreUnmapped = true
                 };
-
+               
             }
 
             foreach (var lkStr in likeStrings)
             {
                 if (lkStr.Key.Equals("expcreateddate"))
                 {
-                    searchQueryBulder &= new DateRangeQuery
+                    var qry = new DateRangeQuery
                     {
                         Field = lkStr.Key.ToLower(),
                         GreaterThanOrEqualTo = lkStr.Value.ToLower(),
                         LessThanOrEqualTo = lkStr.Value.ToLower(),
                         Format = "yyyy-MM-dd"
                     };
+                    lstFilterQuery.Add(qry);
                 }
                 else
                 {
@@ -122,7 +126,18 @@ namespace Mongo_Elastic_POC
                         Query = lkStr.Value.ToLower()
                     };
                 }
+                
             }
+
+            lstSearchFieldQuery.Add(searchQueryBulder);
+
+            var query = new BoolQuery()
+            {
+                Name = "named_query",
+                Boost = 1.1,
+                Must = lstFilterQuery,
+                Should = lstSearchFieldQuery
+            };
 
 
             //check json request data
@@ -134,7 +149,7 @@ namespace Mongo_Elastic_POC
                 {
                     Includes = "experimentid"
                 },
-                Query = searchQueryBulder
+                Query = query
             };
 
             using (var ms = new MemoryStream())
@@ -150,10 +165,10 @@ namespace Mongo_Elastic_POC
                 {
                     Includes = "experimentid"
                 },
-                Query = searchQueryBulder
+                Query = query
             });
             //using the object initializer syntax
-
+           
             var rslt = new List<string>();
             foreach (var fieldValues in searchResponse.Documents)
             {
@@ -171,7 +186,7 @@ namespace Mongo_Elastic_POC
             //TEST MONGO CLIENT SEARCH
 
 
-
+            var watch = System.Diagnostics.Stopwatch.StartNew();
             List<BsonElement> lstBsonCriteriaQuery = new List<BsonElement>();
 
             //ADD FILTERS
@@ -193,7 +208,7 @@ namespace Mongo_Elastic_POC
                 lstBsonCriteriaQuery.Add(bsonStr);
             }
 
-            var watch = System.Diagnostics.Stopwatch.StartNew();
+           
 
             //QUERY PREP WITH FILTERS
             BsonDocument findData = new BsonDocument(lstBsonCriteriaQuery);
