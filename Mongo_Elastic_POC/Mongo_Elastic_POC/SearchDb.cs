@@ -153,21 +153,6 @@ namespace Mongo_Elastic_POC
 
 
             //check json request data
-<<<<<<< HEAD
-            //var req = new SearchRequest<SearchModel>
-            //{
-            //    Query = searchQueryBulder
-            //};
-
-            //using (var ms = new MemoryStream())
-            //{
-            //    elasticClient.SourceSerializer.Serialize(req, ms, Elasticsearch.Net.SerializationFormatting.Indented);
-            //    string jsonQuery = Encoding.UTF8.GetString(ms.ToArray());
-            //};
-
-            
-            
-=======
             var req = new SearchRequest<SearchModel>
             {
                 From = 0,
@@ -185,7 +170,6 @@ namespace Mongo_Elastic_POC
                 string jsonQuery = Encoding.UTF8.GetString(ms.ToArray());
             };
 
->>>>>>> 5123f669218c1610d1f1da77674a140802aaf8cd
             var searchResponse = EsClient.Search<SearchModel>(new SearchRequest<SearchModel>
             {
                 Size = 200000,
@@ -196,11 +180,7 @@ namespace Mongo_Elastic_POC
                 Query = query
             });
             //using the object initializer syntax
-<<<<<<< HEAD
-            
-=======
            
->>>>>>> 5123f669218c1610d1f1da77674a140802aaf8cd
             var rslt = new List<string>();
             foreach (var fieldValues in searchResponse.Documents)
             {
@@ -208,11 +188,7 @@ namespace Mongo_Elastic_POC
             }
 
             Result rst = new Result();
-<<<<<<< HEAD
-            rst.TimeTaken = searchResponse.Took; 
-=======
             rst.TimeTaken = searchResponse.Took;
->>>>>>> 5123f669218c1610d1f1da77674a140802aaf8cd
             rst.ExperimentIds = rslt;
             return rst;
         }
