@@ -249,10 +249,7 @@
             </summary>
       <inheritdoc cref="P:Nest.ICompositeAggregationSource.Field" />
     </member>
-    <member name="M:Nest.CompositeAggregationSourceDescriptorBase`3.Field(System.Linq.Expressions.Expression{System.Func{`2,System.Object}})">
-      <summary>
-            The field from which to extract value
-            </summary>
+    <member name="M:Nest.CompositeAggregationSourceDescriptorBase`3.Field``1(System.Linq.Expressions.Expression{System.Func{`2,``0}})">
       <inheritdoc cref="P:Nest.ICompositeAggregationSource.Field" />
     </member>
     <member name="M:Nest.CompositeAggregationSourceDescriptorBase`3.Order(System.Nullable{Nest.SortOrder})">
@@ -818,10 +815,7 @@
             </summary>
       <inheritdoc />
     </member>
-    <member name="M:Nest.SignificantTermsAggregationDescriptor`1.Field(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
-      <summary>
-            The field on which to run the aggregation
-            </summary>
+    <member name="M:Nest.SignificantTermsAggregationDescriptor`1.Field``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc />
     </member>
     <member name="M:Nest.SignificantTermsAggregationDescriptor`1.Size(System.Nullable{System.Int32})">
@@ -1157,10 +1151,7 @@
             </summary>
       <inheritdoc cref="P:Nest.ISignificantTextAggregation.Field" />
     </member>
-    <member name="M:Nest.SignificantTextAggregationDescriptor`1.Field(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
-      <summary>
-            The field on which to run the aggregation
-            </summary>
+    <member name="M:Nest.SignificantTextAggregationDescriptor`1.Field``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc cref="P:Nest.ISignificantTextAggregation.Field" />
     </member>
     <member name="M:Nest.SignificantTextAggregationDescriptor`1.Size(System.Nullable{System.Int32})">
@@ -1552,10 +1543,7 @@
             </summary>
       <inheritdoc cref="P:Nest.IWeightedAverageValue.Field" />
     </member>
-    <member name="M:Nest.WeightedAverageValueDescriptor`1.Field(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
-      <summary>
-            The field that values should be extracted from
-            </summary>
+    <member name="M:Nest.WeightedAverageValueDescriptor`1.Field``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc cref="P:Nest.IWeightedAverageValue.Field" />
     </member>
     <member name="M:Nest.WeightedAverageValueDescriptor`1.Script(System.String)">
@@ -7070,27 +7058,27 @@
       <summary>
             Helper method that allows you to reindex from one index into another using ScrollAll and BulkAll.
             </summary>
-      <returns>An IObservable&lt;IReindexResponse&lt;T&gt;$gt; you can subscribe to to listen to the progress of the reindex process</returns>
+      <returns>An IObservable&lt;ReindexResponse&lt;T&gt;$gt; you can subscribe to to listen to the progress of the reindex process</returns>
     </member>
     <member name="M:Nest.IElasticClient.Reindex``1(System.Func{Nest.ReindexDescriptor{``0,``0},Nest.IReindexRequest{``0,``0}},System.Threading.CancellationToken)">
       <summary>
             Helper method that allows you to reindex from one index into another using ScrollAll and BulkAll.
             </summary>
-      <returns>An IObservable&lt;IReindexResponse&lt;T&gt;$gt; you can subscribe to to listen to the progress of the reindex process</returns>
+      <returns>An IObservable&lt;ReindexResponse&lt;T&gt;$gt; you can subscribe to to listen to the progress of the reindex process</returns>
     </member>
     <member name="M:Nest.IElasticClient.Reindex``2(Nest.IReindexRequest{``0,``1},System.Threading.CancellationToken)">
       <summary>
             Helper method that allows you to reindex from one index into another using ScrollAll and BulkAll.
             </summary>
       <param name="request">a request object to describe the reindex operation</param>
-      <returns>An IObservable&lt;IReindexResponse&lt;T&gt;$gt; you can subscribe to to listen to the progress of the reindex process</returns>
+      <returns>An IObservable&lt;ReindexResponse&lt;T&gt;$gt; you can subscribe to to listen to the progress of the reindex process</returns>
     </member>
     <member name="M:Nest.IElasticClient.Reindex``1(Nest.IReindexRequest{``0},System.Threading.CancellationToken)">
       <summary>
             Helper method that allows you to reindex from one index into another using ScrollAll and BulkAll.
             </summary>
       <param name="request">a request object to describe the reindex operation</param>
-      <returns>An IObservable&lt;IReindexResponse&lt;T&gt;$gt; you can subscribe to to listen to the progress of the reindex process</returns>
+      <returns>An IObservable&lt;ReindexResponse&lt;T&gt;$gt; you can subscribe to to listen to the progress of the reindex process</returns>
     </member>
     <member name="M:Nest.IElasticClient.Reindex``2(Nest.IndexName,Nest.IndexName,System.Func{``0,``1},System.Func{Nest.QueryContainerDescriptor{``0},Nest.QueryContainer},System.Threading.CancellationToken)">
       <summary>
@@ -10316,12 +10304,12 @@
     </member>
     <member name="M:Nest.IElasticClient.ClearSqlCursor(System.Func{Nest.ClearSqlCursorDescriptor,Nest.IClearSqlCursorRequest})">
       <summary>
-            Clear a cursor returned by <see cref="P:Nest.IQuerySqlResponse.Cursor" />. Not that this is only necessary if you wish to bail out early
+            Clear a cursor returned by <see cref="P:Nest.QuerySqlResponse.Cursor" />. Not that this is only necessary if you wish to bail out early
             </summary>
     </member>
     <member name="M:Nest.IElasticClient.ClearSqlCursor(Nest.IClearSqlCursorRequest)">
       <summary>
-            Clear a cursor returned by <see cref="P:Nest.IQuerySqlResponse.Cursor" />. Not that this is only necessary if you wish to bail out early
+            Clear a cursor returned by <see cref="P:Nest.QuerySqlResponse.Cursor" />. Not that this is only necessary if you wish to bail out early
             </summary>
       <inheritdoc cref="M:Nest.IElasticClient.ClearSqlCursor(System.Func{Nest.ClearSqlCursorDescriptor,Nest.IClearSqlCursorRequest})" />
     </member>
@@ -16007,25 +15995,25 @@
     </member>
     <member name="M:Nest.ElasticClient.ClearSqlCursor(System.Func{Nest.ClearSqlCursorDescriptor,Nest.IClearSqlCursorRequest})">
       <summary>
-            Clear a cursor returned by <see cref="P:Nest.IQuerySqlResponse.Cursor" />. Not that this is only necessary if you wish to bail out early
+            Clear a cursor returned by <see cref="P:Nest.QuerySqlResponse.Cursor" />. Not that this is only necessary if you wish to bail out early
             </summary>
       <inheritdoc cref="M:Nest.ElasticClient.ClearSqlCursor(System.Func{Nest.ClearSqlCursorDescriptor,Nest.IClearSqlCursorRequest})" />
     </member>
     <member name="M:Nest.ElasticClient.ClearSqlCursor(Nest.IClearSqlCursorRequest)">
       <summary>
-            Clear a cursor returned by <see cref="P:Nest.IQuerySqlResponse.Cursor" />. Not that this is only necessary if you wish to bail out early
+            Clear a cursor returned by <see cref="P:Nest.QuerySqlResponse.Cursor" />. Not that this is only necessary if you wish to bail out early
             </summary>
       <inheritdoc cref="M:Nest.ElasticClient.ClearSqlCursor(System.Func{Nest.ClearSqlCursorDescriptor,Nest.IClearSqlCursorRequest})" />
     </member>
     <member name="M:Nest.ElasticClient.ClearSqlCursorAsync(System.Func{Nest.ClearSqlCursorDescriptor,Nest.IClearSqlCursorRequest},System.Threading.CancellationToken)">
       <summary>
-            Clear a cursor returned by <see cref="P:Nest.IQuerySqlResponse.Cursor" />. Not that this is only necessary if you wish to bail out early
+            Clear a cursor returned by <see cref="P:Nest.QuerySqlResponse.Cursor" />. Not that this is only necessary if you wish to bail out early
             </summary>
       <inheritdoc cref="M:Nest.ElasticClient.ClearSqlCursor(System.Func{Nest.ClearSqlCursorDescriptor,Nest.IClearSqlCursorRequest})" />
     </member>
     <member name="M:Nest.ElasticClient.ClearSqlCursorAsync(Nest.IClearSqlCursorRequest,System.Threading.CancellationToken)">
       <summary>
-            Clear a cursor returned by <see cref="P:Nest.IQuerySqlResponse.Cursor" />. Not that this is only necessary if you wish to bail out early
+            Clear a cursor returned by <see cref="P:Nest.QuerySqlResponse.Cursor" />. Not that this is only necessary if you wish to bail out early
             </summary>
       <inheritdoc cref="M:Nest.ElasticClient.ClearSqlCursor(System.Func{Nest.ClearSqlCursorDescriptor,Nest.IClearSqlCursorRequest})" />
     </member>
@@ -17976,14 +17964,9 @@
     <member name="M:Nest.ClusterStateDescriptor.ExpandWildcards(System.Nullable{Elasticsearch.Net.ExpandWildcards})">
       <summary>Whether to expand wildcard expression to concrete indices that are open, closed or both.</summary>
     </member>
-    <member name="P:Nest.IClusterStateResponse.ClusterUUID">
-      <summary>The Universally Unique Identifier for the cluster.</summary>
-      <remarks>While the cluster is still forming, it is possible for the `cluster_uuid` to be `_na_`.</remarks>
-    </member>
     <member name="P:Nest.ClusterStateResponse.ClusterUUID">
       <summary>The Universally Unique Identifier for the cluster.</summary>
       <remarks>While the cluster is still forming, it is possible for the `cluster_uuid` to be `_na_`.</remarks>
-      <inheritdoc cref="P:Nest.IClusterStateResponse.ClusterUUID" />
     </member>
     <member name="T:Nest.ClusterStatsRequest">
       <summary>Request parameters for ClusterStats <pre>http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-stats.html</pre></summary>
@@ -18898,11 +18881,6 @@
             Calls <see cref="M:Nest.SuffixExtensions.Suffix(System.Object,System.String)" /> on a member expression.
             </summary>
     </member>
-    <member name="M:Nest.Extensions.ToBaseTask``2(System.Threading.Tasks.Task{``0})">
-      <summary>
-            This is only used to cast IResponse to Response, really want to get of response interfaces alltogether
-            </summary>
-    </member>
     <member name="M:Nest.SuffixExtensions.Suffix(System.Object,System.String)">
       <summary>
             This extension method should only be used in expressions which are analysed by Nest.
@@ -19274,10 +19252,13 @@
             Creates an <see cref="T:Nest.IPropertyMapping" /> for a <see cref="T:System.Reflection.MemberInfo" /></summary>
       <inheritdoc />
     </member>
-    <member name="M:Nest.Infer.Field``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Nullable{System.Double},System.String)">
+    <member name="M:Nest.Infer.Field``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Nullable{System.Double},System.String)">
       <summary>
             Create a strongly typed string field name representation of the path to a property
             <para>e.g. p =&gt; p.Array.First().SubProperty.Field will return 'array.subProperty.field'</para></summary>
+    </member>
+    <member name="M:Nest.Infer.Field``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Nullable{System.Double},System.String)">
+      <inheritdoc cref="M:Nest.Infer.Field``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Nullable{System.Double},System.String)" />
     </member>
     <member name="T:Nest.Union`2">
       <summary>
@@ -20043,7 +20024,7 @@
     <member name="M:Nest.BulkAllDescriptor`1.BufferToBulk(System.Action{Nest.BulkDescriptor,System.Collections.Generic.IList{`0}})">
       <inheritdoc cref="P:Nest.IBulkAllRequest`1.BufferToBulk" />
     </member>
-    <member name="M:Nest.BulkAllDescriptor`1.RetryDocumentPredicate(System.Func{Nest.IBulkResponseItem,`0,System.Boolean})">
+    <member name="M:Nest.BulkAllDescriptor`1.RetryDocumentPredicate(System.Func{Nest.BulkResponseItemBase,`0,System.Boolean})">
       <inheritdoc cref="P:Nest.IBulkAllRequest`1.RetryDocumentPredicate" />
     </member>
     <member name="M:Nest.BulkAllDescriptor`1.BackPressure(System.Int32,System.Nullable{System.Int32})">
@@ -20060,22 +20041,8 @@
     <member name="M:Nest.BulkAllDescriptor`1.ContinueAfterDroppedDocuments(System.Boolean)">
       <inheritdoc cref="P:Nest.IBulkAllRequest`1.ContinueAfterDroppedDocuments" />
     </member>
-    <member name="M:Nest.BulkAllDescriptor`1.DroppedDocumentCallback(System.Action{Nest.IBulkResponseItem,`0})">
+    <member name="M:Nest.BulkAllDescriptor`1.DroppedDocumentCallback(System.Action{Nest.BulkResponseItemBase,`0})">
       <inheritdoc cref="P:Nest.IBulkAllRequest`1.DroppedDocumentCallback" />
-    </member>
-    <member name="T:Nest.IBulkAllResponse">
-      <summary>
-            Notification for each bulk response, indicates the page its currently processing and how many retries it took to index this buffer
-            </summary>
-    </member>
-    <member name="P:Nest.IBulkAllResponse.Page">
-      <summary>This is the Nth buffer.</summary>
-    </member>
-    <member name="P:Nest.IBulkAllResponse.Retries">
-      <summary>The number of back off retries were needed to store this document.</summary>
-    </member>
-    <member name="P:Nest.IBulkAllResponse.Items">
-      <summary>The items returned from the bulk response</summary>
     </member>
     <member name="T:Nest.BulkAllResponse">
       <inheritdoc />
@@ -20085,15 +20052,12 @@
     </member>
     <member name="P:Nest.BulkAllResponse.Page">
       <summary>This is the Nth buffer.</summary>
-      <inheritdoc />
     </member>
     <member name="P:Nest.BulkAllResponse.Retries">
       <summary>The number of back off retries were needed to store this document.</summary>
-      <inheritdoc />
     </member>
     <member name="P:Nest.BulkAllResponse.Items">
       <summary>The items returned from the bulk response</summary>
-      <inheritdoc />
     </member>
     <member name="M:Nest.BulkCreateDescriptor`1.Document(`0)">
       <summary>
@@ -20136,6 +20100,16 @@
       <summary>
             Manually set the id for the newly created object
             </summary>
+    </member>
+    <member name="T:Nest.BulkOperationsCollection`1">
+      <summary>
+            This class is used by <see cref="P:Nest.IBulkRequest.Operations" /> which needs thread safe adding <see cref="M:System.Collections.Generic.ICollection`1.Add(`0)" /> as well as expose
+            an equivalent of <see cref="M:System.Collections.Generic.List`1.AddRange(System.Collections.Generic.IEnumerable{`0})" />. Because operations from Elasticsearch are executed in order none of the types in
+            System.Collection.Concurrent can't be used for this. We need to preserve insert order and exposed indexed index because <see cref="P:Nest.BulkResponse.Items" />
+            is ordered and lines up with <see cref="P:Nest.BulkRequest.Operations" /> allowing one to zip the two together.
+            </summary>
+      <typeparam name="TOperation">
+      </typeparam>
     </member>
     <member name="P:Nest.IBulkUpdateOperation`2.Doc">
       <summary>
@@ -20325,13 +20299,7 @@
       <param name="objects">the objects to index</param>
       <param name="bulkIndexSelector">A func called on each object to describe the individual index operation</param>
     </member>
-    <member name="M:Nest.BulkDescriptor.DeleteMany``1(System.Collections.Generic.IEnumerable{``0},System.Func{Nest.BulkDeleteDescriptor{``0},``0,Nest.IBulkDeleteOperation{``0}})">
-      <summary>
-            DeleteMany, convenience method to delete many objects at once.
-            </summary>
-      <param name="objects">the objects to delete</param>
-      <param name="bulkDeleteSelector">A func called on each object to describe the individual delete operation</param>
-    </member>
+    <!-- Badly formed XML comment ignored for member "M:Nest.BulkDescriptor.DeleteMany``1(System.Collections.Generic.IEnumerable{``0},System.Func{Nest.BulkDeleteDescriptor{``0},``0,Nest.IBulkDeleteOperation{``0}})" -->
     <member name="M:Nest.BulkDescriptor.DeleteMany``1(System.Collections.Generic.IEnumerable{System.String},System.Func{Nest.BulkDeleteDescriptor{``0},System.String,Nest.IBulkDeleteOperation{``0}})">
       <summary>
             DeleteMany, convenience method to delete many objects at once.
@@ -20346,20 +20314,8 @@
       <param name="ids">Enumerable of int ids to delete</param>
       <param name="bulkDeleteSelector">A func called on each ids to describe the individual delete operation</param>
     </member>
-    <member name="M:Nest.BulkDescriptor.UpdateMany``1(System.Collections.Generic.IEnumerable{``0},System.Func{Nest.BulkUpdateDescriptor{``0,``0},``0,Nest.IBulkUpdateOperation{``0,``0}})">
-      <summary>
-            Updatemany, convenience method to pass many objects at once to do multiple updates.
-            </summary>
-      <param name="objects">the objects to update</param>
-      <param name="bulkUpdateSelector">An func called on each object to describe the individual update operation</param>
-    </member>
-    <member name="M:Nest.BulkDescriptor.UpdateMany``2(System.Collections.Generic.IEnumerable{``0},System.Func{Nest.BulkUpdateDescriptor{``0,``1},``0,Nest.IBulkUpdateOperation{``0,``1}})">
-      <summary>
-            Update many, convenience method to pass many objects at once to do multiple updates.
-            </summary>
-      <param name="objects">the objects to update</param>
-      <param name="bulkUpdateSelector">An func called on each object to describe the individual update operation</param>
-    </member>
+    <!-- Badly formed XML comment ignored for member "M:Nest.BulkDescriptor.UpdateMany``1(System.Collections.Generic.IEnumerable{``0},System.Func{Nest.BulkUpdateDescriptor{``0,``0},``0,Nest.IBulkUpdateOperation{``0,``0}})" -->
+    <!-- Badly formed XML comment ignored for member "M:Nest.BulkDescriptor.UpdateMany``2(System.Collections.Generic.IEnumerable{``0},System.Func{Nest.BulkUpdateDescriptor{``0,``1},``0,Nest.IBulkUpdateOperation{``0,``1}})" -->
     <member name="M:Nest.BulkDescriptor.#ctor">
       <summary>/_bulk</summary>
     </member>
@@ -20415,99 +20371,52 @@
             Will be null if the operation is not in response to Percolate API.
             </summary>
     </member>
-    <member name="T:Nest.IBulkResponseItem">
+    <member name="T:Nest.BulkResponseItemBase">
       <summary>
             An item within a bulk response
             </summary>
     </member>
-    <member name="P:Nest.IBulkResponseItem.Error">
+    <member name="P:Nest.BulkResponseItemBase.Error">
       <summary>
             The error associated with the bulk operation
             </summary>
     </member>
-    <member name="P:Nest.IBulkResponseItem.Id">
+    <member name="P:Nest.BulkResponseItemBase.Id">
       <summary>
             The id of the document for the bulk operation
             </summary>
     </member>
-    <member name="P:Nest.IBulkResponseItem.Index">
+    <member name="P:Nest.BulkResponseItemBase.Index">
       <summary>
             The index against which the bulk operation ran
             </summary>
     </member>
-    <member name="P:Nest.IBulkResponseItem.IsValid">
-      <summary>
-            Specifies whether this particular bulk operation succeeded or not
-            </summary>
+    <member name="P:Nest.BulkResponseItemBase.Operation">
+      <summary> The type of bulk operation </summary>
     </member>
-    <member name="P:Nest.IBulkResponseItem.Operation">
-      <summary>
-            The type of bulk operation
-            </summary>
+    <member name="P:Nest.BulkResponseItemBase.Result">
+      <summary> The result of the bulk operation</summary>
     </member>
-    <member name="P:Nest.IBulkResponseItem.Result">
-      <summary>
-            The result of the bulk operation
-            </summary>
-    </member>
-    <member name="P:Nest.IBulkResponseItem.Shards">
+    <member name="P:Nest.BulkResponseItemBase.Shards">
       <summary>
             The shards associated with the bulk operation
             </summary>
     </member>
-    <member name="P:Nest.IBulkResponseItem.Status">
-      <summary>
-            The status of the bulk operation
-            </summary>
+    <member name="P:Nest.BulkResponseItemBase.Status">
+      <summary> The status of the bulk operation </summary>
     </member>
-    <member name="P:Nest.IBulkResponseItem.Type">
+    <member name="P:Nest.BulkResponseItemBase.Type">
       <summary>
             The type against which the bulk operation ran
             </summary>
     </member>
-    <member name="P:Nest.IBulkResponseItem.Version">
-      <summary>
-            The version of the document
-            </summary>
-    </member>
-    <member name="T:Nest.BulkResponseItemBase">
-      <inheritdoc />
-    </member>
-    <member name="P:Nest.BulkResponseItemBase.Error">
-      <inheritdoc />
-    </member>
-    <member name="P:Nest.BulkResponseItemBase.Id">
-      <inheritdoc />
-    </member>
-    <member name="P:Nest.BulkResponseItemBase.Index">
-      <inheritdoc />
+    <member name="P:Nest.BulkResponseItemBase.Version">
+      <summary> The version of the document </summary>
     </member>
     <member name="P:Nest.BulkResponseItemBase.IsValid">
-      <inheritdoc />
-    </member>
-    <member name="P:Nest.BulkResponseItemBase.Operation">
-      <inheritdoc />
-    </member>
-    <member name="P:Nest.BulkResponseItemBase.PrimaryTerm">
-      <inheritdoc />
-    </member>
-    <member name="P:Nest.BulkResponseItemBase.Result">
-      <inheritdoc />
-    </member>
-    <member name="P:Nest.BulkResponseItemBase.SequenceNumber">
-      <inheritdoc />
-    </member>
-    <member name="P:Nest.BulkResponseItemBase.Shards">
-      <inheritdoc />
-    </member>
-    <member name="P:Nest.BulkResponseItemBase.Status">
-      <inheritdoc />
-    </member>
-    <member name="P:Nest.BulkResponseItemBase.Type">
-      <inheritdoc />
-    </member>
-    <member name="P:Nest.BulkResponseItemBase.Version">
-      <inheritdoc />
+      <summary>
+            Specifies whether this particular bulk operation succeeded or not
+            </summary>
     </member>
     <member name="T:Nest.DeleteManyExtensions">
       <summary>
@@ -20900,7 +20809,7 @@
     <member name="M:Nest.DeleteByQueryDescriptor`1.Slices(System.Nullable{System.Int64})">
       <summary>The number of slices this task should be divided into. Defaults to 1 meaning the task isn't sliced into subtasks.</summary>
     </member>
-    <member name="P:Nest.IDeleteByQueryResponse.Task">
+    <member name="P:Nest.DeleteByQueryResponse.Task">
       <summary>
             Only has a value if WaitForCompletion is set to false on the request
             </summary>
@@ -21228,7 +21137,7 @@
             Use <see cref="P:Nest.IMultiTermVectorOperation.Routing" /> only to hit a particular shard.
             </summary>
     </member>
-    <member name="P:Nest.IMultiTermVectorOperation.StoredFields">
+    <member name="P:Nest.IMultiTermVectorOperation.Fields">
       <summary>
             The document field to generate term
             vectors for
@@ -21286,7 +21195,7 @@
     <member name="P:Nest.MultiTermVectorOperation`1.Routing">
       <inheritdoc />
     </member>
-    <member name="P:Nest.MultiTermVectorOperation`1.StoredFields">
+    <member name="P:Nest.MultiTermVectorOperation`1.Fields">
       <inheritdoc />
     </member>
     <member name="P:Nest.MultiTermVectorOperation`1.TermStatistics">
@@ -21301,19 +21210,19 @@
     <member name="T:Nest.MultiTermVectorOperationDescriptor`1">
       <inheritdoc cref="T:Nest.IMultiTermVectorOperation" />
     </member>
-    <member name="M:Nest.MultiTermVectorOperationDescriptor`1.StoredFields(System.Func{Nest.FieldsDescriptor{`0},Nest.IPromise{Nest.Fields}})">
+    <member name="M:Nest.MultiTermVectorOperationDescriptor`1.Fields(System.Func{Nest.FieldsDescriptor{`0},Nest.IPromise{Nest.Fields}})">
       <summary>
             The document field to generate term
             vectors for
             </summary>
-      <inheritdoc cref="P:Nest.IMultiTermVectorOperation.StoredFields" />
+      <inheritdoc cref="P:Nest.IMultiTermVectorOperation.Fields" />
     </member>
-    <member name="M:Nest.MultiTermVectorOperationDescriptor`1.StoredFields(Nest.Fields)">
+    <member name="M:Nest.MultiTermVectorOperationDescriptor`1.Fields(Nest.Fields)">
       <summary>
             The document field to generate term
             vectors for
             </summary>
-      <inheritdoc cref="P:Nest.IMultiTermVectorOperation.StoredFields" />
+      <inheritdoc cref="P:Nest.IMultiTermVectorOperation.Fields" />
     </member>
     <member name="M:Nest.MultiTermVectorOperationDescriptor`1.Id(Nest.Id)">
       <summary>
@@ -21497,18 +21406,27 @@
       <inheritdoc cref="T:Nest.IMultiTermVectorsRequest" />
       <summary>descriptor for Mtermvectors <pre>http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-termvectors.html</pre></summary>
     </member>
-    <member name="M:Nest.MultiTermVectorsDescriptor.Get``1(System.Func{Nest.MultiTermVectorOperationDescriptor{``0},Nest.IMultiTermVectorOperation})">
+    <member name="M:Nest.MultiTermVectorsDescriptor.Documents``1(System.Func{Nest.MultiTermVectorOperationDescriptor{``0},Nest.IMultiTermVectorOperation})">
       <summary>
             A document for which to generate term vectors
             </summary>
     </member>
-    <member name="M:Nest.MultiTermVectorsDescriptor.GetMany``1(System.Collections.Generic.IEnumerable{System.Int64},System.Func{Nest.MultiTermVectorOperationDescriptor{``0},System.Int64,Nest.IMultiTermVectorOperation})">
+    <member name="M:Nest.MultiTermVectorsDescriptor.Documents``1(System.Collections.Generic.IEnumerable{System.Int64},System.Func{Nest.MultiTermVectorOperationDescriptor{``0},System.Int64,Nest.IMultiTermVectorOperation})">
+      <summary>
+            A document for which to generate term vectors
+            </summary>
       <inheritdoc cref="P:Nest.IMultiTermVectorsRequest.Documents" />
     </member>
-    <member name="M:Nest.MultiTermVectorsDescriptor.GetMany``1(System.Collections.Generic.IEnumerable{System.String},System.Func{Nest.MultiTermVectorOperationDescriptor{``0},System.String,Nest.IMultiTermVectorOperation})">
+    <member name="M:Nest.MultiTermVectorsDescriptor.Documents``1(System.Collections.Generic.IEnumerable{System.String},System.Func{Nest.MultiTermVectorOperationDescriptor{``0},System.String,Nest.IMultiTermVectorOperation})">
+      <summary>
+            A document for which to generate term vectors
+            </summary>
       <inheritdoc cref="P:Nest.IMultiTermVectorsRequest.Documents" />
     </member>
-    <member name="M:Nest.MultiTermVectorsDescriptor.GetMany``1(System.Collections.Generic.IEnumerable{Nest.Id},System.Func{Nest.MultiTermVectorOperationDescriptor{``0},Nest.Id,Nest.IMultiTermVectorOperation})">
+    <member name="M:Nest.MultiTermVectorsDescriptor.Documents``1(System.Collections.Generic.IEnumerable{Nest.Id},System.Func{Nest.MultiTermVectorOperationDescriptor{``0},Nest.Id,Nest.IMultiTermVectorOperation})">
+      <summary>
+            A document for which to generate term vectors
+            </summary>
       <inheritdoc cref="P:Nest.IMultiTermVectorsRequest.Documents" />
     </member>
     <member name="M:Nest.MultiTermVectorsDescriptor.Ids(System.Collections.Generic.IEnumerable{Nest.Id})">
@@ -21829,14 +21747,9 @@
     <member name="M:Nest.ReindexOnServerDescriptor.Slices(System.Nullable{System.Int64})">
       <summary>The number of slices this task should be divided into. Defaults to 1 meaning the task isn't sliced into subtasks.</summary>
     </member>
-    <member name="P:Nest.IReindexOnServerResponse.Task">
-      <summary>
-            Only has a value if WaitForCompletion is set to false on the request
-            </summary>
-    </member>
     <member name="P:Nest.ReindexOnServerResponse.Task">
       <summary>
-            Only has a value if WaitForCompletion is set to <c>false</c> on the request
+            Only has a value if WaitForCompletion is set to false on the request
             </summary>
     </member>
     <member name="M:Nest.ReindexRouting.#ctor(System.String)">
@@ -22182,7 +22095,7 @@
     <member name="M:Nest.ScrollAllDescriptor`1.RoutingField(Nest.Field)">
       <inheritdoc />
     </member>
-    <member name="M:Nest.ScrollAllDescriptor`1.RoutingField(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+    <member name="M:Nest.ScrollAllDescriptor`1.RoutingField``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc />
     </member>
     <member name="M:Nest.ScrollAllDescriptor`1.Search(System.Func{Nest.SearchDescriptor{`0},Nest.ISearchRequest})">
@@ -22519,11 +22432,6 @@
     <member name="M:Nest.UpdateByQueryDescriptor`1.Slices(System.Nullable{System.Int64})">
       <summary>The number of slices this task should be divided into. Defaults to 1 meaning the task isn't sliced into subtasks.</summary>
     </member>
-    <member name="P:Nest.IUpdateByQueryResponse.Task">
-      <summary>
-            Only has a value if WaitForCompletion is set to false on the request
-            </summary>
-    </member>
     <member name="P:Nest.UpdateByQueryResponse.Task">
       <summary>
             Only has a value if WaitForCompletion is set to false on the request
@@ -22632,7 +22540,7 @@
     <member name="P:Nest.DeleteRequest.Timeout">
       <summary>Explicit operation timeout</summary>
     </member>
-    <member name="P:Nest.DeleteRequest.IfSeqNo">
+    <member name="P:Nest.DeleteRequest.IfSequenceNumber">
       <summary>only perform the delete operation if the last operation that has changed the document has the specified sequence number</summary>
     </member>
     <member name="P:Nest.DeleteRequest.IfPrimaryTerm">
@@ -22700,7 +22608,7 @@
     <member name="M:Nest.DeleteDescriptor`1.Timeout(Nest.Time)">
       <summary>Explicit operation timeout</summary>
     </member>
-    <member name="M:Nest.DeleteDescriptor`1.IfSeqNo(System.Nullable{System.Int64})">
+    <member name="M:Nest.DeleteDescriptor`1.IfSequenceNumber(System.Nullable{System.Int64})">
       <summary>only perform the delete operation if the last operation that has changed the document has the specified sequence number</summary>
     </member>
     <member name="M:Nest.DeleteDescriptor`1.IfPrimaryTerm(System.Nullable{System.Int64})">
@@ -22712,30 +22620,11 @@
     <member name="M:Nest.DeleteDescriptor`1.VersionType(System.Nullable{Elasticsearch.Net.VersionType})">
       <summary>Specific version type</summary>
     </member>
-    <member name="P:Nest.IDeleteResponse.Id">
-      <summary>
-            The ID of the deleted document.
-            </summary>
+    <member name="P:Nest.DeleteResponse.Id">
+      <summary> The ID of the deleted document. </summary>
     </member>
-    <member name="P:Nest.IDeleteResponse.Index">
-      <summary>
-            The index of the deleted document.
-            </summary>
-    </member>
-    <member name="P:Nest.IDeleteResponse.Result">
-      <summary>
-            The operation that was performed on the document.
-            </summary>
-    </member>
-    <member name="P:Nest.IDeleteResponse.Type">
-      <summary>
-            The type of the deleted document.
-            </summary>
-    </member>
-    <member name="P:Nest.IDeleteResponse.Version">
-      <summary>
-            The version of the deleted document.
-            </summary>
+    <member name="P:Nest.DeleteResponse.Result">
+      <summary> The operation that was performed on the document. </summary>
     </member>
     <member name="T:Nest.DocumentExistsRequest">
       <summary>Request parameters for Exists <pre>http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html</pre></summary>
@@ -23067,7 +22956,7 @@
     <member name="M:Nest.IndexDescriptor`1.VersionType(System.Nullable{Elasticsearch.Net.VersionType})">
       <summary>Specific version type</summary>
     </member>
-    <member name="M:Nest.IndexDescriptor`1.IfSeqNo(System.Nullable{System.Int64})">
+    <member name="M:Nest.IndexDescriptor`1.IfSequenceNumber(System.Nullable{System.Int64})">
       <summary>only perform the index operation if the last operation that has changed the document has the specified sequence number</summary>
     </member>
     <member name="M:Nest.IndexDescriptor`1.IfPrimaryTerm(System.Nullable{System.Int64})">
@@ -23684,7 +23573,7 @@
     <member name="M:Nest.UpdateDescriptor`2.Timeout(Nest.Time)">
       <summary>Explicit operation timeout</summary>
     </member>
-    <member name="M:Nest.UpdateDescriptor`2.IfSeqNo(System.Nullable{System.Int64})">
+    <member name="M:Nest.UpdateDescriptor`2.IfSequenceNumber(System.Nullable{System.Int64})">
       <summary>only perform the update operation if the last operation that has changed the document has the specified sequence number</summary>
     </member>
     <member name="M:Nest.UpdateDescriptor`2.IfPrimaryTerm(System.Nullable{System.Int64})">
@@ -24249,7 +24138,10 @@
             </summary>
       <inheritdoc cref="P:Nest.IDynamicIndexSettings.RefreshInterval" />
     </member>
-    <member name="M:Nest.DynamicIndexSettingsDescriptorBase`2.TotalShardsPerNode(System.Nullable{System.Int32})">
+    <member name="M:Nest.DynamicIndexSettingsDescriptorBase`2.RoutingAllocationTotalShardsPerNode(System.Nullable{System.Int32})">
+      <summary>
+            The maximum number of shards (replicas and primaries) that will be allocated to a single node. Defaults to unbounded.
+            </summary>
       <inheritdoc cref="P:Nest.IDynamicIndexSettings.RoutingAllocationTotalShardsPerNode" />
     </member>
     <member name="M:Nest.DynamicIndexSettingsDescriptorBase`2.SlowLog(System.Func{Nest.SlowLogDescriptor,Nest.ISlowLog})">
@@ -24574,7 +24466,7 @@
       <summary>
             The NIO FS type stores the shard index on the file system (maps to Lucene NIOFSDirectory)
             using NIO. It allows multiple threads to read from the same file concurrently. It is not
-            recommended on Windows because of a bug in the SUN Java implementation./
+            recommended on Windows because of a bug in the SUN Java implementation.
             </summary>
     </member>
     <member name="F:Nest.FileSystemStorageImplementation.MMap">
@@ -25317,6 +25209,102 @@
             The type of similarity.
             </summary>
     </member>
+    <member name="T:Nest.IAlias">
+      <summary>
+            An alias to one or more indices
+            </summary>
+    </member>
+    <member name="P:Nest.IAlias.Filter">
+      <summary>
+            Provides an easy way to create different "views" of the same index. A filter can be defined using Query DSL and is
+            applied to all Search, Count, Delete By Query and More Like This operations with this alias.
+            </summary>
+    </member>
+    <member name="P:Nest.IAlias.IndexRouting">
+      <summary>
+            Associates routing values with aliases for index operations. This feature can be used together
+            with filtering aliases in order to avoid unnecessary shard operations.
+            </summary>
+    </member>
+    <member name="P:Nest.IAlias.IsWriteIndex">
+      <inheritdoc cref="P:Nest.AliasAddOperation.IsWriteIndex" />
+    </member>
+    <member name="P:Nest.IAlias.Routing">
+      <summary>
+            Associates routing values with aliases for both index and search operations. This feature can be used together
+            with filtering aliases in order to avoid unnecessary shard operations.
+            </summary>
+    </member>
+    <member name="P:Nest.IAlias.SearchRouting">
+      <summary>
+            Associates routing values with aliases for search operations. This feature can be used together
+            with filtering aliases in order to avoid unnecessary shard operations.
+            </summary>
+    </member>
+    <member name="T:Nest.Alias">
+      <inheritdoc />
+    </member>
+    <member name="P:Nest.Alias.Filter">
+      <summary>
+            Provides an easy way to create different "views" of the same index. A filter can be defined using Query DSL and is
+            applied to all Search, Count, Delete By Query and More Like This operations with this alias.
+            </summary>
+      <inheritdoc />
+    </member>
+    <member name="P:Nest.Alias.IndexRouting">
+      <summary>
+            Associates routing values with aliases for index operations. This feature can be used together
+            with filtering aliases in order to avoid unnecessary shard operations.
+            </summary>
+      <inheritdoc />
+    </member>
+    <member name="P:Nest.Alias.IsWriteIndex">
+      <inheritdoc />
+    </member>
+    <member name="P:Nest.Alias.Routing">
+      <summary>
+            Associates routing values with aliases for both index and search operations. This feature can be used together
+            with filtering aliases in order to avoid unnecessary shard operations.
+            </summary>
+      <inheritdoc />
+    </member>
+    <member name="P:Nest.Alias.SearchRouting">
+      <summary>
+            Associates routing values with aliases for search operations. This feature can be used together
+            with filtering aliases in order to avoid unnecessary shard operations.
+            </summary>
+      <inheritdoc />
+    </member>
+    <member name="T:Nest.AliasDescriptor">
+      <inheritdoc cref="T:Nest.IAlias" />
+    </member>
+    <member name="M:Nest.AliasDescriptor.Filter``1(System.Func{Nest.QueryContainerDescriptor{``0},Nest.QueryContainer})">
+      <inheritdoc cref="P:Nest.IAlias.Filter" />
+    </member>
+    <member name="M:Nest.AliasDescriptor.IndexRouting(Nest.Routing)">
+      <summary>
+            Associates routing values with aliases for index operations. This feature can be used together
+            with filtering aliases in order to avoid unnecessary shard operations.
+            </summary>
+      <inheritdoc cref="P:Nest.IAlias.IndexRouting" />
+    </member>
+    <member name="M:Nest.AliasDescriptor.IsWriteIndex(System.Nullable{System.Boolean})">
+      <inheritdoc cref="P:Nest.IAlias.IsWriteIndex" />
+    </member>
+    <member name="M:Nest.AliasDescriptor.Routing(Nest.Routing)">
+      <summary>
+            Associates routing values with aliases for both index and search operations. This feature can be used together
+            with filtering aliases in order to avoid unnecessary shard operations.
+            </summary>
+      <inheritdoc cref="P:Nest.IAlias.Routing" />
+    </member>
+    <member name="M:Nest.AliasDescriptor.SearchRouting(Nest.Routing)">
+      <summary>
+            Associates routing values with aliases for search operations. This feature can be used together
+            with filtering aliases in order to avoid unnecessary shard operations.
+            </summary>
+      <inheritdoc cref="P:Nest.IAlias.SearchRouting" />
+    </member>
     <member name="M:Nest.Aliases.Add(Nest.IndexName,Nest.IAlias)">
       <summary>
             Add any setting to the index
@@ -25570,14 +25558,44 @@
     <member name="M:Nest.GetAliasDescriptor.Local(System.Nullable{System.Boolean})">
       <summary>Return local information, do not retrieve the state from master node (default: false)</summary>
     </member>
+    <member name="T:Nest.IPutAliasRequest">
+      <summary>
+            A request to put an alias to one or more indices
+            </summary>
+    </member>
+    <member name="P:Nest.IPutAliasRequest.Filter">
+      <inheritdoc cref="P:Nest.IAlias.Filter" />
+    </member>
+    <member name="P:Nest.IPutAliasRequest.IndexRouting">
+      <inheritdoc cref="P:Nest.IAlias.IndexRouting" />
+    </member>
     <member name="P:Nest.IPutAliasRequest.IsWriteIndex">
-      <inheritdoc cref="P:Nest.AliasAddOperation.IsWriteIndex" />
+      <inheritdoc cref="P:Nest.IAlias.IsWriteIndex" />
+    </member>
+    <member name="P:Nest.IPutAliasRequest.Routing">
+      <inheritdoc cref="P:Nest.IAlias.Routing" />
+    </member>
+    <member name="P:Nest.IPutAliasRequest.SearchRouting">
+      <inheritdoc cref="P:Nest.IAlias.SearchRouting" />
     </member>
     <member name="T:Nest.PutAliasRequest">
+      <inheritdoc cref="T:Nest.IPutAliasRequest" />
       <summary>Request parameters for IndicesPutAlias <pre>http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html</pre></summary>
     </member>
+    <member name="P:Nest.PutAliasRequest.Filter">
+      <inheritdoc cref="P:Nest.IPutAliasRequest.Filter" />
+    </member>
+    <member name="P:Nest.PutAliasRequest.IndexRouting">
+      <inheritdoc cref="P:Nest.IPutAliasRequest.IndexRouting" />
+    </member>
     <member name="P:Nest.PutAliasRequest.IsWriteIndex">
-      <inheritdoc cref="P:Nest.AliasAddOperation.IsWriteIndex" />
+      <inheritdoc cref="P:Nest.IPutAliasRequest.IsWriteIndex" />
+    </member>
+    <member name="P:Nest.PutAliasRequest.Routing">
+      <inheritdoc cref="P:Nest.IPutAliasRequest.Routing" />
+    </member>
+    <member name="P:Nest.PutAliasRequest.SearchRouting">
+      <inheritdoc cref="P:Nest.IPutAliasRequest.SearchRouting" />
     </member>
     <member name="M:Nest.PutAliasRequest.#ctor(Nest.Indices,Nest.Name)">
       <summary>/{index}/_aliases/{name}</summary>
@@ -25596,8 +25614,20 @@
     <member name="T:Nest.PutAliasDescriptor">
       <summary>descriptor for IndicesPutAlias <pre>http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html</pre></summary>
     </member>
+    <member name="M:Nest.PutAliasDescriptor.Routing(Nest.Routing)">
+      <inheritdoc cref="P:Nest.IPutAliasRequest.Routing" />
+    </member>
+    <member name="M:Nest.PutAliasDescriptor.IndexRouting(Nest.Routing)">
+      <inheritdoc cref="P:Nest.IPutAliasRequest.IndexRouting" />
+    </member>
+    <member name="M:Nest.PutAliasDescriptor.SearchRouting(Nest.Routing)">
+      <inheritdoc cref="P:Nest.IPutAliasRequest.SearchRouting" />
+    </member>
     <member name="M:Nest.PutAliasDescriptor.IsWriteIndex(System.Nullable{System.Boolean})">
-      <inheritdoc cref="P:Nest.AliasAddOperation.IsWriteIndex" />
+      <inheritdoc cref="P:Nest.IPutAliasRequest.IsWriteIndex" />
+    </member>
+    <member name="M:Nest.PutAliasDescriptor.Filter``1(System.Func{Nest.QueryContainerDescriptor{``0},Nest.QueryContainer})">
+      <inheritdoc cref="P:Nest.IPutAliasRequest.Filter" />
     </member>
     <member name="M:Nest.PutAliasDescriptor.#ctor(Nest.Indices,Nest.Name)">
       <summary>/{index}/_aliases/{name}</summary>
@@ -25764,6 +25794,9 @@
     <member name="M:Nest.AnalyzeDescriptor.Field(Nest.Field)">
       <summary>Use the analyzer configured for this field (instead of passing the analyzer name)</summary>
     </member>
+    <member name="M:Nest.AnalyzeDescriptor.Field``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+      <summary>Use the analyzer configured for this field (instead of passing the analyzer name)</summary>
+    </member>
     <member name="M:Nest.AnalyzeDescriptor.Field``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
       <summary>Use the analyzer configured for this field (instead of passing the analyzer name)</summary>
     </member>
@@ -25795,12 +25828,12 @@
     <member name="M:Nest.AnalyzeDescriptor.Index``1">
       <summary>a shortcut into calling Index(typeof(TOther))</summary>
     </member>
-    <member name="P:Nest.IAnalyzeResponse.Detail">
+    <member name="P:Nest.AnalyzeResponse.Detail">
       <summary>
             When <see cref="P:Nest.IAnalyzeRequest.Explain" /> is to true this will hold the detailed view of the analyzed tokens.
             </summary>
     </member>
-    <member name="P:Nest.IAnalyzeResponse.Tokens">
+    <member name="P:Nest.AnalyzeResponse.Tokens">
       <summary>
             When <see cref="P:Nest.IAnalyzeRequest.Explain" /> is not true this will hold the analyzed tokens.
             </summary>
@@ -28525,16 +28558,14 @@
       <summary> The field to convert bytes from </summary>
       <inheritdoc cref="P:Nest.IBytesProcessor.Field" />
     </member>
-    <member name="M:Nest.BytesProcessorDescriptor`1.Field(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
-      <summary> The field to convert bytes from </summary>
+    <member name="M:Nest.BytesProcessorDescriptor`1.Field``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc cref="P:Nest.IBytesProcessor.Field" />
     </member>
     <member name="M:Nest.BytesProcessorDescriptor`1.TargetField(Nest.Field)">
       <summary> The field to assign the converted value to, by default <see cref="P:Nest.IBytesProcessor.Field" /> is updated in-place </summary>
       <inheritdoc cref="P:Nest.IBytesProcessor.TargetField" />
     </member>
-    <member name="M:Nest.BytesProcessorDescriptor`1.TargetField(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
-      <summary> The field to assign the converted value to, by default <see cref="P:Nest.IBytesProcessor.Field" /> is updated in-place </summary>
+    <member name="M:Nest.BytesProcessorDescriptor`1.TargetField``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc cref="P:Nest.IBytesProcessor.TargetField" />
     </member>
     <member name="M:Nest.BytesProcessorDescriptor`1.IgnoreMissing(System.Nullable{System.Boolean})">
@@ -28639,7 +28670,7 @@
             The field to get the date or timestamp from.
             </summary>
     </member>
-    <member name="M:Nest.DateIndexNameProcessorDescriptor`1.Field(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+    <member name="M:Nest.DateIndexNameProcessorDescriptor`1.Field``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <summary>
             The field to get the date or timestamp from.
             </summary>
@@ -28716,7 +28747,7 @@
       <inheritdoc cref="T:Nest.IDissectProcessor" />
     </member>
     <!-- Badly formed XML comment ignored for member "M:Nest.DissectProcessorDescriptor`1.Field(Nest.Field)" -->
-    <!-- Badly formed XML comment ignored for member "M:Nest.DissectProcessorDescriptor`1.Field(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})" -->
+    <!-- Badly formed XML comment ignored for member "M:Nest.DissectProcessorDescriptor`1.Field``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})" -->
     <!-- Badly formed XML comment ignored for member "M:Nest.DissectProcessorDescriptor`1.Pattern(System.String)" -->
     <!-- Badly formed XML comment ignored for member "M:Nest.DissectProcessorDescriptor`1.IgnoreMissing(System.Nullable{System.Boolean})" -->
     <!-- Badly formed XML comment ignored for member "M:Nest.DissectProcessorDescriptor`1.AppendSeparator(System.String)" -->
@@ -28770,7 +28801,7 @@
             The field to expand into an object field
             </summary>
     </member>
-    <member name="M:Nest.DotExpanderProcessorDescriptor`1.Field(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+    <member name="M:Nest.DotExpanderProcessorDescriptor`1.Field``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <summary>
             The field to expand into an object field
             </summary>
@@ -28845,10 +28876,7 @@
             </summary>
       <inheritdoc />
     </member>
-    <member name="M:Nest.JsonProcessorDescriptor`1.Field(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
-      <summary>
-            Field holding json as a string
-            </summary>
+    <member name="M:Nest.JsonProcessorDescriptor`1.Field``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc />
     </member>
     <member name="M:Nest.JsonProcessorDescriptor`1.TargetField(Nest.Field)">
@@ -28857,10 +28885,7 @@
             </summary>
       <inheritdoc />
     </member>
-    <member name="M:Nest.JsonProcessorDescriptor`1.TargetField(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
-      <summary>
-            The field to insert the converted structured object into
-            </summary>
+    <member name="M:Nest.JsonProcessorDescriptor`1.TargetField``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc />
     </member>
     <member name="M:Nest.JsonProcessorDescriptor`1.AddToRoot(System.Nullable{System.Boolean})">
@@ -28947,16 +28972,14 @@
       <summary> The field to be parsed </summary>
       <inheritdoc cref="P:Nest.IKeyValueProcessor.Field" />
     </member>
-    <member name="M:Nest.KeyValueProcessorDescriptor`1.Field(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
-      <summary> The field to be parsed </summary>
+    <member name="M:Nest.KeyValueProcessorDescriptor`1.Field``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc cref="P:Nest.IKeyValueProcessor.Field" />
     </member>
     <member name="M:Nest.KeyValueProcessorDescriptor`1.TargetField(Nest.Field)">
       <summary> The field to insert the extracted keys into. Defaults to the root of the document </summary>
       <inheritdoc cref="P:Nest.IKeyValueProcessor.TargetField" />
     </member>
-    <member name="M:Nest.KeyValueProcessorDescriptor`1.TargetField(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
-      <summary> The field to insert the extracted keys into. Defaults to the root of the document </summary>
+    <member name="M:Nest.KeyValueProcessorDescriptor`1.TargetField``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc cref="P:Nest.IKeyValueProcessor.TargetField" />
     </member>
     <member name="M:Nest.KeyValueProcessorDescriptor`1.FieldSplit(System.String)">
@@ -29089,16 +29112,14 @@
       <summary> The field to get the base64 encoded field from </summary>
       <inheritdoc cref="P:Nest.IAttachmentProcessor.Field" />
     </member>
-    <member name="M:Nest.AttachmentProcessorDescriptor`1.Field(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
-      <summary> The field to get the base64 encoded field from </summary>
+    <member name="M:Nest.AttachmentProcessorDescriptor`1.Field``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc cref="P:Nest.IAttachmentProcessor.Field" />
     </member>
     <member name="M:Nest.AttachmentProcessorDescriptor`1.TargetField(Nest.Field)">
       <summary> The field that will hold the attachment information </summary>
       <inheritdoc cref="P:Nest.IAttachmentProcessor.TargetField" />
     </member>
-    <member name="M:Nest.AttachmentProcessorDescriptor`1.TargetField(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
-      <summary> The field that will hold the attachment information </summary>
+    <member name="M:Nest.AttachmentProcessorDescriptor`1.TargetField``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc cref="P:Nest.IAttachmentProcessor.TargetField" />
     </member>
     <member name="M:Nest.AttachmentProcessorDescriptor`1.IndexedCharacters(System.Nullable{System.Int64})">
@@ -29112,8 +29133,7 @@
       <summary> Field name from which you can overwrite the number of chars being used for extraction. </summary>
       <inheritdoc cref="P:Nest.IAttachmentProcessor.IndexedCharactersField" />
     </member>
-    <member name="M:Nest.AttachmentProcessorDescriptor`1.IndexedCharactersField(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
-      <summary> Field name from which you can overwrite the number of chars being used for extraction. </summary>
+    <member name="M:Nest.AttachmentProcessorDescriptor`1.IndexedCharactersField``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc cref="P:Nest.IAttachmentProcessor.IndexedCharactersField" />
     </member>
     <member name="M:Nest.AttachmentProcessorDescriptor`1.IgnoreMissing(System.Nullable{System.Boolean})">
@@ -29227,13 +29247,13 @@
     <member name="M:Nest.UserAgentProcessorDescriptor`1.Field(Nest.Field)">
       <inheritdoc />
     </member>
-    <member name="M:Nest.UserAgentProcessorDescriptor`1.Field(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+    <member name="M:Nest.UserAgentProcessorDescriptor`1.Field``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc />
     </member>
     <member name="M:Nest.UserAgentProcessorDescriptor`1.TargetField(Nest.Field)">
       <inheritdoc />
     </member>
-    <member name="M:Nest.UserAgentProcessorDescriptor`1.TargetField(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+    <member name="M:Nest.UserAgentProcessorDescriptor`1.TargetField``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc />
     </member>
     <member name="M:Nest.UserAgentProcessorDescriptor`1.RegexFile(System.String)">
@@ -29274,7 +29294,7 @@
     <member name="M:Nest.RemoveProcessorDescriptor`1.Field(Nest.Field)">
       <inheritdoc cref="P:Nest.IRemoveProcessor.Field" />
     </member>
-    <member name="M:Nest.RemoveProcessorDescriptor`1.Field(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+    <member name="M:Nest.RemoveProcessorDescriptor`1.Field``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc cref="P:Nest.IRemoveProcessor.Field" />
     </member>
     <member name="M:Nest.RemoveProcessorDescriptor`1.IgnoreMissing(System.Nullable{System.Boolean})">
@@ -29401,8 +29421,7 @@
       <summary>The field to store the user information into. </summary>
       <inheritdoc cref="P:Nest.ISetSecurityUserProcessor.Field" />
     </member>
-    <member name="M:Nest.SetSecurityUserProcessorDescriptor`1.Field(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
-      <summary>The field to store the user information into. </summary>
+    <member name="M:Nest.SetSecurityUserProcessorDescriptor`1.Field``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc cref="P:Nest.ISetSecurityUserProcessor.Field" />
     </member>
     <member name="T:Nest.ISortProcessor">
@@ -29471,7 +29490,7 @@
             The field to decode
             </summary>
     </member>
-    <member name="M:Nest.UrlDecodeProcessorDescriptor`1.Field(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+    <member name="M:Nest.UrlDecodeProcessorDescriptor`1.Field``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <summary>
             The field to decode
             </summary>
@@ -29481,7 +29500,7 @@
             The field to assign the converted value to, by default <see cref="P:Nest.IUrlDecodeProcessor.Field" /> is updated in-place
             </summary>
     </member>
-    <member name="M:Nest.UrlDecodeProcessorDescriptor`1.TargetField(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+    <member name="M:Nest.UrlDecodeProcessorDescriptor`1.TargetField``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <summary>
             The field to assign the converted value to, by default <see cref="P:Nest.IUrlDecodeProcessor.Field" /> is updated in-place
             </summary>
@@ -29578,6 +29597,30 @@
     </member>
     <member name="P:Nest.ElasticsearchCorePropertyAttributeBase.Store">
       <inheritdoc cref="T:Nest.ICoreProperty" />
+    </member>
+    <member name="T:Nest.ElasticsearchTypeAttribute">
+      <summary>
+            Applied to a CLR type to override the name of a CLR type and the property from which an _id is inferred
+            when serializing an instance of the type.
+            </summary>
+    </member>
+    <member name="P:Nest.ElasticsearchTypeAttribute.IdProperty">
+      <summary>
+            The property on CLR type to use as the _id of the document
+            </summary>
+    </member>
+    <member name="P:Nest.ElasticsearchTypeAttribute.RelationName">
+      <summary>
+            The name of the CLR type for serialization
+            </summary>
+    </member>
+    <member name="P:Nest.ElasticsearchTypeAttribute.Name">
+      <inheritdoc cref="P:Nest.ElasticsearchTypeAttribute.RelationName" />
+    </member>
+    <member name="M:Nest.ElasticsearchTypeAttribute.From(System.Type)">
+      <summary>
+            Gets the first <see cref="T:Nest.ElasticsearchTypeAttribute" /> from a given CLR type
+            </summary>
     </member>
     <member name="F:Nest.DynamicMapping.Strict">
       <summary>
@@ -30801,10 +30844,7 @@
             </summary>
       <inheritdoc cref="P:Nest.IProperty.Name" />
     </member>
-    <member name="M:Nest.PropertyDescriptorBase`3.Name(System.Linq.Expressions.Expression{System.Func{`2,System.Object}})">
-      <summary>
-            The name of the property
-            </summary>
+    <member name="M:Nest.PropertyDescriptorBase`3.Name``1(System.Linq.Expressions.Expression{System.Func{`2,``0}})">
       <inheritdoc cref="P:Nest.IProperty.Name" />
     </member>
     <member name="M:Nest.PropertyDescriptorBase`3.LocalMetadata(System.Func{Nest.FluentDictionary{System.String,System.Object},Nest.FluentDictionary{System.String,System.Object}})">
@@ -30904,8 +30944,7 @@
     <member name="T:Nest.FieldAliasPropertyDescriptor`1">
       <inheritdoc cref="P:Nest.IFieldAliasProperty.Path" />
     </member>
-    <member name="M:Nest.FieldAliasPropertyDescriptor`1.Path(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
-      <summary> The full path to alias </summary>
+    <member name="M:Nest.FieldAliasPropertyDescriptor`1.Path``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc cref="P:Nest.IFieldAliasProperty.Path" />
     </member>
     <member name="M:Nest.FieldAliasPropertyDescriptor`1.Path(Nest.Field)">
@@ -32493,11 +32532,6 @@
     <member name="M:Nest.VerifyRepositoryDescriptor.Timeout(Nest.Time)">
       <summary>Explicit operation timeout</summary>
     </member>
-    <member name="P:Nest.IVerifyRepositoryResponse.Nodes">
-      <summary>
-             A dictionary of nodeId =&gt; nodeinfo of nodes that verified the repository
-            </summary>
-    </member>
     <member name="P:Nest.VerifyRepositoryResponse.Nodes">
       <summary>
              A dictionary of nodeId =&gt; nodeinfo of nodes that verified the repository
@@ -33062,7 +33096,7 @@
             A query that matches no documents. This is the inverse of the match_all query.
             </summary>
     </member>
-    <member name="M:Nest.QueryContainerDescriptor`1.Term(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Object,System.Nullable{System.Double},System.String)">
+    <member name="M:Nest.QueryContainerDescriptor`1.Term``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Object,System.Nullable{System.Double},System.String)">
       <summary>
             Matches documents that have fields that contain a term (not analyzed).
             The term query maps to Lucene TermQuery.
@@ -33088,7 +33122,7 @@
             The term query maps to Lucene TermQuery.
             </summary>
     </member>
-    <member name="M:Nest.QueryContainerDescriptor`1.Wildcard(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.String,System.Nullable{System.Double},Nest.MultiTermQueryRewrite,System.String)">
+    <member name="M:Nest.QueryContainerDescriptor`1.Wildcard``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.String,System.Nullable{System.Double},Nest.MultiTermQueryRewrite,System.String)">
       <summary>
             Matches documents that have fields matching a wildcard expression (not analyzed).
             Supported wildcards are *, which matches any character sequence (including the empty one), and ?,
@@ -33115,7 +33149,7 @@
             one of the wildcards * or ?. The wildcard query maps to Lucene WildcardQuery.
             </summary>
     </member>
-    <member name="M:Nest.QueryContainerDescriptor`1.Prefix(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.String,System.Nullable{System.Double},Nest.MultiTermQueryRewrite,System.String)">
+    <member name="M:Nest.QueryContainerDescriptor`1.Prefix``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.String,System.Nullable{System.Double},Nest.MultiTermQueryRewrite,System.String)">
       <summary>
             Matches documents that have fields containing terms with a specified prefix (not analyzed).
             The prefix query maps to Lucene PrefixQuery.
@@ -33138,6 +33172,15 @@
             Matches documents that only have the provided ids.
             Note, this filter does not require the _id field to be indexed since
             it works using the _uid field.
+            </summary>
+    </member>
+    <member name="M:Nest.QueryContainerDescriptor`1.Intervals(System.Func{Nest.IntervalsQueryDescriptor{`0},Nest.IIntervalsQuery})">
+      <summary>
+            Allows fine-grained control over the order and proximity of matching terms.
+            Matching rules are constructed from a small set of definitions,
+            and the rules are then applied to terms from a particular field.
+            The definitions produce sequences of minimal intervals that span terms in a body of text.
+            These intervals can be further combined and filtered by parent sources.
             </summary>
     </member>
     <member name="M:Nest.QueryContainerDescriptor`1.SpanTerm(System.Func{Nest.SpanTermQueryDescriptor{`0},Nest.ISpanTermQuery})">
@@ -33503,6 +33546,491 @@
     </member>
     <member name="M:Nest.CommonTermsQueryDescriptor`1.MinimumShouldMatch(Nest.MinimumShouldMatch)">
       <inheritdoc />
+    </member>
+    <member name="T:Nest.IIntervalsAllOf">
+      <summary>
+            A rule that returns matches that span a combination of other rules.
+            </summary>
+    </member>
+    <member name="P:Nest.IIntervalsAllOf.Intervals">
+      <summary>
+            An array of rules to combine. All rules must produce a match in a document for the overall source to match.
+            </summary>
+    </member>
+    <member name="P:Nest.IIntervalsAllOf.MaxGaps">
+      <summary>
+            Specify a maximum number of gaps between the terms in the text. Terms that appear further apart than this will not
+            match.
+            If unspecified, or set to -1, then there is no width restriction on the match.
+            If set to 0 then the terms must appear next to each other.
+            </summary>
+    </member>
+    <member name="P:Nest.IIntervalsAllOf.Ordered">
+      <summary>
+            Whether or not the terms must appear in their specified order. Defaults to <c>false</c></summary>
+    </member>
+    <member name="T:Nest.IntervalsAllOf">
+      <inheritdoc cref="T:Nest.IIntervalsAllOf" />
+    </member>
+    <member name="P:Nest.IntervalsAllOf.Intervals">
+      <summary>
+            An array of rules to combine. All rules must produce a match in a document for the overall source to match.
+            </summary>
+      <inheritdoc />
+    </member>
+    <member name="P:Nest.IntervalsAllOf.MaxGaps">
+      <summary>
+            Specify a maximum number of gaps between the terms in the text. Terms that appear further apart than this will not
+            match.
+            If unspecified, or set to -1, then there is no width restriction on the match.
+            If set to 0 then the terms must appear next to each other.
+            </summary>
+      <inheritdoc />
+    </member>
+    <member name="P:Nest.IntervalsAllOf.Ordered">
+      <summary>
+            Whether or not the terms must appear in their specified order. Defaults to <c>false</c></summary>
+      <inheritdoc />
+    </member>
+    <member name="T:Nest.IntervalsAllOfDescriptor">
+      <inheritdoc cref="T:Nest.IIntervalsAllOf" />
+    </member>
+    <member name="M:Nest.IntervalsAllOfDescriptor.MaxGaps(System.Nullable{System.Int32})">
+      <summary>
+            Specify a maximum number of gaps between the terms in the text. Terms that appear further apart than this will not
+            match.
+            If unspecified, or set to -1, then there is no width restriction on the match.
+            If set to 0 then the terms must appear next to each other.
+            </summary>
+      <inheritdoc cref="P:Nest.IIntervalsAllOf.MaxGaps" />
+    </member>
+    <member name="M:Nest.IntervalsAllOfDescriptor.Ordered(System.Nullable{System.Boolean})">
+      <summary>
+            Whether or not the terms must appear in their specified order. Defaults to <c>false</c></summary>
+      <inheritdoc cref="P:Nest.IIntervalsAllOf.Ordered" />
+    </member>
+    <member name="M:Nest.IntervalsAllOfDescriptor.Intervals(System.Func{Nest.IntervalsListDescriptor,Nest.IPromise{System.Collections.Generic.List{Nest.IntervalsContainer}}})">
+      <summary>
+            An array of rules to combine. All rules must produce a match in a document for the overall source to match.
+            </summary>
+      <inheritdoc cref="P:Nest.IIntervalsAllOf.Intervals" />
+    </member>
+    <member name="T:Nest.IIntervalsAnyOf">
+      <summary>
+            A rule that emits intervals produced by any of its sub-rules.
+            </summary>
+    </member>
+    <member name="P:Nest.IIntervalsAnyOf.Intervals">
+      <summary>
+            An array of rules to match.
+            </summary>
+    </member>
+    <member name="T:Nest.IntervalsAnyOf">
+      <inheritdoc cref="T:Nest.IIntervalsAnyOf" />
+    </member>
+    <member name="P:Nest.IntervalsAnyOf.Intervals">
+      <summary>
+            An array of rules to match.
+            </summary>
+      <inheritdoc />
+    </member>
+    <member name="T:Nest.IntervalsAnyOfDescriptor">
+      <inheritdoc cref="T:Nest.IIntervalsAnyOf" />
+    </member>
+    <member name="M:Nest.IntervalsAnyOfDescriptor.Intervals(System.Func{Nest.IntervalsListDescriptor,Nest.IPromise{System.Collections.Generic.List{Nest.IntervalsContainer}}})">
+      <summary>
+            An array of rules to match.
+            </summary>
+      <inheritdoc cref="P:Nest.IIntervalsAnyOf.Intervals" />
+    </member>
+    <member name="T:Nest.IIntervalsFilter">
+      <summary>
+            Filters intervals produced by any rules by their relation to the intervals produced by another rule
+            </summary>
+    </member>
+    <member name="P:Nest.IIntervalsFilter.After">
+      <summary>
+            Produces intervals that appear after an interval from the filter role
+            </summary>
+    </member>
+    <member name="P:Nest.IIntervalsFilter.Before">
+      <summary>
+            Produces intervals that appear before an interval from the filter role
+            </summary>
+    </member>
+    <member name="P:Nest.IIntervalsFilter.ContainedBy">
+      <summary>
+            Produces intervals that are contained by an interval from the filter rule
+            </summary>
+    </member>
+    <member name="P:Nest.IIntervalsFilter.Containing">
+      <summary>
+            Produces intervals that contain an interval from the filter rule
+            </summary>
+    </member>
+    <member name="P:Nest.IIntervalsFilter.NotContainedBy">
+      <summary>
+            Produces intervals that are not contained by an interval from the filter rule
+            </summary>
+    </member>
+    <member name="P:Nest.IIntervalsFilter.NotContaining">
+      <summary>
+            Produces intervals that do not contain an interval from the filter rule
+            </summary>
+    </member>
+    <member name="P:Nest.IIntervalsFilter.NotOverlapping">
+      <summary>
+            Produces intervals that do not overlap with an interval from the filter rule
+            </summary>
+    </member>
+    <member name="P:Nest.IIntervalsFilter.Overlapping">
+      <summary>
+            Produces intervals that overlap with an interval from the filter rule
+            </summary>
+    </member>
+    <member name="P:Nest.IIntervalsFilter.Script">
+      <summary>
+            filter intervals based on their start position, end position and internal gap count, using a script.
+            The script has access to an <code>interval</code> variable, with <code>start</code>,
+            <code>end</code> and <code>gaps</code> properties
+            </summary>
+    </member>
+    <member name="T:Nest.IntervalsFilter">
+      <inheritdoc />
+    </member>
+    <member name="P:Nest.IntervalsFilter.After">
+      <summary>
+            Produces intervals that appear after an interval from the filter role
+            </summary>
+      <inheritdoc />
+    </member>
+    <member name="P:Nest.IntervalsFilter.Before">
+      <summary>
+            Produces intervals that appear before an interval from the filter role
+            </summary>
+      <inheritdoc />
+    </member>
+    <member name="P:Nest.IntervalsFilter.ContainedBy">
+      <summary>
+            Produces intervals that are contained by an interval from the filter rule
+            </summary>
+      <inheritdoc />
+    </member>
+    <member name="P:Nest.IntervalsFilter.Containing">
+      <summary>
+            Produces intervals that contain an interval from the filter rule
+            </summary>
+      <inheritdoc />
+    </member>
+    <member name="P:Nest.IntervalsFilter.NotContainedBy">
+      <summary>
+            Produces intervals that are not contained by an interval from the filter rule
+            </summary>
+      <inheritdoc />
+    </member>
+    <member name="P:Nest.IntervalsFilter.NotContaining">
+      <summary>
+            Produces intervals that do not contain an interval from the filter rule
+            </summary>
+      <inheritdoc />
+    </member>
+    <member name="P:Nest.IntervalsFilter.NotOverlapping">
+      <summary>
+            Produces intervals that do not overlap with an interval from the filter rule
+            </summary>
+      <inheritdoc />
+    </member>
+    <member name="P:Nest.IntervalsFilter.Overlapping">
+      <summary>
+            Produces intervals that overlap with an interval from the filter rule
+            </summary>
+      <inheritdoc />
+    </member>
+    <member name="P:Nest.IntervalsFilter.Script">
+      <summary>
+            filter intervals based on their start position, end position and internal gap count, using a script.
+            The script has access to an <code>interval</code> variable, with <code>start</code>,
+            <code>end</code> and <code>gaps</code> properties
+            </summary>
+      <inheritdoc />
+    </member>
+    <member name="T:Nest.IntervalsFilterDescriptor">
+      <inheritdoc cref="T:Nest.IIntervalsFilter" />
+    </member>
+    <member name="M:Nest.IntervalsFilterDescriptor.Containing(System.Func{Nest.IntervalsDescriptor,Nest.IntervalsContainer})">
+      <summary>
+            Produces intervals that contain an interval from the filter rule
+            </summary>
+      <inheritdoc cref="P:Nest.IIntervalsFilter.Containing" />
+    </member>
+    <member name="M:Nest.IntervalsFilterDescriptor.ContainedBy(System.Func{Nest.IntervalsDescriptor,Nest.IntervalsContainer})">
+      <summary>
+            Produces intervals that are contained by an interval from the filter rule
+            </summary>
+      <inheritdoc cref="P:Nest.IIntervalsFilter.ContainedBy" />
+    </member>
+    <member name="M:Nest.IntervalsFilterDescriptor.NotContaining(System.Func{Nest.IntervalsDescriptor,Nest.IntervalsContainer})">
+      <summary>
+            Produces intervals that do not contain an interval from the filter rule
+            </summary>
+      <inheritdoc cref="P:Nest.IIntervalsFilter.NotContaining" />
+    </member>
+    <member name="M:Nest.IntervalsFilterDescriptor.NotContainedBy(System.Func{Nest.IntervalsDescriptor,Nest.IntervalsContainer})">
+      <summary>
+            Produces intervals that are not contained by an interval from the filter rule
+            </summary>
+      <inheritdoc cref="P:Nest.IIntervalsFilter.NotContainedBy" />
+    </member>
+    <member name="M:Nest.IntervalsFilterDescriptor.Overlapping(System.Func{Nest.IntervalsDescriptor,Nest.IntervalsContainer})">
+      <summary>
+            Produces intervals that overlap with an interval from the filter rule
+            </summary>
+      <inheritdoc cref="P:Nest.IIntervalsFilter.Overlapping" />
+    </member>
+    <member name="M:Nest.IntervalsFilterDescriptor.NotOverlapping(System.Func{Nest.IntervalsDescriptor,Nest.IntervalsContainer})">
+      <summary>
+            Produces intervals that do not overlap with an interval from the filter rule
+            </summary>
+      <inheritdoc cref="P:Nest.IIntervalsFilter.NotOverlapping" />
+    </member>
+    <member name="M:Nest.IntervalsFilterDescriptor.Before(System.Func{Nest.IntervalsDescriptor,Nest.IntervalsContainer})">
+      <summary>
+            Produces intervals that appear before an interval from the filter role
+            </summary>
+      <inheritdoc cref="P:Nest.IIntervalsFilter.Before" />
+    </member>
+    <member name="M:Nest.IntervalsFilterDescriptor.After(System.Func{Nest.IntervalsDescriptor,Nest.IntervalsContainer})">
+      <summary>
+            Produces intervals that appear after an interval from the filter role
+            </summary>
+      <inheritdoc cref="P:Nest.IIntervalsFilter.After" />
+    </member>
+    <member name="M:Nest.IntervalsFilterDescriptor.Script(System.Func{Nest.ScriptDescriptor,Nest.IScript})">
+      <summary>
+            filter intervals based on their start position, end position and internal gap count, using a script.
+            The script has access to an <code>interval</code> variable, with <code>start</code>,
+            <code>end</code> and <code>gaps</code> properties
+            </summary>
+      <inheritdoc cref="P:Nest.IIntervalsFilter.Script" />
+    </member>
+    <member name="T:Nest.IIntervalsMatch">
+      <summary>
+            Matches the analyzed text
+            </summary>
+    </member>
+    <member name="P:Nest.IIntervalsMatch.Analyzer">
+      <summary>
+            Which analyzer should be used to analyze terms in the query.
+            By default, the search analyzer of the top-level field will be used.
+            </summary>
+    </member>
+    <member name="P:Nest.IIntervalsMatch.MaxGaps">
+      <summary>
+            Specify a maximum number of gaps between the terms in the text. Terms that appear further apart than this will not
+            match.
+            If unspecified, or set to -1, then there is no width restriction on the match.
+            If set to 0 then the terms must appear next to each other.
+            </summary>
+    </member>
+    <member name="P:Nest.IIntervalsMatch.Ordered">
+      <summary>
+            Whether or not the terms must appear in their specified order. Defaults to <c>false</c></summary>
+    </member>
+    <member name="P:Nest.IIntervalsMatch.Query">
+      <summary>
+            The text to match.
+            </summary>
+    </member>
+    <member name="P:Nest.IIntervalsMatch.UseField">
+      <summary>
+            If specified, then match intervals from this field rather than the top-level field.
+            Terms will be analyzed using the search analyzer from this field.
+            This allows you to search across multiple fields as if they were all the same field
+            </summary>
+    </member>
+    <member name="T:Nest.IntervalsMatch">
+      <inheritdoc cref="T:Nest.IIntervalsMatch" />
+    </member>
+    <member name="P:Nest.IntervalsMatch.Analyzer">
+      <summary>
+            Which analyzer should be used to analyze terms in the query.
+            By default, the search analyzer of the top-level field will be used.
+            </summary>
+      <inheritdoc />
+    </member>
+    <member name="P:Nest.IntervalsMatch.MaxGaps">
+      <summary>
+            Specify a maximum number of gaps between the terms in the text. Terms that appear further apart than this will not
+            match.
+            If unspecified, or set to -1, then there is no width restriction on the match.
+            If set to 0 then the terms must appear next to each other.
+            </summary>
+      <inheritdoc />
+    </member>
+    <member name="P:Nest.IntervalsMatch.Ordered">
+      <summary>
+            Whether or not the terms must appear in their specified order. Defaults to <c>false</c></summary>
+      <inheritdoc />
+    </member>
+    <member name="P:Nest.IntervalsMatch.Query">
+      <summary>
+            The text to match.
+            </summary>
+      <inheritdoc />
+    </member>
+    <member name="P:Nest.IntervalsMatch.UseField">
+      <summary>
+            If specified, then match intervals from this field rather than the top-level field.
+            Terms will be analyzed using the search analyzer from this field.
+            This allows you to search across multiple fields as if they were all the same field
+            </summary>
+      <inheritdoc />
+    </member>
+    <member name="T:Nest.IntervalsMatchDescriptor">
+      <inheritdoc cref="T:Nest.IIntervalsMatch" />
+    </member>
+    <member name="M:Nest.IntervalsMatchDescriptor.Analyzer(System.String)">
+      <summary>
+            Which analyzer should be used to analyze terms in the query.
+            By default, the search analyzer of the top-level field will be used.
+            </summary>
+      <inheritdoc cref="P:Nest.IIntervalsMatch.Analyzer" />
+    </member>
+    <member name="M:Nest.IntervalsMatchDescriptor.MaxGaps(System.Nullable{System.Int32})">
+      <summary>
+            Specify a maximum number of gaps between the terms in the text. Terms that appear further apart than this will not
+            match.
+            If unspecified, or set to -1, then there is no width restriction on the match.
+            If set to 0 then the terms must appear next to each other.
+            </summary>
+      <inheritdoc cref="P:Nest.IIntervalsMatch.MaxGaps" />
+    </member>
+    <member name="M:Nest.IntervalsMatchDescriptor.Ordered(System.Nullable{System.Boolean})">
+      <summary>
+            Whether or not the terms must appear in their specified order. Defaults to <c>false</c></summary>
+      <inheritdoc cref="P:Nest.IIntervalsMatch.Ordered" />
+    </member>
+    <member name="M:Nest.IntervalsMatchDescriptor.Query(System.String)">
+      <summary>
+            The text to match.
+            </summary>
+      <inheritdoc cref="P:Nest.IIntervalsMatch.Query" />
+    </member>
+    <member name="M:Nest.IntervalsMatchDescriptor.UseField``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+      <inheritdoc cref="P:Nest.IIntervalsMatch.UseField" />
+    </member>
+    <member name="M:Nest.IntervalsMatchDescriptor.UseField(Nest.Field)">
+      <summary>
+            If specified, then match intervals from this field rather than the top-level field.
+            Terms will be analyzed using the search analyzer from this field.
+            This allows you to search across multiple fields as if they were all the same field
+            </summary>
+      <inheritdoc cref="P:Nest.IIntervalsMatch.UseField" />
+    </member>
+    <member name="T:Nest.IIntervalsQuery">
+      <summary>
+            A query that allows fine-grained control over the order and proximity of matching terms.
+            Matching rules are constructed from a small set of definitions, and the rules are then applied to terms from a
+            particular field.
+            The definitions produce sequences of minimal intervals that span terms in a body of text.
+            These intervals can be further combined and filtered by parent sources.
+            </summary>
+    </member>
+    <member name="T:Nest.IntervalsQuery">
+      <inheritdoc cref="T:Nest.IIntervalsQuery" />
+    </member>
+    <member name="P:Nest.IntervalsQuery.AllOf">
+      <inheritdoc cref="T:Nest.IIntervalsAllOf" />
+    </member>
+    <member name="P:Nest.IntervalsQuery.AnyOf">
+      <inheritdoc cref="T:Nest.IIntervalsAnyOf" />
+    </member>
+    <member name="P:Nest.IntervalsQuery.Match">
+      <inheritdoc cref="T:Nest.IIntervalsMatch" />
+    </member>
+    <member name="T:Nest.IntervalsQueryDescriptor`1">
+      <inheritdoc cref="T:Nest.IIntervalsQuery" />
+    </member>
+    <member name="M:Nest.IntervalsQueryDescriptor`1.Match(System.Func{Nest.IntervalsMatchDescriptor,Nest.IIntervalsMatch})">
+      <inheritdoc cref="P:Nest.IntervalsQuery.Match" />
+    </member>
+    <member name="M:Nest.IntervalsQueryDescriptor`1.AnyOf(System.Func{Nest.IntervalsAnyOfDescriptor,Nest.IIntervalsAnyOf})">
+      <inheritdoc cref="P:Nest.IntervalsQuery.AnyOf" />
+    </member>
+    <member name="M:Nest.IntervalsQueryDescriptor`1.AllOf(System.Func{Nest.IntervalsAllOfDescriptor,Nest.IIntervalsAllOf})">
+      <inheritdoc cref="P:Nest.IntervalsQuery.AllOf" />
+    </member>
+    <member name="T:Nest.IIntervalsContainer">
+      <summary>
+            Container for an <see cref="T:Nest.IIntervalsQuery" /> rule
+            </summary>
+    </member>
+    <member name="P:Nest.IIntervalsContainer.AllOf">
+      <inheritdoc cref="T:Nest.IIntervalsAllOf" />
+    </member>
+    <member name="P:Nest.IIntervalsContainer.AnyOf">
+      <inheritdoc cref="T:Nest.IIntervalsAnyOf" />
+    </member>
+    <member name="P:Nest.IIntervalsContainer.Match">
+      <inheritdoc cref="T:Nest.IIntervalsMatch" />
+    </member>
+    <member name="T:Nest.IntervalsContainer">
+      <inheritdoc cref="T:Nest.IIntervalsContainer" />
+    </member>
+    <member name="T:Nest.IntervalsDescriptor">
+      <summary>
+            Descriptor to construct an <see cref="T:Nest.IIntervalsQuery" /> rule
+            </summary>
+    </member>
+    <member name="M:Nest.IntervalsDescriptor.Match(System.Func{Nest.IntervalsMatchDescriptor,Nest.IIntervalsMatch})">
+      <inheritdoc cref="T:Nest.IntervalsMatchDescriptor" />
+    </member>
+    <member name="M:Nest.IntervalsDescriptor.AnyOf(System.Func{Nest.IntervalsAnyOfDescriptor,Nest.IIntervalsAnyOf})">
+      <inheritdoc cref="T:Nest.IntervalsAnyOfDescriptor" />
+    </member>
+    <member name="M:Nest.IntervalsDescriptor.AllOf(System.Func{Nest.IntervalsAllOfDescriptor,Nest.IIntervalsAllOf})">
+      <inheritdoc cref="T:Nest.IntervalsAllOfDescriptor" />
+    </member>
+    <member name="T:Nest.IIntervals">
+      <summary>
+            An <see cref="T:Nest.IIntervalsQuery" /> rule
+            </summary>
+    </member>
+    <member name="P:Nest.IIntervals.Filter">
+      <summary>
+            An optional interval filter
+            </summary>
+    </member>
+    <member name="T:Nest.IntervalsBase">
+      <summary>
+            Base type for an <see cref="T:Nest.IIntervals" /> implementation
+            </summary>
+    </member>
+    <member name="P:Nest.IntervalsBase.Filter">
+      <inheritdoc />
+    </member>
+    <member name="T:Nest.IntervalsDescriptorBase`2">
+      <summary>
+            Base type for descriptors that define <see cref="T:Nest.IIntervals" /></summary>
+    </member>
+    <member name="M:Nest.IntervalsDescriptorBase`2.Filter(System.Func{Nest.IntervalsFilterDescriptor,Nest.IIntervalsFilter})">
+      <summary>
+            An optional interval filter
+            </summary>
+      <inheritdoc cref="T:Nest.IIntervalsFilter" />
+    </member>
+    <member name="T:Nest.IntervalsListDescriptor">
+      <summary>
+            Constructs a collection of <see cref="T:Nest.IntervalsContainer" /></summary>
+    </member>
+    <member name="M:Nest.IntervalsListDescriptor.Match(System.Func{Nest.IntervalsMatchDescriptor,Nest.IIntervalsMatch})">
+      <inheritdoc cref="T:Nest.IIntervalsMatch" />
+    </member>
+    <member name="M:Nest.IntervalsListDescriptor.AnyOf(System.Func{Nest.IntervalsAnyOfDescriptor,Nest.IIntervalsAnyOf})">
+      <inheritdoc cref="T:Nest.IIntervalsAnyOf" />
+    </member>
+    <member name="M:Nest.IntervalsListDescriptor.AllOf(System.Func{Nest.IntervalsAllOfDescriptor,Nest.IIntervalsAllOf})">
+      <inheritdoc cref="T:Nest.IIntervalsAllOf" />
     </member>
     <member name="P:Nest.IMatchPhrasePrefixQuery.ZeroTermsQuery">
       <summary>
@@ -34516,13 +35044,7 @@
             </summary>
       <inheritdoc cref="P:Nest.IQueryStringQuery.DefaultField" />
     </member>
-    <member name="M:Nest.QueryStringQueryDescriptor`1.DefaultField(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
-      <summary>
-            The default field for query terms if no prefix field is specified.
-            Defaults to the index.query.default_field index settings, which in turn defaults to *.
-            * extracts all fields in the mapping that are eligible to term queries and filters the metadata fields.
-            All extracted fields are then combined to build a query when no prefix field is provided.
-            </summary>
+    <member name="M:Nest.QueryStringQueryDescriptor`1.DefaultField``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc cref="P:Nest.IQueryStringQuery.DefaultField" />
     </member>
     <member name="M:Nest.QueryStringQueryDescriptor`1.Fields(System.Func{Nest.FieldsDescriptor{`0},Nest.IPromise{Nest.Fields}})">
@@ -35429,6 +35951,9 @@
             controls the size of the top scoring terms to use.
             </summary>
     </member>
+    <member name="M:Nest.Query`1.Intervals(System.Func{Nest.IntervalsQueryDescriptor{`0},Nest.IIntervalsQuery})">
+      <inheritdoc cref="T:Nest.IIntervalsQuery" />
+    </member>
     <member name="P:Nest.IMoreLikeThisQuery.PerFieldAnalyzer">
       <summary>
             Provide a different analyzer than the one at the field.
@@ -35554,10 +36079,7 @@
             </summary>
       <inheritdoc cref="P:Nest.IPercolateQuery.Field" />
     </member>
-    <member name="M:Nest.PercolateQueryDescriptor`1.Field(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
-      <summary>
-            The name of the field containing the percolated query on an existing document. This is a required parameter.
-            </summary>
+    <member name="M:Nest.PercolateQueryDescriptor`1.Field``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc cref="P:Nest.IPercolateQuery.Field" />
     </member>
     <member name="M:Nest.PercolateQueryDescriptor`1.Document``1(``0)">
@@ -35697,7 +36219,7 @@
             A field containing the number of required terms that must match
             </summary>
     </member>
-    <member name="M:Nest.TermsSetQueryDescriptor`1.MinimumShouldMatchField(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+    <member name="M:Nest.TermsSetQueryDescriptor`1.MinimumShouldMatchField``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <summary>
             A field containing the number of required terms that must match
             </summary>
@@ -36520,10 +37042,7 @@
             </summary>
       <inheritdoc cref="P:Nest.IFieldCollapse.Field" />
     </member>
-    <member name="M:Nest.FieldCollapseDescriptor`1.Field(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
-      <summary>
-            The field used for collapsing must be a single valued keyword or number field with doc-values activated
-            </summary>
+    <member name="M:Nest.FieldCollapseDescriptor`1.Field``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc cref="P:Nest.IFieldCollapse.Field" />
     </member>
     <member name="M:Nest.FieldCollapseDescriptor`1.InnerHits(System.Func{Nest.InnerHitsDescriptor{`0},Nest.IInnerHits})">
@@ -37039,15 +37558,7 @@
             </remarks>
       <inheritdoc />
     </member>
-    <member name="M:Nest.HighlightFieldDescriptor`1.Field(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
-      <summary>
-            The field on which to perform highlighting.
-            </summary>
-      <remarks>
-            In order to perform highlighting, the actual content of the field is required.
-            If the field in question is stored (has store set to true in the mapping) it will be used,
-            otherwise, the actual _source will be loaded and the relevant field will be extracted from it.
-            </remarks>
+    <member name="M:Nest.HighlightFieldDescriptor`1.Field``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc />
     </member>
     <member name="M:Nest.HighlightFieldDescriptor`1.AllField">
@@ -37214,6 +37725,12 @@
             and consumes more memory. Only supported by the <see cref="F:Nest.HighlighterType.Fvh" /> highlighter. Defaults to 256.
             </summary>
       <inheritdoc />
+    </member>
+    <member name="P:Nest.IHit`1.Highlight">
+      <summary> see <see cref="P:Nest.IHit`1.Highlights" /> for easier access into this data structure </summary>
+    </member>
+    <member name="P:Nest.IHit`1.Highlights">
+      <summary> This provides easier access into <see cref="P:Nest.IHit`1.Highlight" /></summary>
     </member>
     <member name="M:Nest.InnerHitsResult.Documents``1">
       <summary>
@@ -37398,7 +37915,7 @@
     <member name="P:Nest.SearchRequest.TypedKeys">
       <summary>Specify whether aggregation and suggester names should be prefixed by their respective types in the response</summary>
     </member>
-    <member name="P:Nest.SearchRequest.SeqNoPrimaryTerm">
+    <member name="P:Nest.SearchRequest.SequenceNumberPrimaryTerm">
       <summary>Specify whether to return sequence number and primary term of the last modification of each hit</summary>
     </member>
     <member name="P:Nest.SearchRequest.RequestCache">
@@ -37720,7 +38237,7 @@
     <member name="M:Nest.SearchDescriptor`1.TypedKeys(System.Nullable{System.Boolean})">
       <summary>Specify whether aggregation and suggester names should be prefixed by their respective types in the response</summary>
     </member>
-    <member name="M:Nest.SearchDescriptor`1.SeqNoPrimaryTerm(System.Nullable{System.Boolean})">
+    <member name="M:Nest.SearchDescriptor`1.SequenceNumberPrimaryTerm(System.Nullable{System.Boolean})">
       <summary>Specify whether to return sequence number and primary term of the last modification of each hit</summary>
     </member>
     <member name="M:Nest.SearchDescriptor`1.RequestCache(System.Nullable{System.Boolean})">
@@ -38868,43 +39385,109 @@
     <member name="M:Nest.SuggestDescriptorBase`3.Field(Nest.Field)">
       <inheritdoc cref="P:Nest.ISuggester.Field" />
     </member>
-    <member name="M:Nest.SuggestDescriptorBase`3.Field(System.Linq.Expressions.Expression{System.Func{`2,System.Object}})">
+    <member name="M:Nest.SuggestDescriptorBase`3.Field``1(System.Linq.Expressions.Expression{System.Func{`2,``0}})">
       <inheritdoc cref="P:Nest.ISuggester.Field" />
+    </member>
+    <member name="T:Nest.ISuggestOption`1">
+      <summary>
+            Suggest option
+            </summary>
+    </member>
+    <member name="P:Nest.ISuggestOption`1.CollateMatch">
+      <summary>
+            Phrase suggestions only, true if matching documents for the collate query were found,
+            </summary>
+    </member>
+    <member name="P:Nest.ISuggestOption`1.Contexts">
+      <summary>
+            Completion suggester only, the contexts associated with the completed document
+            </summary>
+    </member>
+    <member name="P:Nest.ISuggestOption`1.Frequency">
+      <summary>
+            Term suggester only
+            </summary>
+    </member>
+    <member name="P:Nest.ISuggestOption`1.Highlighted">
+      <summary>
+            Phrase suggester only, highlighted version of text
+            </summary>
+    </member>
+    <member name="P:Nest.ISuggestOption`1.Id">
+      <summary>
+            Completion suggester only, the id of the completed document
+            </summary>
+    </member>
+    <member name="P:Nest.ISuggestOption`1.Index">
+      <summary>
+            Completion suggester only, the index of the completed document
+            </summary>
+    </member>
+    <member name="P:Nest.ISuggestOption`1.Score">
+      <summary> Either the <see cref="P:Nest.ISuggestOption`1.DocumentScore" /> or the <see cref="P:Nest.ISuggestOption`1.SuggestScore" /></summary>
+    </member>
+    <member name="P:Nest.ISuggestOption`1.Source">
+      <summary>
+            Completion suggester only, the source of the completed document
+            </summary>
+    </member>
+    <member name="T:Nest.SuggestOption`1">
+      <inheritdoc />
     </member>
     <member name="P:Nest.SuggestOption`1.CollateMatch">
       <summary>
             Phrase suggestions only, true if matching documents for the collate query were found,
             </summary>
+      <inheritdoc />
     </member>
     <member name="P:Nest.SuggestOption`1.Contexts">
       <summary>
             Completion suggester only, the contexts associated with the completed document
             </summary>
+      <inheritdoc />
     </member>
     <member name="P:Nest.SuggestOption`1.Frequency">
       <summary>
             Term suggester only
             </summary>
+      <inheritdoc />
     </member>
     <member name="P:Nest.SuggestOption`1.Highlighted">
       <summary>
             Phrase suggester only, highlighted version of text
             </summary>
+      <inheritdoc />
     </member>
     <member name="P:Nest.SuggestOption`1.Id">
       <summary>
             Completion suggester only, the id of the completed document
             </summary>
+      <inheritdoc />
     </member>
     <member name="P:Nest.SuggestOption`1.Index">
       <summary>
             Completion suggester only, the index of the completed document
             </summary>
+      <inheritdoc />
+    </member>
+    <member name="P:Nest.SuggestOption`1.Score">
+      <summary> Either the <see cref="P:Nest.ISuggestOption`1.DocumentScore" /> or the <see cref="P:Nest.ISuggestOption`1.SuggestScore" /></summary>
+      <inheritdoc />
     </member>
     <member name="P:Nest.SuggestOption`1.Source">
       <summary>
             Completion suggester only, the source of the completed document
             </summary>
+      <inheritdoc />
+    </member>
+    <member name="P:Nest.SuggestOption`1.Text">
+      <inheritdoc />
+    </member>
+    <member name="P:Nest.SuggestOption`1.DocumentScore">
+      <inheritdoc />
+    </member>
+    <member name="P:Nest.SuggestOption`1.SuggestScore">
+      <inheritdoc />
     </member>
     <member name="T:Nest.StringDistance">
       <summary>
@@ -40008,7 +40591,7 @@
       <summary>A shortcut into calling Index(Indices.All)</summary>
     </member>
     <member name="P:Nest.FollowIndexStatsResponse.Indices">
-      <inheritdoc cref="P:Nest.IFollowIndexStatsResponse.Indices" />
+      <inheritdoc cref="P:Nest.FollowIndexStatsResponse.Indices" />
     </member>
     <member name="T:Nest.IPauseFollowIndexRequest">
       <summary>
@@ -40220,13 +40803,13 @@
       <summary>descriptor for CcrStats <pre>https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-get-stats.html</pre></summary>
     </member>
     <member name="P:Nest.CcrStatsResponse.AutoFollowStats">
-      <inheritdoc cref="P:Nest.ICcrStatsResponse.AutoFollowStats" />
+      <inheritdoc cref="P:Nest.CcrStatsResponse.AutoFollowStats" />
     </member>
     <member name="P:Nest.CcrStatsResponse.FollowStats">
-      <inheritdoc cref="P:Nest.ICcrStatsResponse.FollowStats" />
+      <inheritdoc cref="P:Nest.CcrStatsResponse.FollowStats" />
     </member>
     <member name="P:Nest.CcrFollowStats.Indices">
-      <inheritdoc cref="P:Nest.IFollowIndexStatsResponse.Indices" />
+      <inheritdoc cref="P:Nest.FollowIndexStatsResponse.Indices" />
     </member>
     <member name="P:Nest.CcrAutoFollowStats.NumberOfFailedFollowIndices">
       <summary>
@@ -40410,7 +40993,7 @@
     <member name="M:Nest.PostLicenseDescriptor.Acknowledge(System.Nullable{System.Boolean})">
       <summary>whether the user has acknowledged acknowledge messages (default: false)</summary>
     </member>
-    <member name="P:Nest.IPostLicenseResponse.Acknowledge">
+    <member name="P:Nest.PostLicenseResponse.Acknowledge">
       <summary>
             If the license is valid but is older or has less capabilities this will list out the reasons why a resubmission with acknowledge=true is
             required.
@@ -40694,13 +41277,10 @@
     <member name="M:Nest.DeleteCalendarJobDescriptor.#ctor">
       <summary>Used for serialization purposes, making sure we have a parameterless constructor</summary>
     </member>
-    <member name="T:Nest.IDeleteCalendarJobResponse">
+    <member name="T:Nest.DeleteCalendarJobResponse">
       <summary>
             The response from deleting a calendar job.
             </summary>
-    </member>
-    <member name="T:Nest.DeleteCalendarJobResponse">
-      <inheritdoc cref="T:Nest.IDeleteCalendarJobResponse" />
     </member>
     <member name="T:Nest.DeleteCalendarRequest">
       <summary>Request parameters for MlDeleteCalendar <pre>TODO</pre></summary>
@@ -41411,32 +41991,20 @@
     <member name="M:Nest.GetCalendarEventsDescriptor.End(System.Nullable{System.DateTimeOffset})">
       <summary>Get events before this time</summary>
     </member>
-    <member name="T:Nest.IGetCalendarEventsResponse">
+    <member name="T:Nest.GetCalendarEventsResponse">
       <summary>
             Retrieves configuration information for calendars.
-            </summary>
-    </member>
-    <member name="P:Nest.IGetCalendarEventsResponse.Count">
-      <summary>
-            Count of scheduled event resources.
-            </summary>
-    </member>
-    <member name="P:Nest.IGetCalendarEventsResponse.Events">
-      <summary>
-            	An array of scheduled event resources.
             </summary>
     </member>
     <member name="P:Nest.GetCalendarEventsResponse.Count">
       <summary>
             Count of scheduled event resources.
             </summary>
-      <inheritdoc cref="P:Nest.IGetCalendarEventsResponse.Count" />
     </member>
     <member name="P:Nest.GetCalendarEventsResponse.Events">
       <summary>
             	An array of scheduled event resources.
             </summary>
-      <inheritdoc cref="P:Nest.IGetCalendarEventsResponse.Events" />
     </member>
     <member name="T:Nest.IGetCalendarsRequest">
       <summary>
@@ -41486,32 +42054,20 @@
     <member name="M:Nest.GetCalendarsDescriptor.CalendarId(Nest.Id)">
       <summary>The ID of the calendar to fetch</summary>
     </member>
-    <member name="T:Nest.IGetCalendarsResponse">
+    <member name="T:Nest.GetCalendarsResponse">
       <summary>
             Retrieves configuration information for calendars.
-            </summary>
-    </member>
-    <member name="P:Nest.IGetCalendarsResponse.Count">
-      <summary>
-            The count of calendars.
-            </summary>
-    </member>
-    <member name="P:Nest.IGetCalendarsResponse.Calendars">
-      <summary>
-            An array of calendar resources.
             </summary>
     </member>
     <member name="P:Nest.GetCalendarsResponse.Count">
       <summary>
             The count of calendars.
             </summary>
-      <inheritdoc cref="P:Nest.IGetCalendarsResponse.Count" />
     </member>
     <member name="P:Nest.GetCalendarsResponse.Calendars">
       <summary>
             An array of calendar resources.
             </summary>
-      <inheritdoc cref="P:Nest.IGetCalendarsResponse.Calendars" />
     </member>
     <member name="T:Nest.IGetCategoriesRequest">
       <summary>
@@ -41862,35 +42418,20 @@
     <member name="M:Nest.GetJobsDescriptor.AllowNoJobs(System.Nullable{System.Boolean})">
       <summary>Whether to ignore if a wildcard expression matches no jobs. (This includes `_all` string or when no jobs have been specified)</summary>
     </member>
-    <member name="T:Nest.IGetJobsResponse">
+    <member name="T:Nest.GetJobsResponse">
       <summary>
             A response of the configuration for machine learning jobs.
             </summary>
-    </member>
-    <member name="P:Nest.IGetJobsResponse.Count">
-      <summary>
-            The count of jobs
-            </summary>
-    </member>
-    <member name="P:Nest.IGetJobsResponse.Jobs">
-      <summary>
-            The configuration of machine learning jobs
-            </summary>
-    </member>
-    <member name="T:Nest.GetJobsResponse">
-      <inheritdoc />
     </member>
     <member name="P:Nest.GetJobsResponse.Count">
       <summary>
             The count of jobs
             </summary>
-      <inheritdoc />
     </member>
     <member name="P:Nest.GetJobsResponse.Jobs">
       <summary>
             The configuration of machine learning jobs
             </summary>
-      <inheritdoc />
     </member>
     <member name="T:Nest.IGetModelSnapshotsRequest">
       <summary>
@@ -42311,12 +42852,7 @@
             </summary>
       <inheritdoc />
     </member>
-    <member name="M:Nest.AnalysisConfigDescriptor`1.CategorizationFieldName(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
-      <summary>
-            If this property is specified, the values of the specified field will be categorized.
-            The resulting categories must be used in a detector by setting by_field_name, over_field_name,
-            or partition_field_name to the keyword mlcategory
-            </summary>
+    <member name="M:Nest.AnalysisConfigDescriptor`1.CategorizationFieldName``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc />
     </member>
     <member name="M:Nest.AnalysisConfigDescriptor`1.CategorizationFilters(System.Collections.Generic.IEnumerable{System.String})">
@@ -42381,11 +42917,7 @@
             </summary>
       <inheritdoc />
     </member>
-    <member name="M:Nest.AnalysisConfigDescriptor`1.SummaryCountFieldName(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
-      <summary>
-            The name of the field that contains the count of raw data points that have been summarized, if
-            data that is fed to the job is expected to be pre-summarized.
-            </summary>
+    <member name="M:Nest.AnalysisConfigDescriptor`1.SummaryCountFieldName``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc />
     </member>
     <member name="T:Nest.IAnalysisLimits">
@@ -42542,10 +43074,7 @@
             </summary>
       <inheritdoc />
     </member>
-    <member name="M:Nest.DataDescriptionDescriptor`1.TimeField(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
-      <summary>
-            The name of the field that contains the timestamp. The default value is time.
-            </summary>
+    <member name="M:Nest.DataDescriptionDescriptor`1.TimeField``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc />
     </member>
     <member name="M:Nest.DataDescriptionDescriptor`1.TimeFormat(System.String)">
@@ -43586,24 +44115,15 @@
     <member name="M:Nest.PostCalendarEventsDescriptor.#ctor">
       <summary>Used for serialization purposes, making sure we have a parameterless constructor</summary>
     </member>
-    <member name="T:Nest.IPostCalendarEventsResponse">
+    <member name="T:Nest.PostCalendarEventsResponse">
       <summary>
             The response from creating a calendar.
             </summary>
-    </member>
-    <member name="P:Nest.IPostCalendarEventsResponse.Events">
-      <summary>
-             A list of one of more scheduled events.
-            </summary>
-    </member>
-    <member name="T:Nest.PostCalendarEventsResponse">
-      <inheritdoc cref="T:Nest.IPostCalendarEventsResponse" />
     </member>
     <member name="P:Nest.PostCalendarEventsResponse.Events">
       <summary>
              A list of one of more scheduled events.
             </summary>
-      <inheritdoc cref="P:Nest.IPostCalendarEventsResponse.Events" />
     </member>
     <member name="P:Nest.IPostJobDataRequest.Data">
       <summary>
@@ -43674,178 +44194,55 @@
     <member name="M:Nest.PostJobDataDescriptor.ResetEnd(System.Nullable{System.DateTimeOffset})">
       <summary>Optional parameter to specify the end of the bucket resetting range</summary>
     </member>
-    <member name="T:Nest.IPostJobDataResponse">
+    <member name="T:Nest.PostJobDataResponse">
       <summary>
             The Post Job Data API response
             </summary>
     </member>
-    <member name="P:Nest.IPostJobDataResponse.BucketCount">
-      <summary>
-            The count of buckets.
-            </summary>
-    </member>
-    <member name="P:Nest.IPostJobDataResponse.EarliestRecordTimestamp">
-      <summary>
-            The earliest record timestamp
-            </summary>
-    </member>
-    <member name="P:Nest.IPostJobDataResponse.EmptyBucketCount">
-      <summary>
-            The count of empty buckets.
-            </summary>
-    </member>
-    <member name="P:Nest.IPostJobDataResponse.InputBytes">
-      <summary>
-            Total input bytes.
-            </summary>
-    </member>
-    <member name="P:Nest.IPostJobDataResponse.InputFieldCount">
-      <summary>
-            The count of input fields.
-            </summary>
-    </member>
-    <member name="P:Nest.IPostJobDataResponse.InputRecordCount">
-      <summary>
-            The count of input records.
-            </summary>
-    </member>
-    <member name="P:Nest.IPostJobDataResponse.InvalidDateCount">
-      <summary>
-            The count of invalid dates.
-            </summary>
-    </member>
-    <member name="P:Nest.IPostJobDataResponse.JobId">
-      <summary>
-            The unique identifier for the job.
-            </summary>
-    </member>
-    <member name="P:Nest.IPostJobDataResponse.LastDataTime">
-      <summary>
-            The time of the last data item.
-            </summary>
-    </member>
-    <member name="P:Nest.IPostJobDataResponse.LatestRecordTimestamp">
-      <summary>
-            The latest record timestamp
-            </summary>
-    </member>
-    <member name="P:Nest.IPostJobDataResponse.MissingFieldCount">
-      <summary>
-            The count of missing fields.
-            </summary>
-    </member>
-    <member name="P:Nest.IPostJobDataResponse.OutOfOrderTimestampCount">
-      <summary>
-            The count of out of order timestamps.
-            </summary>
-    </member>
-    <member name="P:Nest.IPostJobDataResponse.ProcessedFieldCount">
-      <summary>
-            The count of processed fields.
-            </summary>
-    </member>
-    <member name="P:Nest.IPostJobDataResponse.ProcessedRecordCount">
-      <summary>
-            The count of processed records.
-            </summary>
-    </member>
-    <member name="P:Nest.IPostJobDataResponse.SparseBucketCount">
-      <summary>
-            The count of sparse buckets.
-            </summary>
-    </member>
-    <member name="T:Nest.PostJobDataResponse">
-      <inheritdoc cref="T:Nest.IPostJobDataResponse" />
-    </member>
     <member name="P:Nest.PostJobDataResponse.BucketCount">
-      <summary>
-            The count of buckets.
-            </summary>
-      <inheritdoc />
+      <summary>The count of buckets. </summary>
     </member>
     <member name="P:Nest.PostJobDataResponse.EarliestRecordTimestamp">
-      <summary>
-            The earliest record timestamp
-            </summary>
-      <inheritdoc />
+      <summary> The earliest record timestamp</summary>
     </member>
-    <member name="P:Nest.PostJobDataResponse.EmptyBucketCount">
-      <summary>
-            The count of empty buckets.
-            </summary>
-      <inheritdoc />
-    </member>
+    <!-- Badly formed XML comment ignored for member "P:Nest.PostJobDataResponse.EmptyBucketCount" -->
     <member name="P:Nest.PostJobDataResponse.InputBytes">
-      <summary>
-            Total input bytes.
-            </summary>
-      <inheritdoc />
+      <summary>Total input bytes.</summary>
     </member>
     <member name="P:Nest.PostJobDataResponse.InputFieldCount">
-      <summary>
-            The count of input fields.
-            </summary>
-      <inheritdoc />
+      <summary> The count of input fields. </summary>
     </member>
     <member name="P:Nest.PostJobDataResponse.InputRecordCount">
-      <summary>
-            The count of input records.
-            </summary>
-      <inheritdoc />
+      <summary> The count of input records. </summary>
     </member>
     <member name="P:Nest.PostJobDataResponse.InvalidDateCount">
-      <summary>
-            The count of invalid dates.
-            </summary>
-      <inheritdoc />
+      <summary> The count of invalid dates. </summary>
     </member>
     <member name="P:Nest.PostJobDataResponse.JobId">
-      <summary>
-            The unique identifier for the job.
-            </summary>
-      <inheritdoc />
+      <summary>The unique identifier for the job.</summary>
     </member>
     <member name="P:Nest.PostJobDataResponse.LastDataTime">
-      <summary>
-            The time of the last data item.
-            </summary>
-      <inheritdoc />
+      <summary> The time of the last data item. </summary>
     </member>
     <member name="P:Nest.PostJobDataResponse.LatestRecordTimestamp">
-      <summary>
-            The latest record timestamp
-            </summary>
-      <inheritdoc />
+      <summary> The latest record timestamp </summary>
     </member>
     <member name="P:Nest.PostJobDataResponse.MissingFieldCount">
-      <summary>
-            The count of missing fields.
-            </summary>
-      <inheritdoc />
+      <summary> The count of missing fields. </summary>
     </member>
     <member name="P:Nest.PostJobDataResponse.OutOfOrderTimestampCount">
       <summary>
             The count of out of order timestamps.
             </summary>
-      <inheritdoc />
     </member>
     <member name="P:Nest.PostJobDataResponse.ProcessedFieldCount">
-      <summary>
-            The count of processed fields.
-            </summary>
-      <inheritdoc />
+      <summary> The count of processed fields. </summary>
     </member>
     <member name="P:Nest.PostJobDataResponse.ProcessedRecordCount">
-      <summary>
-            The count of processed records.
-            </summary>
-      <inheritdoc />
+      <summary> The count of processed records. </summary>
     </member>
     <member name="P:Nest.PostJobDataResponse.SparseBucketCount">
-      <summary>
-            The count of sparse buckets.
-            </summary>
-      <inheritdoc />
+      <summary> The count of sparse buckets. </summary>
     </member>
     <member name="T:Nest.PreviewDatafeedRequest">
       <inheritdoc />
@@ -43897,13 +44294,8 @@
     <member name="M:Nest.PutCalendarJobDescriptor.#ctor">
       <summary>Used for serialization purposes, making sure we have a parameterless constructor</summary>
     </member>
-    <member name="T:Nest.IPutCalendarJobResponse">
-      <summary>
-            The response from creating a calendar job.
-            </summary>
-    </member>
     <member name="T:Nest.PutCalendarJobResponse">
-      <inheritdoc cref="T:Nest.IPutCalendarJobResponse" />
+      <summary> The response from creating a calendar job. </summary>
     </member>
     <member name="T:Nest.IPutCalendarRequest">
       <summary>
@@ -43948,13 +44340,8 @@
     <member name="M:Nest.PutCalendarDescriptor.#ctor">
       <summary>Used for serialization purposes, making sure we have a parameterless constructor</summary>
     </member>
-    <member name="T:Nest.IPutCalendarResponse">
-      <summary>
-            The response from creating a calendar.
-            </summary>
-    </member>
     <member name="T:Nest.PutCalendarResponse">
-      <inheritdoc cref="T:Nest.IPutCalendarResponse" />
+      <summary> The response from creating a calendar.</summary>
     </member>
     <member name="T:Nest.IPutDatafeedRequest">
       <summary>
@@ -44124,86 +44511,17 @@
     <member name="M:Nest.PutDatafeedDescriptor`1.#ctor">
       <summary>Used for serialization purposes, making sure we have a parameterless constructor</summary>
     </member>
-    <member name="T:Nest.IPutDatafeedResponse">
-      <summary>
-            The response from creating a datafeed.
-            </summary>
-    </member>
-    <member name="P:Nest.IPutDatafeedResponse.Aggregations">
-      <summary>
-            The aggregation searches to perform for the datafeed.
-            </summary>
-    </member>
-    <member name="P:Nest.IPutDatafeedResponse.ChunkingConfig">
-      <summary>
-            Specifies how data searches are split into time chunks.
-            </summary>
-    </member>
-    <member name="P:Nest.IPutDatafeedResponse.DatafeedId">
-      <summary>
-            The datafeed id.
-            </summary>
-    </member>
-    <member name="P:Nest.IPutDatafeedResponse.Frequency">
-      <summary>
-            The interval at which scheduled queries are made while the datafeed runs in real time.
-            The default value is either the bucket span for short bucket spans, or, for longer bucket spans,
-            a sensible fraction of the bucket span.
-            </summary>
-    </member>
-    <member name="P:Nest.IPutDatafeedResponse.Indices">
-      <summary>
-             A list of index names to search within, wildcards are supported.
-            </summary>
-    </member>
-    <member name="P:Nest.IPutDatafeedResponse.JobId">
-      <summary>
-            A numerical character string that uniquely identifies the job.
-            </summary>
-    </member>
-    <member name="P:Nest.IPutDatafeedResponse.Query">
-      <summary>
-            Describe the query to perform using a query descriptor lambda
-            </summary>
-    </member>
-    <member name="P:Nest.IPutDatafeedResponse.QueryDelay">
-      <summary>
-            The number of seconds behind real time that data is queried.
-            For example, if data from 10:04 a.m. might not be searchable until 10:06 a.m.,
-            set this property to 120 seconds. The default value is 60s.
-            </summary>
-    </member>
-    <member name="P:Nest.IPutDatafeedResponse.ScriptFields">
-      <summary>
-            Specifies scripts that evaluate custom expressions and returns script fields to the datafeed. T
-            The detector configuration in a job can contain functions that use these script fields.
-            </summary>
-    </member>
-    <member name="P:Nest.IPutDatafeedResponse.ScrollSize">
-      <summary>
-            The size parameter that used in searches
-            </summary>
-    </member>
     <member name="T:Nest.PutDatafeedResponse">
-      <inheritdoc />
+      <summary> The response from creating a datafeed. </summary>
     </member>
     <member name="P:Nest.PutDatafeedResponse.Aggregations">
-      <summary>
-            The aggregation searches to perform for the datafeed.
-            </summary>
-      <inheritdoc />
+      <summary> The aggregation searches to perform for the datafeed.</summary>
     </member>
     <member name="P:Nest.PutDatafeedResponse.ChunkingConfig">
-      <summary>
-            Specifies how data searches are split into time chunks.
-            </summary>
-      <inheritdoc />
+      <summary> Specifies how data searches are split into time chunks.</summary>
     </member>
     <member name="P:Nest.PutDatafeedResponse.DatafeedId">
-      <summary>
-            The datafeed id.
-            </summary>
-      <inheritdoc />
+      <summary>The datafeed id. </summary>
     </member>
     <member name="P:Nest.PutDatafeedResponse.Frequency">
       <summary>
@@ -44211,25 +44529,21 @@
             The default value is either the bucket span for short bucket spans, or, for longer bucket spans,
             a sensible fraction of the bucket span.
             </summary>
-      <inheritdoc />
     </member>
     <member name="P:Nest.PutDatafeedResponse.Indices">
       <summary>
              A list of index names to search within, wildcards are supported.
             </summary>
-      <inheritdoc />
     </member>
     <member name="P:Nest.PutDatafeedResponse.JobId">
       <summary>
             A numerical character string that uniquely identifies the job.
             </summary>
-      <inheritdoc />
     </member>
     <member name="P:Nest.PutDatafeedResponse.Query">
       <summary>
             Describe the query to perform using a query descriptor lambda
             </summary>
-      <inheritdoc />
     </member>
     <member name="P:Nest.PutDatafeedResponse.QueryDelay">
       <summary>
@@ -44237,20 +44551,15 @@
             For example, if data from 10:04 a.m. might not be searchable until 10:06 a.m.,
             set this property to 120 seconds. The default value is 60s.
             </summary>
-      <inheritdoc />
     </member>
     <member name="P:Nest.PutDatafeedResponse.ScriptFields">
       <summary>
             Specifies scripts that evaluate custom expressions and returns script fields to the datafeed. T
             The detector configuration in a job can contain functions that use these script fields.
             </summary>
-      <inheritdoc />
     </member>
     <member name="P:Nest.PutDatafeedResponse.ScrollSize">
-      <summary>
-            The size parameter that used in searches
-            </summary>
-      <inheritdoc />
+      <summary> The size parameter that used in searches </summary>
     </member>
     <member name="T:Nest.IPutJobRequest">
       <summary>
@@ -44386,105 +44695,15 @@
     <member name="M:Nest.PutJobDescriptor`1.#ctor">
       <summary>Used for serialization purposes, making sure we have a parameterless constructor</summary>
     </member>
-    <member name="P:Nest.IPutJobResponse.AnalysisConfig">
-      <summary>
-            The analysis configuration, which specifies how to analyze the data.
-            </summary>
-    </member>
-    <member name="P:Nest.IPutJobResponse.AnalysisLimits">
-      <summary>
-            Optionally specifies runtime limits for the job.
-            </summary>
-    </member>
-    <member name="P:Nest.IPutJobResponse.BackgroundPersistInterval">
-      <summary>
-            Advanced configuration option. The time between each periodic persistence of the model.
-            The default value is a randomized value between 3 to 4 hours, which avoids all jobs persisting
-            at exactly the same time. The smallest allowed value is 1 hour.
-            </summary>
-      <remarks>
-            For very large models (several GB), persistence could take 10-20 minutes,
-            so do not set the background_persist_interval value too low.
-            </remarks>
-    </member>
-    <member name="P:Nest.IPutJobResponse.CreateTime">
-      <summary>
-            The time the job was created.
-            </summary>
-    </member>
-    <member name="P:Nest.IPutJobResponse.DataDescription">
-      <summary>
-            Describes the format of the input data. This object is required, but it can be empty.
-            </summary>
-    </member>
-    <member name="P:Nest.IPutJobResponse.Description">
-      <summary>
-            An optional description of the job.
-            </summary>
-    </member>
-    <member name="P:Nest.IPutJobResponse.JobId">
-      <summary>
-            The unique identifier for the job.
-            </summary>
-    </member>
-    <member name="P:Nest.IPutJobResponse.JobType">
-      <summary>
-            The job type.
-            </summary>
-      <remarks>
-            Reserved for future use.
-            </remarks>
-    </member>
-    <member name="P:Nest.IPutJobResponse.ModelPlotConfig">
-      <summary>
-            This advanced configuration option stores model information along with the results.
-            This adds overhead to the performance of the system and is not feasible for jobs with many entities
-            </summary>
-    </member>
-    <member name="P:Nest.IPutJobResponse.ModelSnapshotId">
-      <summary>
-            A numerical character string that uniquely identifies the model snapshot.
-            </summary>
-    </member>
-    <member name="P:Nest.IPutJobResponse.ModelSnapshotRetentionDays">
-      <summary>
-            The time in days that model snapshots are retained for the job.
-            Older snapshots are deleted. The default value is 1 day.
-            </summary>
-    </member>
-    <member name="P:Nest.IPutJobResponse.RenormalizationWindowDays">
-      <summary>
-            Advanced configuration option. The period over which adjustments to the score are applied, as new data
-            is seen. The default value is the longer of 30 days or 100 bucket_spans.
-            </summary>
-    </member>
-    <member name="P:Nest.IPutJobResponse.ResultsIndexName">
-      <summary>
-            The name of the index in which to store the machine learning results.
-            The default value is shared, which corresponds to the index name .ml-anomalies-shared.
-            </summary>
-    </member>
-    <member name="P:Nest.IPutJobResponse.ResultsRetentionDays">
-      <summary>
-            Advanced configuration option. The number of days for which job results are retained.
-            Once per day at 00:30 (server time), results older than this period are deleted from Elasticsearch.
-            The default value is null, which means results are retained.
-            </summary>
-    </member>
-    <member name="T:Nest.PutJobResponse">
-      <inheritdoc />
-    </member>
     <member name="P:Nest.PutJobResponse.AnalysisConfig">
       <summary>
             The analysis configuration, which specifies how to analyze the data.
             </summary>
-      <inheritdoc />
     </member>
     <member name="P:Nest.PutJobResponse.AnalysisLimits">
       <summary>
             Optionally specifies runtime limits for the job.
             </summary>
-      <inheritdoc />
     </member>
     <member name="P:Nest.PutJobResponse.BackgroundPersistInterval">
       <summary>
@@ -44496,31 +44715,26 @@
             For very large models (several GB), persistence could take 10-20 minutes,
             so do not set the background_persist_interval value too low.
             </remarks>
-      <inheritdoc />
     </member>
     <member name="P:Nest.PutJobResponse.CreateTime">
       <summary>
             The time the job was created.
             </summary>
-      <inheritdoc />
     </member>
     <member name="P:Nest.PutJobResponse.DataDescription">
       <summary>
             Describes the format of the input data. This object is required, but it can be empty.
             </summary>
-      <inheritdoc />
     </member>
     <member name="P:Nest.PutJobResponse.Description">
       <summary>
             An optional description of the job.
             </summary>
-      <inheritdoc />
     </member>
     <member name="P:Nest.PutJobResponse.JobId">
       <summary>
             The unique identifier for the job.
             </summary>
-      <inheritdoc />
     </member>
     <member name="P:Nest.PutJobResponse.JobType">
       <summary>
@@ -44529,41 +44743,35 @@
       <remarks>
             Reserved for future use.
             </remarks>
-      <inheritdoc />
     </member>
     <member name="P:Nest.PutJobResponse.ModelPlotConfig">
       <summary>
             This advanced configuration option stores model information along with the results.
             This adds overhead to the performance of the system and is not feasible for jobs with many entities
             </summary>
-      <inheritdoc />
     </member>
     <member name="P:Nest.PutJobResponse.ModelSnapshotId">
       <summary>
             A numerical character string that uniquely identifies the model snapshot.
             </summary>
-      <inheritdoc />
     </member>
     <member name="P:Nest.PutJobResponse.ModelSnapshotRetentionDays">
       <summary>
             The time in days that model snapshots are retained for the job.
             Older snapshots are deleted. The default value is 1 day.
             </summary>
-      <inheritdoc />
     </member>
     <member name="P:Nest.PutJobResponse.RenormalizationWindowDays">
       <summary>
             Advanced configuration option. The period over which adjustments to the score are applied, as new data
             is seen. The default value is the longer of 30 days or 100 bucket_spans.
             </summary>
-      <inheritdoc />
     </member>
     <member name="P:Nest.PutJobResponse.ResultsIndexName">
       <summary>
             The name of the index in which to store the machine learning results.
             The default value is shared, which corresponds to the index name .ml-anomalies-shared.
             </summary>
-      <inheritdoc />
     </member>
     <member name="P:Nest.PutJobResponse.ResultsRetentionDays">
       <summary>
@@ -44571,7 +44779,6 @@
             Once per day at 00:30 (server time), results older than this period are deleted from Elasticsearch.
             The default value is null, which means results are retained.
             </summary>
-      <inheritdoc />
     </member>
     <member name="T:Nest.IRevertModelSnapshotRequest">
       <summary>
@@ -44924,60 +45131,60 @@
     <member name="M:Nest.UpdateDatafeedDescriptor`1.#ctor">
       <summary>Used for serialization purposes, making sure we have a parameterless constructor</summary>
     </member>
-    <member name="T:Nest.IUpdateDatafeedResponse">
+    <member name="T:Nest.UpdateDatafeedResponse">
       <summary>
             The response from updating a datafeed
             </summary>
     </member>
-    <member name="P:Nest.IUpdateDatafeedResponse.Aggregations">
+    <member name="P:Nest.UpdateDatafeedResponse.Aggregations">
       <summary>
             The aggregation searches to perform for the datafeed.
             </summary>
     </member>
-    <member name="P:Nest.IUpdateDatafeedResponse.ChunkingConfig">
+    <member name="P:Nest.UpdateDatafeedResponse.ChunkingConfig">
       <summary>
             Specifies how data searches are split into time chunks.
             </summary>
     </member>
-    <member name="P:Nest.IUpdateDatafeedResponse.DatafeedId">
+    <member name="P:Nest.UpdateDatafeedResponse.DatafeedId">
       <summary>
             The datafeed id.
             </summary>
     </member>
-    <member name="P:Nest.IUpdateDatafeedResponse.Frequency">
+    <member name="P:Nest.UpdateDatafeedResponse.Frequency">
       <summary>
             The interval at which scheduled queries are made while the datafeed runs in real time.
             The default value is either the bucket span for short bucket spans, or, for longer bucket spans,
             a sensible fraction of the bucket span.
             </summary>
     </member>
-    <member name="P:Nest.IUpdateDatafeedResponse.Indices">
+    <member name="P:Nest.UpdateDatafeedResponse.Indices">
       <summary>A list of index names to search within, wildcards are supported.</summary>
     </member>
-    <member name="P:Nest.IUpdateDatafeedResponse.JobId">
+    <member name="P:Nest.UpdateDatafeedResponse.JobId">
       <summary>
             A numerical character string that uniquely identifies the job.
             </summary>
     </member>
-    <member name="P:Nest.IUpdateDatafeedResponse.Query">
+    <member name="P:Nest.UpdateDatafeedResponse.Query">
       <summary>
             Describe the query to perform using a query descriptor lambda
             </summary>
     </member>
-    <member name="P:Nest.IUpdateDatafeedResponse.QueryDelay">
+    <member name="P:Nest.UpdateDatafeedResponse.QueryDelay">
       <summary>
             The number of seconds behind real time that data is queried.
             For example, if data from 10:04 a.m. might not be searchable until 10:06 a.m.,
             set this property to 120 seconds. The default value is 60s.
             </summary>
     </member>
-    <member name="P:Nest.IUpdateDatafeedResponse.ScriptFields">
+    <member name="P:Nest.UpdateDatafeedResponse.ScriptFields">
       <summary>
             Specifies scripts that evaluate custom expressions and returns script fields to the datafeed.
             The detector configuration in a job can contain functions that use these script fields.
             </summary>
     </member>
-    <member name="P:Nest.IUpdateDatafeedResponse.ScrollSize">
+    <member name="P:Nest.UpdateDatafeedResponse.ScrollSize">
       <summary>
             The size parameter that is used in Elasticsearch searches
             </summary>
@@ -45304,14 +45511,10 @@
       <summary>a shortcut into calling Index(typeof(TOther))</summary>
     </member>
     <member name="T:Nest.DeprecationWarningLevel">
-      <summary>
-            The deprecation warning level
-            </summary>
+      <summary> The deprecation warning level</summary>
     </member>
     <member name="F:Nest.DeprecationWarningLevel.None">
-      <summary>
-            Everything is good
-            </summary>
+      <summary> Everything is good </summary>
     </member>
     <member name="F:Nest.DeprecationWarningLevel.Information">
       <summary>
@@ -45325,9 +45528,7 @@
             </summary>
     </member>
     <member name="F:Nest.DeprecationWarningLevel.Critical">
-      <summary>
-            You cannot upgrade without fixing this problem.
-            </summary>
+      <summary> You cannot upgrade without fixing this problem.</summary>
     </member>
     <member name="T:Nest.DeprecationInfo">
       <summary>
@@ -45416,7 +45617,7 @@
     <member name="M:Nest.MigrationUpgradeDescriptor.WaitForCompletion(System.Nullable{System.Boolean})">
       <summary>Should the request block until the upgrade operation is completed</summary>
     </member>
-    <member name="P:Nest.IMigrationUpgradeResponse.Task">
+    <member name="P:Nest.MigrationUpgradeResponse.Task">
       <summary>
             The id of the task if <see cref="P:Elasticsearch.Net.MigrationUpgradeRequestParameters.WaitForCompletion" />
             is set to <c>false</c> on the request
@@ -45693,10 +45894,7 @@
             </summary>
       <inheritdoc cref="P:Nest.IDateHistogramRollupGrouping.Field" />
     </member>
-    <member name="M:Nest.DateHistogramRollupGroupingDescriptor`1.Field(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
-      <summary>
-            The date field that is to be rolled up
-            </summary>
+    <member name="M:Nest.DateHistogramRollupGroupingDescriptor`1.Field``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
       <inheritdoc cref="P:Nest.IDateHistogramRollupGrouping.Field" />
     </member>
     <member name="M:Nest.DateHistogramRollupGroupingDescriptor`1.Interval(Nest.Time)">
@@ -47144,38 +47342,17 @@
     <member name="M:Nest.QuerySqlDescriptor.Format(System.String)">
       <summary>a short version of the Accept header, e.g. json, yaml</summary>
     </member>
-    <member name="P:Nest.IQuerySqlResponse.Columns">
-      <summary>
-            Describes the columns being returned, this property will only be set on the first page of results.
-            </summary>
-    </member>
-    <member name="P:Nest.IQuerySqlResponse.Cursor">
-      <summary>
-        <para>
-            You’ve reached the last page when there is no cursor returned in the results. Like Elasticsearch’s scroll,
-            SQL may keep state in Elasticsearch to support the cursor.
-            Unlike scroll, receiving the last page is enough to guarantee that the Elasticsearch state is cleared.
-            </para>
-      </summary>
-    </member>
     <member name="P:Nest.QuerySqlResponse.Columns">
       <summary>
             Describes the columns being returned, this property will only be set on the first page of results.
             </summary>
-      <inheritdoc cref="P:Nest.IQuerySqlResponse.Columns" />
     </member>
     <member name="P:Nest.QuerySqlResponse.Cursor">
       <summary>
-        <para>
             You’ve reached the last page when there is no cursor returned in the results. Like Elasticsearch’s scroll,
             SQL may keep state in Elasticsearch to support the cursor.
             Unlike scroll, receiving the last page is enough to guarantee that the Elasticsearch state is cleared.
-            </para>
-      </summary>
-      <inheritdoc cref="P:Nest.IQuerySqlResponse.Cursor" />
-    </member>
-    <member name="P:Nest.QuerySqlResponse.Rows">
-      <inheritdoc cref="P:Nest.IQuerySqlResponse.Rows" />
+            </summary>
     </member>
     <member name="T:Nest.TranslateSqlRequest">
       <summary>Request parameters for SqlTranslate <pre>Translate SQL into Elasticsearch queries</pre></summary>
@@ -48193,7 +48370,7 @@
     <member name="P:Nest.PutWatchRequest.Version">
       <summary>Explicit version number for concurrency control</summary>
     </member>
-    <member name="P:Nest.PutWatchRequest.IfSeqNo">
+    <member name="P:Nest.PutWatchRequest.IfSequenceNumber">
       <summary>only update the watch if the last operation that has changed the watch has the specified sequence number</summary>
     </member>
     <member name="P:Nest.PutWatchRequest.IfPrimaryTerm">
@@ -48267,7 +48444,7 @@
     <member name="M:Nest.PutWatchDescriptor.Version(System.Nullable{System.Int64})">
       <summary>Explicit version number for concurrency control</summary>
     </member>
-    <member name="M:Nest.PutWatchDescriptor.IfSeqNo(System.Nullable{System.Int64})">
+    <member name="M:Nest.PutWatchDescriptor.IfSequenceNumber(System.Nullable{System.Int64})">
       <summary>only update the watch if the last operation that has changed the watch has the specified sequence number</summary>
     </member>
     <member name="M:Nest.PutWatchDescriptor.IfPrimaryTerm(System.Nullable{System.Int64})">
@@ -48429,7 +48606,7 @@
     <member name="P:Nest.IndexRequest.VersionType">
       <summary>Specific version type</summary>
     </member>
-    <member name="P:Nest.IndexRequest.IfSeqNo">
+    <member name="P:Nest.IndexRequest.IfSequenceNumber">
       <summary>only perform the index operation if the last operation that has changed the document has the specified sequence number</summary>
     </member>
     <member name="P:Nest.IndexRequest.IfPrimaryTerm">
@@ -48531,7 +48708,7 @@
     <member name="P:Nest.UpdateRequest.Timeout">
       <summary>Explicit operation timeout</summary>
     </member>
-    <member name="P:Nest.UpdateRequest.IfSeqNo">
+    <member name="P:Nest.UpdateRequest.IfSequenceNumber">
       <summary>only perform the update operation if the last operation that has changed the document has the specified sequence number</summary>
     </member>
     <member name="P:Nest.UpdateRequest.IfPrimaryTerm">

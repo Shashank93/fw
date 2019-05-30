@@ -298,11 +298,11 @@ namespace Mongo_Elastic_POC
                     {
                         dynamic nestedUsrFields = value;
                         List<UserDefinedField> lstusrdef = new List<UserDefinedField>();
-
                         try
                         {
                             foreach (KeyValuePair<string, object> nestedData in nestedUsrFields)
                             {
+                                List<UserDefinedField> todofld = new List<UserDefinedField>();
 
                                 string nestedPropertyName = nestedData.Key;
                                 string nestedValue = Convert.ToString(nestedData.Value);
@@ -310,9 +310,36 @@ namespace Mongo_Elastic_POC
                                 usrFld.Name = nestedPropertyName;
                                 usrFld.Value = nestedValue;
 
+                                //string[] article = { "the", "a", "one", "some", "any", };
+                                //string[] noun = { "boy", "girl", "dog", "town", "car", };
+                                //string[] verb = { "drove", "jumped", "ran", "walked", "skipped", };
+                                //string[] preposition = { "to", "from", "over", "under", "on", };
+
+                                //Random rndarticle = new Random();
+                                //Random rndnoun = new Random();
+                                //Random rndverb = new Random();
+                                //Random rndpreposition = new Random();
+
+                                //int randomarticle = rndarticle.Next(article.Length);
+                                //int randomnoun = rndnoun.Next(noun.Length);
+                                //int randomverb = rndverb.Next(verb.Length);
+                                //int randompreposition = rndpreposition.Next(preposition.Length);
+
+                                //UserDefinedField todoadd1 = new UserDefinedField();
+                                //todoadd1.Name = string.Format("{0} {1}", article[randomarticle], noun[randomnoun]);
+                                //todoadd1.Value = string.Format("{0} {1}", verb[randomarticle], preposition[randomnoun]);
+
+                                //UserDefinedField todoadd2 = new UserDefinedField();
+                                //todoadd2.Name = string.Format("{0} {1}", verb[randomarticle], noun[randomnoun]);
+                                //todoadd2.Value = string.Format("{0} {1}", verb[randomarticle], article[randomnoun]);
+
+                                //todofld.Add(todoadd2);
+                                //todofld.Add(todoadd1);
+
+                                //usrFld.ToDoItems = todofld;
 
                                 allUsrDefField.Add(usrFld);
-                                
+
 
                                 lstusrdef.Add(usrFld);
                                 //dctUsrDefFields.Add(nestedPropertyName, Convert.ToString(nestedValue));
@@ -329,72 +356,15 @@ namespace Mongo_Elastic_POC
                 lstElstModel.Add(srcModel);
             }
 
-         //   //elastic search connection
-         //   EsNode = new Uri("http://localhost:9200/");
-         //   EsConfig = new ConnectionSettings(EsNode);
-         //   EsClient = new ElasticClient(EsConfig);
-         //   //var settings = new IndexSettings { NumberOfReplicas = 0, NumberOfShards = 0 };
-
-         //   //var indexConfig = new IndexState
-         //   //{
-         //   //    Settings = settings
-         //   //};
+            //   //elastic search connection
+            EsNode = new Uri("http://localhost:9200/");
+            EsConfig = new ConnectionSettings(EsNode).DefaultIndex("searchdbtest"); ;
+            EsClient = new ElasticClient(EsConfig);
+            var settings = new IndexSettings { NumberOfReplicas = 1, NumberOfShards = 2 };
 
 
-         //   //SAVE TAG PREFERENCES
-         //   EsClient.CreateIndex("tagpreferences", c => c
-         //.Mappings(m => m.Map<UserDefinedField>(mp => mp.AutoMap())));
-         //   //can cancel the operation by calling .Cancel() on this
-         //   var cancellationTokenSourcePref = new CancellationTokenSource();
 
-         //   // set up the bulk all observable
-         //   var bulkAllObservablePref = EsClient.BulkAll(allUsrDefField, ba => ba
-         //       // number of concurrent requests
-         //       .MaxDegreeOfParallelism(8)
-         //       // in case of 429 response, how long we should wait before retrying
-         //       .BackOffTime(TimeSpan.FromSeconds(5))
-         //       // in case of 429 response, how many times to retry before failing
-         //       .BackOffRetries(2)
-         //       // number of documents to send in each request
-         //       .Size(500)
-         //       .Index("tagpreferences")
-         //       .RefreshOnCompleted(),
-         //       cancellationTokenSourcePref.Token
-         //   );
-
-         //   var waitHandlePref = new ManualResetEvent(false);
-         //   Exception exPref = null;
-
-         //   // what to do on each call, when an exception is thrown, and 
-         //   // when the bulk all completes
-         //   var bulkAllObserverPref = new BulkAllObserver(
-         //       onNext: bulkAllResponse =>
-         //       {
-         //           // do something after each bulk request
-         //       },
-         //       onError: exception =>
-         //       {
-         //           // do something with exception thrown
-         //           exPref = exception;
-         //           waitHandlePref.Set();
-         //       },
-         //       onCompleted: () =>
-         //       {
-         //           // do something when all bulk operations complete
-         //           waitHandlePref.Set();
-         //       });
-
-         //   bulkAllObservablePref.Subscribe(bulkAllObserverPref);
-
-         //   // wait for handle to be set.
-         //   waitHandlePref.WaitOne();
-
-         //   if (exPref != null)
-         //   {
-         //       throw exPref;
-         //   }
-
-            EsClient.CreateIndex("searchdb", c => c
+            EsClient.CreateIndex("searchdbtest", c => c
          .Mappings(m => m.Map<SearchModel>(mp => mp.AutoMap())));
             //can cancel the operation by calling .Cancel() on this
             var cancellationTokenSource = new CancellationTokenSource();
@@ -409,7 +379,7 @@ namespace Mongo_Elastic_POC
                 .BackOffRetries(2)
                 // number of documents to send in each request
                 .Size(500)
-                .Index("searchdb")
+                .Index("searchdbtest")
                 .RefreshOnCompleted(),
                 cancellationTokenSource.Token
             );
@@ -445,7 +415,6 @@ namespace Mongo_Elastic_POC
             {
                 throw ex;
             }
-
 
         }
 

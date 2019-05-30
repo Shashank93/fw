@@ -1663,7 +1663,7 @@
     <member name="P:Elasticsearch.Net.DeleteRequestParameters.Timeout">
       <summary>Explicit operation timeout</summary>
     </member>
-    <member name="P:Elasticsearch.Net.DeleteRequestParameters.IfSeqNo">
+    <member name="P:Elasticsearch.Net.DeleteRequestParameters.IfSequenceNumber">
       <summary>only perform the delete operation if the last operation that has changed the document has the specified sequence number</summary>
     </member>
     <member name="P:Elasticsearch.Net.DeleteRequestParameters.IfPrimaryTerm">
@@ -2014,7 +2014,7 @@
     <member name="P:Elasticsearch.Net.IndexRequestParameters.VersionType">
       <summary>Specific version type</summary>
     </member>
-    <member name="P:Elasticsearch.Net.IndexRequestParameters.IfSeqNo">
+    <member name="P:Elasticsearch.Net.IndexRequestParameters.IfSequenceNumber">
       <summary>only perform the index operation if the last operation that has changed the document has the specified sequence number</summary>
     </member>
     <member name="P:Elasticsearch.Net.IndexRequestParameters.IfPrimaryTerm">
@@ -3079,7 +3079,7 @@
     <member name="P:Elasticsearch.Net.SearchRequestParameters.TypedKeys">
       <summary>Specify whether aggregation and suggester names should be prefixed by their respective types in the response</summary>
     </member>
-    <member name="P:Elasticsearch.Net.SearchRequestParameters.SeqNoPrimaryTerm">
+    <member name="P:Elasticsearch.Net.SearchRequestParameters.SequenceNumberPrimaryTerm">
       <summary>Specify whether to return sequence number and primary term of the last modification of each hit</summary>
     </member>
     <member name="P:Elasticsearch.Net.SearchRequestParameters.RequestCache">
@@ -3379,7 +3379,7 @@
     <member name="P:Elasticsearch.Net.UpdateRequestParameters.Timeout">
       <summary>Explicit operation timeout</summary>
     </member>
-    <member name="P:Elasticsearch.Net.UpdateRequestParameters.IfSeqNo">
+    <member name="P:Elasticsearch.Net.UpdateRequestParameters.IfSequenceNumber">
       <summary>only perform the update operation if the last operation that has changed the document has the specified sequence number</summary>
     </member>
     <member name="P:Elasticsearch.Net.UpdateRequestParameters.IfPrimaryTerm">
@@ -3996,7 +3996,7 @@
     <member name="P:Elasticsearch.Net.PutWatchRequestParameters.Version">
       <summary>Explicit version number for concurrency control</summary>
     </member>
-    <member name="P:Elasticsearch.Net.PutWatchRequestParameters.IfSeqNo">
+    <member name="P:Elasticsearch.Net.PutWatchRequestParameters.IfSequenceNumber">
       <summary>only update the watch if the last operation that has changed the watch has the specified sequence number</summary>
     </member>
     <member name="P:Elasticsearch.Net.PutWatchRequestParameters.IfPrimaryTerm">
@@ -13651,6 +13651,11 @@
       <summary>
             Sets and returns the <see cref="T:Elasticsearch.Net.IApiCallDetails" /> diagnostic information
             </summary>
+    </member>
+    <member name="P:Elasticsearch.Net.ErrorCause.AdditionalProperties">
+      <summary>
+            Additional properties related to the error cause. Contains properties that
+            are not explicitly mapped on <see cref="T:Elasticsearch.Net.ErrorCause" /></summary>
     </member>
     <!-- Badly formed XML comment ignored for member "T:Elasticsearch.Net.ElasticsearchUrlFormatter" -->
     <member name="M:Elasticsearch.Net.Transport`1.#ctor(`0)">

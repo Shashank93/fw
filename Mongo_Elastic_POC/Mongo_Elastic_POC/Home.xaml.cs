@@ -25,6 +25,8 @@ namespace Mongo_Elastic_POC
             InitializeComponent();
             SearchDb.SetupElasticClient();
             SearchDb.SetupMongoClient();
+            txtDisclaimer.Text = "Test data set details:"+ Environment.NewLine+ "1. 1000 Lumos(same) user belongs to B group and they use the same template." + Environment.NewLine + "2. 1000 diff users belongs to A group and they use same template." + Environment.NewLine + "3. 100000 different users belogns to group D and all of them use different templates.";
+
         }
 
         private void BtnSearch_Click(object sender, RoutedEventArgs e)

@@ -63,6 +63,20 @@ namespace Mongo_Elastic_POC
             //TEST ELASTIC CLIENT
             //ADD FILTERS
             QueryContainer searchQueryBulder = null;
+
+            //var searchQID = EsClient.Search<string>(sd => sd
+            //         .Index("searchdbtest")
+            //         .Size(2000000)
+            //         .Query(q => q
+            //            .Match(m => m.Field("userdefinedfields.todoitems.name").Query("drove by")
+            //            )));
+
+            //using (var ms1 = new MemoryStream())
+            //{
+            //    EsClient.SourceSerializer.Serialize(req1, ms1, Elasticsearch.Net.SerializationFormatting.Indented);
+            //    string jsonQuery1 = Encoding.UTF8.GetString(ms1.ToArray());
+            //};
+
             List<QueryContainer> lstSearchFieldQuery = new List<QueryContainer>();
             List<QueryContainer> lstFilterQuery = new List<QueryContainer>();
 
@@ -77,8 +91,6 @@ namespace Mongo_Elastic_POC
                 lstFilterQuery.Add(filterQueryBulder);
 
             }
-
-          
 
             foreach (var tgStr in tagStrings)
             {
@@ -96,13 +108,13 @@ namespace Mongo_Elastic_POC
                     Value = "*" + tgStr.Value.ToLower() + "*"
                 };
 
-                searchQueryBulder&= new NestedQuery
+                searchQueryBulder &= new NestedQuery
                 {
                     Path = "userdefinedfields",
                     Query = nestQuery,
                     IgnoreUnmapped = true
                 };
-               
+
             }
 
             foreach (var lkStr in likeStrings)

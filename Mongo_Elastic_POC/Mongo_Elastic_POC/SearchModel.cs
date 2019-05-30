@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Mongo_Elastic_POC
 {
     [BsonIgnoreExtraElements]
-    public class SearchModel
+    public class SearchModel:Document
     {
         
         [Keyword]
@@ -18,10 +18,12 @@ namespace Mongo_Elastic_POC
         [Keyword]
         [PropertyName("selectedgroup")]
         public string SelectedGroup { get; set; }
+        [Date]
         [PropertyName("expcreateddate")]
         public DateTime ExpCreatedDate { get; set; }
         [PropertyName("expcreatedtime")]
         public string ExpCreatedTime { get; set; }
+        [Keyword]
         [PropertyName("experimentid")]
         public string ExpId { get; set; }
         [Nested]
