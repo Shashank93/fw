@@ -134,6 +134,8 @@ E:\SourceCode\Mongo_Elastic_POC\Mongo_Elastic_POC\obj\Debug\Mongo_Elastic_POC.cs
 E:\SourceCode\Mongo_Elastic_POC\Mongo_Elastic_POC\obj\Debug\Mongo_Elastic_POC.csproj.CopyComplete
 E:\SourceCode\Mongo_Elastic_POC\Mongo_Elastic_POC\obj\Debug\Mongo_Elastic_POC.exe
 E:\SourceCode\Mongo_Elastic_POC\Mongo_Elastic_POC\obj\Debug\Mongo_Elastic_POC.pdb
+<<<<<<< HEAD
+=======
 C:\Users\shashank kushwaha\Documents\GitHub\fw\Mongo_Elastic_POC\Mongo_Elastic_POC\bin\Debug\Mongo_Elastic_POC.exe.config
 C:\Users\shashank kushwaha\Documents\GitHub\fw\Mongo_Elastic_POC\Mongo_Elastic_POC\bin\Debug\Mongo_Elastic_POC.exe
 C:\Users\shashank kushwaha\Documents\GitHub\fw\Mongo_Elastic_POC\Mongo_Elastic_POC\bin\Debug\Mongo_Elastic_POC.pdb
@@ -267,3 +269,4 @@ C:\Users\shashank kushwaha\Documents\GitHub\fw\Mongo_Elastic_POC\Mongo_Elastic_P
 C:\Users\shashank kushwaha\Documents\GitHub\fw\Mongo_Elastic_POC\Mongo_Elastic_POC\obj\Debug\Mongo_Elastic_POC.csproj.CopyComplete
 C:\Users\shashank kushwaha\Documents\GitHub\fw\Mongo_Elastic_POC\Mongo_Elastic_POC\obj\Debug\Mongo_Elastic_POC.exe
 C:\Users\shashank kushwaha\Documents\GitHub\fw\Mongo_Elastic_POC\Mongo_Elastic_POC\obj\Debug\Mongo_Elastic_POC.pdb
+>>>>>>> 5123f669218c1610d1f1da77674a140802aaf8cd
