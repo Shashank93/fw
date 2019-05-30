@@ -123,7 +123,7 @@ namespace Mongo_Elastic_POC
             //};
 
             
-            var watch1 = System.Diagnostics.Stopwatch.StartNew();
+            
             var searchResponse = EsClient.Search<SearchModel>(new SearchRequest<SearchModel>
             {
                 Source = new SourceFilter
@@ -133,9 +133,7 @@ namespace Mongo_Elastic_POC
                 Query = searchQueryBulder
             });
             //using the object initializer syntax
-
-            watch1.Stop();
-            var elapsedMs1 = watch1.ElapsedMilliseconds;
+            
             var rslt = new List<string>();
             foreach (var fieldValues in searchResponse.Documents)
             {
@@ -143,7 +141,7 @@ namespace Mongo_Elastic_POC
             }
 
             Result rst = new Result();
-            rst.TimeTaken = elapsedMs1;
+            rst.TimeTaken = searchResponse.Took; 
             rst.ExperimentIds = rslt;
             return rst;
         }
