@@ -41,8 +41,8 @@ namespace Mongo_Elastic_POC
         {
             InitializeComponent();
             //FeedData();
-            //var externalDataMongoToElasticTransfer = GetAllExternalDataFromMongo();
-            //PostExternalDataToElastic(externalDataMongoToElasticTransfer);
+            var externalDataMongoToElasticTransfer = GetAllExternalDataFromMongo();
+            PostExternalDataToElastic(externalDataMongoToElasticTransfer);
 
             //for exact match strings  ---MONGO DB
             Dictionary<string, string> searchStrings = new Dictionary<string, string>();
@@ -58,19 +58,19 @@ namespace Mongo_Elastic_POC
             //for tag strings
             Dictionary<string, string> tagStrings = new Dictionary<string, string>();
             tagStrings.Add("tag1099954", "SPUNGOB");
-            
+
             SearchData(searchStrings, likeStrings, tagStrings);
 
 
         }
-        
+
         /// <summary>
         /// MAIN METHOD FOR EXPERIMENT
         /// </summary>
         public void SearchData(Dictionary<string, string> searchStrings, Dictionary<string, string> likeStrings, Dictionary<string, string> tagStrings)
         {
-           var mgResult = MongoSearch(searchStrings, likeStrings, tagStrings);
-           var elResult = ElasticSearch(searchStrings, likeStrings, tagStrings);
+            var mgResult = MongoSearch(searchStrings, likeStrings, tagStrings);
+            var elResult = ElasticSearch(searchStrings, likeStrings, tagStrings);
         }
 
         public static Result ElasticSearch(Dictionary<string, string> searchStrings, Dictionary<string, string> likeStrings, Dictionary<string, string> tagStrings)
@@ -257,11 +257,11 @@ namespace Mongo_Elastic_POC
         {
             return obj.GetType().GetProperties();
         }
-        
+
         public void PostExternalDataToElastic(List<dynamic> srcDta)
         {
 
-
+            List<UserDefinedField> allUsrDefField = new List<UserDefinedField>();
             List<SearchModel> lstElstModel = new List<SearchModel>();
             //CREATE MODEL FOR ELASTIC DATA 
             foreach (var data in srcDta)
@@ -284,7 +284,7 @@ namespace Mongo_Elastic_POC
                     }
                     else if (propertyName.ToLower() == "expcreateddate")
                     {
-                        srcModel.ExpCreatedDate = Convert.ToString(value);
+                        srcModel.ExpCreatedDate = Convert.ToDateTime(value);
                     }
                     else if (propertyName.ToLower() == "expcreatedtime")
                     {
@@ -309,6 +309,11 @@ namespace Mongo_Elastic_POC
                                 UserDefinedField usrFld = new UserDefinedField();
                                 usrFld.Name = nestedPropertyName;
                                 usrFld.Value = nestedValue;
+
+
+                                allUsrDefField.Add(usrFld);
+                                
+
                                 lstusrdef.Add(usrFld);
                                 //dctUsrDefFields.Add(nestedPropertyName, Convert.ToString(nestedValue));
                             }
@@ -324,17 +329,70 @@ namespace Mongo_Elastic_POC
                 lstElstModel.Add(srcModel);
             }
 
-            //elastic search connection
-            EsNode = new Uri("http://localhost:9200/");
-            EsConfig = new ConnectionSettings(EsNode);
-            EsClient = new ElasticClient(EsConfig);
-            var settings = new IndexSettings { NumberOfReplicas = 1, NumberOfShards = 2 };
+         //   //elastic search connection
+         //   EsNode = new Uri("http://localhost:9200/");
+         //   EsConfig = new ConnectionSettings(EsNode);
+         //   EsClient = new ElasticClient(EsConfig);
+         //   //var settings = new IndexSettings { NumberOfReplicas = 0, NumberOfShards = 0 };
 
-            var indexConfig = new IndexState
-            {
-                Settings = settings
-            };
+         //   //var indexConfig = new IndexState
+         //   //{
+         //   //    Settings = settings
+         //   //};
 
+
+         //   //SAVE TAG PREFERENCES
+         //   EsClient.CreateIndex("tagpreferences", c => c
+         //.Mappings(m => m.Map<UserDefinedField>(mp => mp.AutoMap())));
+         //   //can cancel the operation by calling .Cancel() on this
+         //   var cancellationTokenSourcePref = new CancellationTokenSource();
+
+         //   // set up the bulk all observable
+         //   var bulkAllObservablePref = EsClient.BulkAll(allUsrDefField, ba => ba
+         //       // number of concurrent requests
+         //       .MaxDegreeOfParallelism(8)
+         //       // in case of 429 response, how long we should wait before retrying
+         //       .BackOffTime(TimeSpan.FromSeconds(5))
+         //       // in case of 429 response, how many times to retry before failing
+         //       .BackOffRetries(2)
+         //       // number of documents to send in each request
+         //       .Size(500)
+         //       .Index("tagpreferences")
+         //       .RefreshOnCompleted(),
+         //       cancellationTokenSourcePref.Token
+         //   );
+
+         //   var waitHandlePref = new ManualResetEvent(false);
+         //   Exception exPref = null;
+
+         //   // what to do on each call, when an exception is thrown, and 
+         //   // when the bulk all completes
+         //   var bulkAllObserverPref = new BulkAllObserver(
+         //       onNext: bulkAllResponse =>
+         //       {
+         //           // do something after each bulk request
+         //       },
+         //       onError: exception =>
+         //       {
+         //           // do something with exception thrown
+         //           exPref = exception;
+         //           waitHandlePref.Set();
+         //       },
+         //       onCompleted: () =>
+         //       {
+         //           // do something when all bulk operations complete
+         //           waitHandlePref.Set();
+         //       });
+
+         //   bulkAllObservablePref.Subscribe(bulkAllObserverPref);
+
+         //   // wait for handle to be set.
+         //   waitHandlePref.WaitOne();
+
+         //   if (exPref != null)
+         //   {
+         //       throw exPref;
+         //   }
 
             EsClient.CreateIndex("searchdb", c => c
          .Mappings(m => m.Map<SearchModel>(mp => mp.AutoMap())));
@@ -399,7 +457,7 @@ namespace Mongo_Elastic_POC
             var client = new MongoClient(connectionString);
 
             //Use the MongoClient to access the server
-            var database = client.GetDatabase("LASXdb");
+            var database = client.GetDatabase("Mongo_Elastic_POC");
 
             var fields = Builders<dynamic>.Projection.Exclude("_id");
             //get mongodb collection

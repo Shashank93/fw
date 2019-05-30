@@ -12,12 +12,14 @@ namespace Mongo_Elastic_POC
     public class SearchModel
     {
         
+        [Keyword]
         [PropertyName("username")]
         public string UserName { get; set; }
+        [Keyword]
         [PropertyName("selectedgroup")]
         public string SelectedGroup { get; set; }
         [PropertyName("expcreateddate")]
-        public string ExpCreatedDate { get; set; }
+        public DateTime ExpCreatedDate { get; set; }
         [PropertyName("expcreatedtime")]
         public string ExpCreatedTime { get; set; }
         [PropertyName("experimentid")]

@@ -4,6 +4,7 @@ using MongoDB.Driver;
 using Nest;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace Mongo_Elastic_POC
 
         public static MongoClient MgClient;
         public static IMongoDatabase MgDb;
+        public static IMongoCollection<BsonDocument> mgCollection;
         const string connectionString = "mongodb://localhost:27017";
 
         public static void SetupElasticClient()
@@ -39,12 +41,13 @@ namespace Mongo_Elastic_POC
             {
                 // Create a MongoClient object by using the connection string
                 MgClient = new MongoClient(connectionString);
-                MgDb = MgClient.GetDatabase("LASXdb");
+                MgDb = MgClient.GetDatabase("Mongo_Elastic_POC");
                 BsonClassMap.RegisterClassMap<dynamic>(cm =>
                 {
                     cm.AutoMap();
                     cm.SetIgnoreExtraElements(true);
                 });
+                mgCollection = MgDb.GetCollection<BsonDocument>("ExternalData");
             }
 
         }
@@ -59,21 +62,23 @@ namespace Mongo_Elastic_POC
         {
             //TEST ELASTIC CLIENT
             //ADD FILTERS
-            List<QueryContainer> lstSearchFieldQuery = new List<QueryContainer>();
-
             QueryContainer searchQueryBulder = null;
+            List<QueryContainer> lstSearchFieldQuery = new List<QueryContainer>();
+            List<QueryContainer> lstFilterQuery = new List<QueryContainer>();
+
             foreach (var srchStr in searchStrings)
             {
-                var qb1 = new TermQuery
+                QueryContainer filterQueryBulder = new TermQuery
                 {
-                    Field = srchStr.Key.ToLower(),
-                    Value = srchStr.Value.ToLower()
+                    Field = srchStr.Key,
+                    Value = srchStr.Value
 
                 };
-
-                searchQueryBulder &= qb1;
+                lstFilterQuery.Add(filterQueryBulder);
 
             }
+
+          
 
             foreach (var tgStr in tagStrings)
             {
@@ -91,26 +96,52 @@ namespace Mongo_Elastic_POC
                     Value = "*" + tgStr.Value.ToLower() + "*"
                 };
 
-                searchQueryBulder &= new NestedQuery
+                searchQueryBulder&= new NestedQuery
                 {
                     Path = "userdefinedfields",
                     Query = nestQuery,
                     IgnoreUnmapped = true
                 };
-
+               
             }
 
             foreach (var lkStr in likeStrings)
             {
-                searchQueryBulder &= new MatchQuery
+                if (lkStr.Key.Equals("expcreateddate"))
                 {
-                    Field = lkStr.Key.ToLower(),
-                    Query = lkStr.Value.ToLower()
-                };
+                    var qry = new DateRangeQuery
+                    {
+                        Field = lkStr.Key.ToLower(),
+                        GreaterThanOrEqualTo = lkStr.Value.ToLower(),
+                        LessThanOrEqualTo = lkStr.Value.ToLower(),
+                        Format = "yyyy-MM-dd"
+                    };
+                    lstFilterQuery.Add(qry);
+                }
+                else
+                {
+                    searchQueryBulder &= new MatchQuery
+                    {
+                        Field = lkStr.Key.ToLower(),
+                        Query = lkStr.Value.ToLower()
+                    };
+                }
+                
             }
+
+            lstSearchFieldQuery.Add(searchQueryBulder);
+
+            var query = new BoolQuery()
+            {
+                Name = "named_query",
+                Boost = 1.1,
+                Must = lstFilterQuery,
+                Should = lstSearchFieldQuery
+            };
 
 
             //check json request data
+<<<<<<< HEAD
             //var req = new SearchRequest<SearchModel>
             //{
             //    Query = searchQueryBulder
@@ -124,16 +155,40 @@ namespace Mongo_Elastic_POC
 
             
             
-            var searchResponse = EsClient.Search<SearchModel>(new SearchRequest<SearchModel>
+=======
+            var req = new SearchRequest<SearchModel>
             {
+                From = 0,
+                Size = 200000,
                 Source = new SourceFilter
                 {
                     Includes = "experimentid"
                 },
-                Query = searchQueryBulder
+                Query = query
+            };
+
+            using (var ms = new MemoryStream())
+            {
+                EsClient.SourceSerializer.Serialize(req, ms, Elasticsearch.Net.SerializationFormatting.Indented);
+                string jsonQuery = Encoding.UTF8.GetString(ms.ToArray());
+            };
+
+>>>>>>> 5123f669218c1610d1f1da77674a140802aaf8cd
+            var searchResponse = EsClient.Search<SearchModel>(new SearchRequest<SearchModel>
+            {
+                Size = 200000,
+                Source = new SourceFilter
+                {
+                    Includes = "experimentid"
+                },
+                Query = query
             });
             //using the object initializer syntax
+<<<<<<< HEAD
             
+=======
+           
+>>>>>>> 5123f669218c1610d1f1da77674a140802aaf8cd
             var rslt = new List<string>();
             foreach (var fieldValues in searchResponse.Documents)
             {
@@ -141,7 +196,11 @@ namespace Mongo_Elastic_POC
             }
 
             Result rst = new Result();
+<<<<<<< HEAD
             rst.TimeTaken = searchResponse.Took; 
+=======
+            rst.TimeTaken = searchResponse.Took;
+>>>>>>> 5123f669218c1610d1f1da77674a140802aaf8cd
             rst.ExperimentIds = rslt;
             return rst;
         }
@@ -151,7 +210,7 @@ namespace Mongo_Elastic_POC
             //TEST MONGO CLIENT SEARCH
 
 
-
+            var watch = System.Diagnostics.Stopwatch.StartNew();
             List<BsonElement> lstBsonCriteriaQuery = new List<BsonElement>();
 
             //ADD FILTERS
@@ -169,12 +228,12 @@ namespace Mongo_Elastic_POC
 
             foreach (var tgString in tagStrings)
             {
-                BsonElement bsonStr = new BsonElement("tags." + tgString.Key, new BsonRegularExpression(string.Format("^{0}", tgString.Value)));
+                BsonElement bsonStr = new BsonElement("tags." + tgString.Key, new BsonRegularExpression(string.Format("/{0}/", tgString.Value)));
                 lstBsonCriteriaQuery.Add(bsonStr);
             }
 
-            var watch = System.Diagnostics.Stopwatch.StartNew();
-            var collection = MgDb.GetCollection<BsonDocument>("ExternalData");
+           
+
             //QUERY PREP WITH FILTERS
             BsonDocument findData = new BsonDocument(lstBsonCriteriaQuery);
 
@@ -182,7 +241,7 @@ namespace Mongo_Elastic_POC
             var fields = Builders<BsonDocument>.Projection.Include("expid");
 
             //RESULT
-            var resultDoc = collection.Find(findData).Project<BsonDocument>(fields).ToList();
+            var resultDoc = mgCollection.Find(findData).Project<BsonDocument>(fields).ToList();
 
             // the code that you want to measure comes here
             watch.Stop();
@@ -194,6 +253,36 @@ namespace Mongo_Elastic_POC
             }
             Result rst = new Result();
             rst.TimeTaken = elapsedMs;
+            rst.ExperimentIds = rslt;
+            return rst;
+        }
+
+        public static Result ElasticSearchAll(string searchPhrase)
+        {
+            //TEST ELASTIC CLIENT
+            //ADD FILTERS
+
+
+
+            var searchResponse = EsClient.Search<UserDefinedField>(sd => sd
+           .Index("tagpreferences")
+           .Size(2000000)
+           .Query(q => q
+               .Match(m => m.Field("value").Query(searchPhrase)
+               )));
+
+
+            //using the object initializer syntax
+
+            var rslt = new List<string>();
+            foreach (var fieldValues in searchResponse.Documents)
+            {
+                rslt.Add(fieldValues.Value);
+                //rslt.Add(fieldValues.Value);
+            }
+
+            Result rst = new Result();
+            rst.TimeTaken = searchResponse.Took;
             rst.ExperimentIds = rslt;
             return rst;
         }

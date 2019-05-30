@@ -21,6 +21,8 @@
                 <RowDefinition Height="40"></RowDefinition>
                 <RowDefinition Height="40"></RowDefinition>
                 <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
@@ -29,6 +31,7 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
+                
             </Grid.ColumnDefinitions>
             <Label FontWeight="Bold" Margin="6" Grid.ColumnSpan="2" HorizontalAlignment="Center">Mandatory Fields</Label>
             <Label  Grid.Row="1" Margin="6" HorizontalAlignment="Center" FontWeight="Bold">Field</Label>
@@ -43,13 +46,20 @@
             <TextBox x:Name="txtGroup" Grid.Row="3" Grid.Column="1" Margin="6"></TextBox>
             <DatePicker x:Name="dpCreatedDate" Grid.Row="4" Grid.Column="1" Margin="6"></DatePicker>
             <TextBox x:Name="txtTime" Grid.Row="5" Grid.Column="1" Margin="6"></TextBox>
+           
+           
+            
             <Button x:Name="btnSearch" Grid.Row="6" Grid.Column="1"    Margin="6" Content="Search" Click="BtnSearch_Click"></Button>
 
             <Label Grid.Row="7" Margin="6" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontWeight="Bold">Stats (in ms)</Label>
             <Label Grid.Row="8" Margin="6">Elastic Search Time </Label>
             <Label Grid.Row="9" Margin="6">Mongo Search Time </Label>
+            <Label Grid.Row="10" Margin="6">Elastic Record Count</Label>
+            <Label Grid.Row="11" Margin="6">Mongo Record Count</Label>
             <Label x:Name="lblElSrTime"  Grid.Row="8" Grid.Column="1" Margin="6"></Label>
             <Label x:Name="lblMgSrTime"  Grid.Row="9" Grid.Column="1" Margin="6"></Label>
+            <Label x:Name="lbrElRecCount"  Grid.Row="10" Grid.Column="1" Margin="6"></Label>
+            <Label x:Name="lblMgRecCount"  Grid.Row="11" Grid.Column="1" Margin="6"></Label>
 
 
             <Label FontWeight="Bold" Margin="6" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center">User Defined Fields</Label>
@@ -79,8 +89,13 @@
 
             <Label  Grid.Row="1" FontWeight="Bold" Grid.Column="4" Margin="6" HorizontalAlignment="Center">Mongo Result</Label>
             <Label  Grid.Row="1" FontWeight="Bold" Grid.Column="5" Margin="6" HorizontalAlignment="Center">Elastic Result</Label>
+            <Label  Grid.Row="1" FontWeight="Bold"  Visibility="Collapsed" Grid.Column="6" Margin="6" HorizontalAlignment="Center">Match All Result</Label>
             <ListBox x:Name="lstMongoBoxResults" Grid.Column="4" Grid.Row="2" Grid.RowSpan="10" Margin="6"></ListBox>
             <ListBox x:Name="lstElasticBoxResults" Grid.Column="5" Grid.Row="2" Grid.RowSpan="10" Margin="6"></ListBox>
+            <ListBox x:Name="lstMatchAll" Grid.Column="7" Grid.Row="2" Visibility="Collapsed" Grid.RowSpan="10" Margin="6"></ListBox>
+
+            <TextBox x:Name="txtSearchAll" Visibility="Collapsed"  Grid.Row="14" Grid.Column="2" Grid.ColumnSpan="2" Margin="6"></TextBox>
+            <Button x:Name="btnSearchAll" Visibility="Collapsed" Grid.Row="14" Grid.Column="4"    Margin="6" Content="Search" Click="BtnSearchAll_Click"></Button>
 
         </Grid>
     </Grid>
