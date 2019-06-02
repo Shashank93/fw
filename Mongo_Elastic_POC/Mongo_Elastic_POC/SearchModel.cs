@@ -29,7 +29,12 @@ namespace Mongo_Elastic_POC
         [Nested]
         [PropertyName("userdefinedfields")]
         public List<UserDefinedField> UserDefinedFields { get; set; }
-        
+        [Text]
+        [PropertyName("numberdata")]
+        public string NumberData { get; set; }
 
+        [Keyword]
+        [PropertyName("phrase")]
+        public string Phrase { get; set; }
     }
 }

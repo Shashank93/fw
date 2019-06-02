@@ -15,8 +15,7 @@ namespace Mongo_Elastic_POC
         public string Name { get; set; }
         [Text(Name = "value")]
         public string Value { get; set; }
-        [Nested]
-        [PropertyName("todoitems")]
-        public List<UserDefinedField> ToDoItems { get; set; }
+       
+        
     }
 }

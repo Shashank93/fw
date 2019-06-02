@@ -258,15 +258,51 @@ namespace Mongo_Elastic_POC
             return obj.GetType().GetProperties();
         }
 
+        public string GetRandomSentence(int wordCount)
+        {
+            Random random = new Random();
+            string[] words = { "an", "automobile", "or", "motor", "car", "is", "a", "wheeled", "motor", "vehicle", "used", "for", "transporting", "passengers", "which", "also", "carries", "its", "own", "engine", "or" };
+
+            StringBuilder builder = new StringBuilder();
+
+            for (int i = 0; i < wordCount; i++)
+            {
+                // Select a random word from the array
+                builder.Append(words[random.Next(words.Length)]).Append(" ");
+            }
+
+            string sentence = builder.ToString().Trim() + ". ";
+
+            // Set the first letter of the first word in the sentenece to uppercase
+            sentence = char.ToUpper(sentence[0]) + sentence.Substring(1);
+
+            builder = new StringBuilder();
+            builder.Append(sentence);
+
+            return builder.ToString();
+        }
+
+        public string RandomDigits(int length)
+        {
+            var random = new Random();
+            string s = string.Empty;
+            for (int i = 0; i < length; i++)
+                s = String.Concat(s, random.Next(10).ToString());
+            return s;
+        }
+
         public void PostExternalDataToElastic(List<dynamic> srcDta)
         {
 
             List<UserDefinedField> allUsrDefField = new List<UserDefinedField>();
             List<SearchModel> lstElstModel = new List<SearchModel>();
+
+
+           
+
             //CREATE MODEL FOR ELASTIC DATA 
             foreach (var data in srcDta)
             {
-
 
                 SearchModel srcModel = new SearchModel();
                 //Dictionary<string, string> dctUsrDefFields = new Dictionary<string, string>();
@@ -310,34 +346,6 @@ namespace Mongo_Elastic_POC
                                 usrFld.Name = nestedPropertyName;
                                 usrFld.Value = nestedValue;
 
-                                //string[] article = { "the", "a", "one", "some", "any", };
-                                //string[] noun = { "boy", "girl", "dog", "town", "car", };
-                                //string[] verb = { "drove", "jumped", "ran", "walked", "skipped", };
-                                //string[] preposition = { "to", "from", "over", "under", "on", };
-
-                                //Random rndarticle = new Random();
-                                //Random rndnoun = new Random();
-                                //Random rndverb = new Random();
-                                //Random rndpreposition = new Random();
-
-                                //int randomarticle = rndarticle.Next(article.Length);
-                                //int randomnoun = rndnoun.Next(noun.Length);
-                                //int randomverb = rndverb.Next(verb.Length);
-                                //int randompreposition = rndpreposition.Next(preposition.Length);
-
-                                //UserDefinedField todoadd1 = new UserDefinedField();
-                                //todoadd1.Name = string.Format("{0} {1}", article[randomarticle], noun[randomnoun]);
-                                //todoadd1.Value = string.Format("{0} {1}", verb[randomarticle], preposition[randomnoun]);
-
-                                //UserDefinedField todoadd2 = new UserDefinedField();
-                                //todoadd2.Name = string.Format("{0} {1}", verb[randomarticle], noun[randomnoun]);
-                                //todoadd2.Value = string.Format("{0} {1}", verb[randomarticle], article[randomnoun]);
-
-                                //todofld.Add(todoadd2);
-                                //todofld.Add(todoadd1);
-
-                                //usrFld.ToDoItems = todofld;
-
                                 allUsrDefField.Add(usrFld);
 
 
@@ -350,7 +358,10 @@ namespace Mongo_Elastic_POC
                             //to be logged
                         }
                         srcModel.UserDefinedFields = lstusrdef;
+                        srcModel.NumberData = Convert.ToString(RandomDigits(10));
+                        srcModel.Phrase = GetRandomSentence(20);
                     }
+                    
                 }
 
                 lstElstModel.Add(srcModel);
@@ -365,7 +376,39 @@ namespace Mongo_Elastic_POC
 
 
             EsClient.CreateIndex("searchdbtest", c => c
-         .Mappings(m => m.Map<SearchModel>(mp => mp.AutoMap())));
+         .Mappings(m => m.Map<SearchModel>(mp => mp.AutoMap()))
+          .Settings(s => s
+        .Analysis(a => a
+            .Analyzers(aa => aa
+                .Custom("number_analyzer", sa => sa
+                    .Tokenizer("number_tokenizer")
+                )
+            )
+        )
+        .Analysis(a => a
+            .Analyzers(aa => aa
+                .Standard("standard_english", sa => sa
+                    .StopWords("_english_")
+                )
+            )
+        )
+    )
+    .Map<SearchModel>(mm => mm
+        .Properties(p => p
+            .Text(t => t
+                .Name(n => n.Phrase)
+                .Analyzer("standard_english")
+            )
+        )
+    )
+     .Map<SearchModel>(mm => mm
+        .Properties(p => p
+            .Text(t => t
+                .Name(n => n.NumberData)
+                .Analyzer("number_analyzer")
+            )
+        )
+    ));
             //can cancel the operation by calling .Cancel() on this
             var cancellationTokenSource = new CancellationTokenSource();
 

@@ -31,8 +31,8 @@ namespace Mongo_Elastic_POC
 
         private void BtnSearch_Click(object sender, RoutedEventArgs e)
         {
-            
 
+            lstMatchAll.ItemsSource = null;
             //for exact match strings  ---MONGO DB
             Dictionary<string, string> searchStrings = new Dictionary<string, string>();
             //searchStrings.Add("username", "bad99954");
@@ -135,8 +135,13 @@ namespace Mongo_Elastic_POC
 
         private void BtnSearchAll_Click(object sender, RoutedEventArgs e)
         {
-            var searchText = txtSearchAll.Text;
-            SearchDb.ElasticSearchAll(searchText);
+           
+            var searchText = txtSearchValue.Text;
+            var fieldname = txtSearchFieldName.Text;
+            var result = SearchDb.ElasticSearchMistakenData(searchText, fieldname);
+            lstMatchAll.ItemsSource = result.ExperimentIds;
+            lblElSrTime.Content = result.TimeTaken + " ms";
+            lbrElRecCount.Content = result.ExperimentIds.Count + " records";
         }
     }
 }

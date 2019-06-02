@@ -64,19 +64,6 @@ namespace Mongo_Elastic_POC
             //ADD FILTERS
             QueryContainer searchQueryBulder = null;
 
-            //var searchQID = EsClient.Search<string>(sd => sd
-            //         .Index("searchdbtest")
-            //         .Size(2000000)
-            //         .Query(q => q
-            //            .Match(m => m.Field("userdefinedfields.todoitems.name").Query("drove by")
-            //            )));
-
-            //using (var ms1 = new MemoryStream())
-            //{
-            //    EsClient.SourceSerializer.Serialize(req1, ms1, Elasticsearch.Net.SerializationFormatting.Indented);
-            //    string jsonQuery1 = Encoding.UTF8.GetString(ms1.ToArray());
-            //};
-
             List<QueryContainer> lstSearchFieldQuery = new List<QueryContainer>();
             List<QueryContainer> lstFilterQuery = new List<QueryContainer>();
 
@@ -85,7 +72,7 @@ namespace Mongo_Elastic_POC
                 QueryContainer filterQueryBulder = new TermQuery
                 {
                     Field = srchStr.Key,
-                    Value = srchStr.Value
+                    Value = srchStr.Value,
 
                 };
                 lstFilterQuery.Add(filterQueryBulder);
@@ -112,7 +99,8 @@ namespace Mongo_Elastic_POC
                 {
                     Path = "userdefinedfields",
                     Query = nestQuery,
-                    IgnoreUnmapped = true
+                    IgnoreUnmapped = true,
+
                 };
 
             }
@@ -132,13 +120,13 @@ namespace Mongo_Elastic_POC
                 }
                 else
                 {
-                    searchQueryBulder &= new MatchQuery
+                    searchQueryBulder &= new TermQuery
                     {
                         Field = lkStr.Key.ToLower(),
-                        Query = lkStr.Value.ToLower()
+                        Value = lkStr.Value.ToLower()
                     };
                 }
-                
+
             }
 
             lstSearchFieldQuery.Add(searchQueryBulder);
@@ -180,7 +168,7 @@ namespace Mongo_Elastic_POC
                 Query = query
             });
             //using the object initializer syntax
-           
+
             var rslt = new List<string>();
             foreach (var fieldValues in searchResponse.Documents)
             {
@@ -220,7 +208,7 @@ namespace Mongo_Elastic_POC
                 lstBsonCriteriaQuery.Add(bsonStr);
             }
 
-           
+
 
             //QUERY PREP WITH FILTERS
             BsonDocument findData = new BsonDocument(lstBsonCriteriaQuery);
@@ -245,28 +233,72 @@ namespace Mongo_Elastic_POC
             return rst;
         }
 
-        public static Result ElasticSearchAll(string searchPhrase)
+        public static Result ElasticSearchMistakenData(string searchPhrase, string fieldname)
         {
             //TEST ELASTIC CLIENT
             //ADD FILTERS
+            QueryContainer searchQueryBulder = null;
+            searchQueryBulder &= new MatchQuery
+            {
+                Field = fieldname,
+                Query = searchPhrase,
+                Fuzziness = Fuzziness.Auto
+            };
 
+            //using the object initializer syntax
+            var searchResponse = EsClient.Search<SearchModel>(new SearchRequest<SearchModel>("searchdbtest")
+            {
 
-
-            var searchResponse = EsClient.Search<UserDefinedField>(sd => sd
-           .Index("tagpreferences")
-           .Size(2000000)
-           .Query(q => q
-               .Match(m => m.Field("value").Query(searchPhrase)
-               )));
-
-
+                Size = 200000,
+                Source = new SourceFilter
+                {
+                    Includes = fieldname
+                },
+                Query = searchQueryBulder
+            });
             //using the object initializer syntax
 
             var rslt = new List<string>();
             foreach (var fieldValues in searchResponse.Documents)
             {
-                rslt.Add(fieldValues.Value);
-                //rslt.Add(fieldValues.Value);
+                ///REFACTOR TO SWITCH CASE
+                if (fieldname.Equals("experimentid"))
+                {
+                    rslt.Add(fieldValues.ExpId);
+                }
+                else if (fieldname.Equals("numberdata"))
+                {
+                    rslt.Add(fieldValues.NumberData);
+                }
+                else if (fieldname.Equals("phrase"))
+                {
+                    rslt.Add(fieldValues.Phrase);
+                }
+                else if (fieldname.Equals("username"))
+                {
+                    rslt.Add(fieldValues.UserName);
+                }
+                else if (fieldname.Contains("userdefinedfields.name"))
+                {
+                    foreach (var fields in fieldValues.UserDefinedFields)
+                    {
+                        string data = fields.Name ;
+                        rslt.Add(data);
+                    }
+                }
+                else if (fieldname.Contains("userdefinedfields.value"))
+                {
+                    foreach (var fields in fieldValues.UserDefinedFields)
+                    {
+                        string data = fields.Value;
+                        rslt.Add(data);
+                    }
+                }
+                else if (fieldname.Equals("username"))
+                {
+                    rslt.Add(fieldValues.UserName);
+                }
+
             }
 
             Result rst = new Result();
