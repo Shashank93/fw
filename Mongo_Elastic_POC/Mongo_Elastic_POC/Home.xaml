@@ -104,8 +104,8 @@
                 <TextBox x:Name="txtSearchValue"  Grid.Row="14" Grid.Column="4" Height="30" VerticalAlignment="Top" Margin="6"></TextBox>
             </StackPanel>
             <StackPanel  Grid.Row="14" Grid.Column="5">
-                <Label   Margin="6" HorizontalAlignment="Center">Search Suggestion</Label>
-                <Button x:Name="btnSearchAll" Grid.Row="14" Grid.Column="5" Height="30" VerticalAlignment="Top" Margin="6" Content="Search" Click="BtnSearchAll_Click"></Button>
+                <Label   Margin="6" HorizontalAlignment="Center">Suggestion</Label>
+                <Button x:Name="btnSearchAll" Grid.Row="14" Grid.Column="5" Height="30" VerticalAlignment="Top" Margin="6" Content="Check Suggestions" Click="BtnSearchAll_Click"></Button>
             </StackPanel>
             
             
