@@ -1,0 +1,15 @@
+C:\Users\shashank kushwaha\source\repos\EncryptionDecryptionRESTApi\EncryptionDecryptionRESTApi\bin\Debug\EncryptionDecryptionRESTApi.exe.config
+C:\Users\shashank kushwaha\source\repos\EncryptionDecryptionRESTApi\EncryptionDecryptionRESTApi\bin\Debug\EncryptionDecryptionRESTApi.exe
+C:\Users\shashank kushwaha\source\repos\EncryptionDecryptionRESTApi\EncryptionDecryptionRESTApi\bin\Debug\EncryptionDecryptionRESTApi.pdb
+C:\Users\shashank kushwaha\source\repos\EncryptionDecryptionRESTApi\EncryptionDecryptionRESTApi\obj\Debug\EncryptionDecryptionRESTApi.csprojAssemblyReference.cache
+C:\Users\shashank kushwaha\source\repos\EncryptionDecryptionRESTApi\EncryptionDecryptionRESTApi\obj\Debug\MainWindow.g.cs
+C:\Users\shashank kushwaha\source\repos\EncryptionDecryptionRESTApi\EncryptionDecryptionRESTApi\obj\Debug\App.g.cs
+C:\Users\shashank kushwaha\source\repos\EncryptionDecryptionRESTApi\EncryptionDecryptionRESTApi\obj\Debug\EncryptionDecryptionRESTApi_MarkupCompile.cache
+C:\Users\shashank kushwaha\source\repos\EncryptionDecryptionRESTApi\EncryptionDecryptionRESTApi\obj\Debug\EncryptionDecryptionRESTApi_MarkupCompile.lref
+C:\Users\shashank kushwaha\source\repos\EncryptionDecryptionRESTApi\EncryptionDecryptionRESTApi\obj\Debug\MainWindow.baml
+C:\Users\shashank kushwaha\source\repos\EncryptionDecryptionRESTApi\EncryptionDecryptionRESTApi\obj\Debug\EncryptionDecryptionRESTApi.g.resources
+C:\Users\shashank kushwaha\source\repos\EncryptionDecryptionRESTApi\EncryptionDecryptionRESTApi\obj\Debug\EncryptionDecryptionRESTApi.Properties.Resources.resources
+C:\Users\shashank kushwaha\source\repos\EncryptionDecryptionRESTApi\EncryptionDecryptionRESTApi\obj\Debug\EncryptionDecryptionRESTApi.csproj.GenerateResource.cache
+C:\Users\shashank kushwaha\source\repos\EncryptionDecryptionRESTApi\EncryptionDecryptionRESTApi\obj\Debug\EncryptionDecryptionRESTApi.csproj.CoreCompileInputs.cache
+C:\Users\shashank kushwaha\source\repos\EncryptionDecryptionRESTApi\EncryptionDecryptionRESTApi\obj\Debug\EncryptionDecryptionRESTApi.exe
+C:\Users\shashank kushwaha\source\repos\EncryptionDecryptionRESTApi\EncryptionDecryptionRESTApi\obj\Debug\EncryptionDecryptionRESTApi.pdb

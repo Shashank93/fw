@@ -102,7 +102,6 @@ namespace Mongo_Elastic_POC
                     IgnoreUnmapped = true,
 
                 };
-
             }
 
             foreach (var lkStr in likeStrings)

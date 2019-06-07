@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28922.388
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryptionDecryptionRESTApi", "EncryptionDecryptionRESTApi\EncryptionDecryptionRESTApi.csproj", "{8CF2D1BF-1622-4C07-A45D-B081758601CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8CF2D1BF-1622-4C07-A45D-B081758601CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CF2D1BF-1622-4C07-A45D-B081758601CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CF2D1BF-1622-4C07-A45D-B081758601CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CF2D1BF-1622-4C07-A45D-B081758601CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EF795F4B-061E-4EF9-ADE3-47E641643614}
+	EndGlobalSection
+EndGlobal
