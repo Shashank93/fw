@@ -1,0 +1,11 @@
+C:\Users\shashank kushwaha\Documents\GitHub\fw\APIGatewayJWTAuthenticationDemo\ClientApp\bin\Debug\netcoreapp2.0\ClientApp.deps.json
+C:\Users\shashank kushwaha\Documents\GitHub\fw\APIGatewayJWTAuthenticationDemo\ClientApp\bin\Debug\netcoreapp2.0\ClientApp.runtimeconfig.json
+C:\Users\shashank kushwaha\Documents\GitHub\fw\APIGatewayJWTAuthenticationDemo\ClientApp\bin\Debug\netcoreapp2.0\ClientApp.runtimeconfig.dev.json
+C:\Users\shashank kushwaha\Documents\GitHub\fw\APIGatewayJWTAuthenticationDemo\ClientApp\bin\Debug\netcoreapp2.0\ClientApp.dll
+C:\Users\shashank kushwaha\Documents\GitHub\fw\APIGatewayJWTAuthenticationDemo\ClientApp\bin\Debug\netcoreapp2.0\ClientApp.pdb
+C:\Users\shashank kushwaha\Documents\GitHub\fw\APIGatewayJWTAuthenticationDemo\ClientApp\obj\Debug\netcoreapp2.0\ClientApp.csprojAssemblyReference.cache
+C:\Users\shashank kushwaha\Documents\GitHub\fw\APIGatewayJWTAuthenticationDemo\ClientApp\obj\Debug\netcoreapp2.0\ClientApp.csproj.CoreCompileInputs.cache
+C:\Users\shashank kushwaha\Documents\GitHub\fw\APIGatewayJWTAuthenticationDemo\ClientApp\obj\Debug\netcoreapp2.0\ClientApp.AssemblyInfoInputs.cache
+C:\Users\shashank kushwaha\Documents\GitHub\fw\APIGatewayJWTAuthenticationDemo\ClientApp\obj\Debug\netcoreapp2.0\ClientApp.AssemblyInfo.cs
+C:\Users\shashank kushwaha\Documents\GitHub\fw\APIGatewayJWTAuthenticationDemo\ClientApp\obj\Debug\netcoreapp2.0\ClientApp.dll
+C:\Users\shashank kushwaha\Documents\GitHub\fw\APIGatewayJWTAuthenticationDemo\ClientApp\obj\Debug\netcoreapp2.0\ClientApp.pdb

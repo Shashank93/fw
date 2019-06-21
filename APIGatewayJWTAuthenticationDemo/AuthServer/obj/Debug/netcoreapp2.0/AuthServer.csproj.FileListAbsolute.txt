@@ -1,0 +1,11 @@
+C:\Users\shashank kushwaha\Documents\GitHub\fw\APIGatewayJWTAuthenticationDemo\AuthServer\bin\Debug\netcoreapp2.0\AuthServer.deps.json
+C:\Users\shashank kushwaha\Documents\GitHub\fw\APIGatewayJWTAuthenticationDemo\AuthServer\bin\Debug\netcoreapp2.0\AuthServer.runtimeconfig.json
+C:\Users\shashank kushwaha\Documents\GitHub\fw\APIGatewayJWTAuthenticationDemo\AuthServer\bin\Debug\netcoreapp2.0\AuthServer.runtimeconfig.dev.json
+C:\Users\shashank kushwaha\Documents\GitHub\fw\APIGatewayJWTAuthenticationDemo\AuthServer\bin\Debug\netcoreapp2.0\AuthServer.dll
+C:\Users\shashank kushwaha\Documents\GitHub\fw\APIGatewayJWTAuthenticationDemo\AuthServer\bin\Debug\netcoreapp2.0\AuthServer.pdb
+C:\Users\shashank kushwaha\Documents\GitHub\fw\APIGatewayJWTAuthenticationDemo\AuthServer\obj\Debug\netcoreapp2.0\AuthServer.csprojAssemblyReference.cache
+C:\Users\shashank kushwaha\Documents\GitHub\fw\APIGatewayJWTAuthenticationDemo\AuthServer\obj\Debug\netcoreapp2.0\AuthServer.csproj.CoreCompileInputs.cache
+C:\Users\shashank kushwaha\Documents\GitHub\fw\APIGatewayJWTAuthenticationDemo\AuthServer\obj\Debug\netcoreapp2.0\AuthServer.AssemblyInfoInputs.cache
+C:\Users\shashank kushwaha\Documents\GitHub\fw\APIGatewayJWTAuthenticationDemo\AuthServer\obj\Debug\netcoreapp2.0\AuthServer.AssemblyInfo.cs
+C:\Users\shashank kushwaha\Documents\GitHub\fw\APIGatewayJWTAuthenticationDemo\AuthServer\obj\Debug\netcoreapp2.0\AuthServer.dll
+C:\Users\shashank kushwaha\Documents\GitHub\fw\APIGatewayJWTAuthenticationDemo\AuthServer\obj\Debug\netcoreapp2.0\AuthServer.pdb
