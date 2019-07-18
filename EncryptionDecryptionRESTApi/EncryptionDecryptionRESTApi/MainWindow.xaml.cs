@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -22,29 +23,53 @@ namespace EncryptionDecryptionRESTApi
     /// </summary>
     public partial class MainWindow : Window
     {
-
         private string _privateKey = string.Empty;
         private string _publicKey = string.Empty;
         Encoding _encoder = Encoding.UTF8;
         public MainWindow()
         {
-            string encryptData = "SHASHANK KUSHWAHA";
             InitializeComponent();
             GeneratePublicAndPrivateKeys();
 
             //ENCRYPTION
-            var publicKeyEncryptedData = EncryptWithPublicKey(encryptData);
-            var finalEncryptedData = EncryptTripleDES(publicKeyEncryptedData, true);
+
+
+            //CREATE OBJECT FOR RESPONSE
+            Response rsp = new Response();
+            ResponseHeader rspHeader = new ResponseHeader();
+            rspHeader.ResponseCode = "SUCCESS";
+            rspHeader.ResponseMessage = "Save Successful";
+            var respData = "{'expcreateddate':'2019 - 05 - 2406:10:12','expcreatedtime':'06:10:12.8855530','expid':'ExpId1','selectedgroup':'A','tags':{'departement':'Animalkingdom','departement1':'Animal','departement2':'Forest','departement3':'Rhino','dnaClass':'F71','frogNo':'11','frogType':'1521','result':'Pass','status':'Normal','testCycle':'1'},'username':'spai1'}";
+            var base64text = Base64Encode(respData);
+
+            var publicKeyEncryptedData = EncryptWithPublicKey(base64text);
+
+            ResponseBody rspData = new ResponseBody();
+            rspData.ResponseData = publicKeyEncryptedData;
+            rsp.ResponseHeader = rspHeader;
+            rsp.ResponseBody = rspData;
+
+            var jsonResponse = JsonConvert.SerializeObject(rsp);
+            var finalEncryptedData = EncryptTripleDES(jsonResponse, true);
 
             //DECRYPTION
-            var initialDecryptedData = DecryptTripleDES(finalEncryptedData,true);
-            var privateKeyDecryptedData = DecryptFromPrivateKey(initialDecryptedData);
+            var initialDecryptedData = DecryptTripleDES(finalEncryptedData, true);
+            var decryptedModelData = JsonConvert.DeserializeObject<Response>(initialDecryptedData);
+            var responseData = DecryptFromPrivateKey(decryptedModelData.ResponseBody.ResponseData);
+            decryptedModelData.ResponseBody.ResponseData = Base64Decode(responseData);
+
+            var finalData = decryptedModelData;
+
+
         }
 
         public void GeneratePublicAndPrivateKeys()
         {
+            CspParameters cspParams = new CspParameters();
+            cspParams.KeyContainerName = "XML_ENC_RSA_KEY";
+            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(cspParams);
+
             // Generate a public/private key using RSA  
-            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
             // Read private key in a string  
             _privateKey = rsa.ToXmlString(true);
 
@@ -54,7 +79,6 @@ namespace EncryptionDecryptionRESTApi
 
             // Get key into parameters  
             //RSAParameters RSAKeyInfo = rsa.ExportParameters(true);
-
             //string pvtModulus = System.Text.Encoding.UTF8.GetString(RSAKeyInfo.Modulus);
             //string pvtexponent = System.Text.Encoding.UTF8.GetString(RSAKeyInfo.Exponent);
             //string pvtP = System.Text.Encoding.UTF8.GetString(RSAKeyInfo.P);
@@ -152,6 +176,7 @@ namespace EncryptionDecryptionRESTApi
             tdes.Clear();
             //return the Clear decrypted TEXT
             return UTF8Encoding.UTF8.GetString(resultArray);
+
         }
 
         public string DecryptFromPrivateKey(string data)
@@ -188,6 +213,18 @@ namespace EncryptionDecryptionRESTApi
             }
 
             return sb.ToString();
+        }
+
+        public static string Base64Encode(string plainText)
+        {
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
+            return System.Convert.ToBase64String(plainTextBytes);
+        }
+
+        public static string Base64Decode(string base64EncodedData)
+        {
+            var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
+            return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
         }
     }
 }
